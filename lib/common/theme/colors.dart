@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
 
+const kEmptyColor = Color(0x00000000); // 100% Empty
 
 /// Main Colors
 // Used in any screen, just for background.
@@ -15,7 +16,6 @@ var positiveBlueButtonGradient = gradientBase([
 var darkPopupGradient = gradientBase([
   const Color(0xff172F43).withOpacity(0.98),
   const Color(0xff172F43)],);
-
 
 /// Icons & Text Colors
 var kPositiveWhite = Colors.white; // - positive
