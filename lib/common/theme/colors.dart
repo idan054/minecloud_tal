@@ -31,13 +31,15 @@ const kLoadingGrey = Color(0xFF1E76DE); // loading O
 
 /// Specific Colors
 // Selected radio button, checkboxes...
-const kPostiveBlueGui = Color(0xFF1E76DE);
+const kPositiveBlueGui = Color(0xFF1E76DE);
 // Appears behind the state of progress bars.
 const kProgressBar = Color(0xFF1E4661);
 // When tap, or actual assets (worlds, packs...) or borders.
-const kTapBorderAssets = Color(0xFF6690B8); // 10% opacity
+var kTapBorderAssets = const Color(0xFF6690B8)
+    .withOpacity(0.30); // 10% opacity
 // Secondary buttons, such as unselected tabs, delete...
-const kSecondaryButton = Color(0xFF6690B8); // 20% opacity
+var kSecondaryButton = const Color(0xFF6690B8)
+    .withOpacity(0.50); // 20% opacity
 // Fields (login)
 const kFieldsDark = Color(0xFF0E2130);
 

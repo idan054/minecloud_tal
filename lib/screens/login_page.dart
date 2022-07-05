@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:minecloud_tal/widgets/textFieldW.dart';
 
@@ -16,6 +18,13 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
+    Widget containerDivider() =>
+        Expanded(
+          child: Container(
+            color: kTapBorderAssets,
+            height: 1,),
+        );
+
     return Container(
       decoration: BoxDecoration(gradient: darkBackgroundGradient),
       child: Scaffold(
@@ -24,6 +33,7 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             // SizedBox(height: kMediaQuerySize(context).height * 0.2,),
+            const SizedBox(height: 15,),
             Center(
                 child: Image.asset('assets/images/minecloudLogo.png')),
 
@@ -49,16 +59,55 @@ class _LoginPageState extends State<LoginPage> {
                       margin: const EdgeInsets.only(top: 7.5),
                       child: Text('Forgot password?', style: poppinsRegular().copyWith(
                         color: kDetailedWhite60,
-                        fontSize: 11
                       )),
                     ),
                       ],
                     ),
-                    positiveButton('Log In')
+                    positiveButton('Log In'),
+
+                    Row(
+                      children: [
+                        containerDivider(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Text('OR', style: poppinsRegular()),
+                        ),
+                        containerDivider(),
+                      ],
+                    ),
+
+                    secondaryIconButton('Continue with Google',
+                      SvgPicture.asset('assets/svg/G-logo-icon.svg',),),
+
                   ],
                 ),
               ),
-            )
+            ),
+
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Divider(color: kTapBorderAssets,
+                // thickness: 1,
+                indent: 20,
+                endIndent: 20,),
+                const SizedBox(height: 10,),
+                InkWell(
+                  splashColor: kDetailedWhite60,
+                  onTap: (){},
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    Text("Don't have an account? ", style: poppinsRegular()),
+                    Text('Sign Up.', style: poppinsMedium()
+                        .copyWith(fontSize: 11,
+                      fontWeight: FontWeight.bold
+                    )),
+                  ],),
+                )
+              ],
+            ),
           ],
         ),
       ),

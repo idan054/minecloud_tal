@@ -26,7 +26,7 @@ Widget customTxtField({
                 contentPadding: const EdgeInsets.symmetric(
                     vertical: 15,horizontal: 10),
                 hintStyle: poppinsRegular()
-                    .copyWith(fontSize: 11,
+                    .copyWith(
                     color: kVerySpecificWhite40)
 
             ),

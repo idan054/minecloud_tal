@@ -6,7 +6,7 @@ TextStyle poppinsRegular()=>
         fontFamily: 'Poppins',
         fontWeight: FontWeight.w500,
         color: kPositiveWhite,
-        fontSize: 20);
+        fontSize: 11);
 
 TextStyle poppinsMedium()=>
     TextStyle(
