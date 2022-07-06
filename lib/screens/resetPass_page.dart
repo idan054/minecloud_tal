@@ -2,21 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
-import 'package:minecloud_tal/screens/resetPass_page.dart';
 import 'package:minecloud_tal/widgets/textFieldW.dart';
 
 import '../common/theme/colors.dart';
 import '../common/theme/constants.dart';
 import '../widgets/buttonsWs.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class ResetPassPage extends StatefulWidget {
+  const ResetPassPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<ResetPassPage> createState() => _ResetPassPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _ResetPassPageState extends State<ResetPassPage> {
   @override
   Widget build(BuildContext context) {
     Widget containerDivider() =>
@@ -40,7 +39,8 @@ class _LoginPageState extends State<LoginPage> {
 
             Container(
               width: kMediaQuerySize(context).width,
-              height: 500,
+              height: kMediaQuerySize(context).height * 0.5,
+              // height: 500,
               margin: const EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(gradient: darkPopupGradient,
                   borderRadius: const BorderRadius.all(Radius.circular(20)
@@ -50,41 +50,19 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text('Sign In', style: poppinsMedium()),
+                    Text('Reset Password', style: poppinsMedium()),
                     darkTxtField(label: 'Email', hintText: 'Enter your Email...'),
-                    Column(
-                      children: [
-                        darkTxtField(label: 'Password', hintText: 'Enter your Password...'),
-                    InkWell(
-                      splashColor: kDetailedWhite60,
-                      onTap: () =>
-                          kPushNavigator(context, const ResetPassPage()),
-                      child: Container(
-                        alignment: Alignment.topLeft,
-                        margin: const EdgeInsets.only(top: 7.5),
-                        child: Text('Forgot password?', style: poppinsRegular().copyWith(
-                          color: kDetailedWhite60,
-                        )),
-                      ),
-                    ),
-                      ],
-                    ),
-                    positiveButton('Log In'),
+                    const SizedBox(height: 30,),
 
+                    positiveButton('Send Email'),
                     Row(
-                      children: [
-                        containerDivider(),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Text('OR', style: poppinsRegular()),
-                        ),
-                        containerDivider(),
-                      ],
+                      children: [containerDivider(),],
                     ),
 
                     secondaryIconButton(
-                      text: 'Continue with Google',
-                      iconW: SvgPicture.asset('assets/svg/G-logo-icon.svg',),),
+                      text: 'Log In',
+                      // SvgPicture.asset('assets/svg/G-logo-icon.svg',),
+                    ),
 
                   ],
                 ),

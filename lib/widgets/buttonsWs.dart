@@ -26,7 +26,8 @@ Widget positiveButton(String text) =>
         child: Text(text, style: poppinsMedium().copyWith(fontSize: 14),),),
     );
 
-Widget secondaryIconButton(String text, Widget icon) =>
+Widget secondaryIconButton({
+  required String text, Widget? iconW}) =>
     Container(
       margin: const EdgeInsets.symmetric(horizontal: 8),
       child: ElevatedButton.icon(
@@ -37,7 +38,8 @@ Widget secondaryIconButton(String text, Widget icon) =>
                 kTapBorderAssets),
             minimumSize: MaterialStateProperty.all(const Size(999, 0)),
             padding: MaterialStateProperty.all(
-                const EdgeInsets.symmetric(vertical: 13)),
+               EdgeInsets.symmetric(vertical:
+                iconW == null ? 16 : 13)),
             shape: MaterialStateProperty.all(
               RoundedRectangleBorder(
                 side: BorderSide(
@@ -48,7 +50,7 @@ Widget secondaryIconButton(String text, Widget icon) =>
               ),)
 
         ),
-        icon: icon,
+        icon: iconW ?? const Icon(Icons.hide_image, size: 0),
         label: Text(text,
           style: poppinsMedium().copyWith(fontSize: 14),),),
     );

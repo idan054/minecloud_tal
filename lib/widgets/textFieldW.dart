@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../common/theme/colors.dart';
 import '../common/theme/text.dart';
 
-Widget customTxtField({
+Widget darkTxtField({
   required String label,
   required String hintText,
 }) =>
