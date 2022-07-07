@@ -43,6 +43,8 @@ var kSecondaryButton = const Color(0xFF6690B8)
 // Fields (login)
 const kFieldsDark = Color(0xFF0E2130);
 
+const kDialogBg = Color(0xFF3E5F7E);
+
 
 
 

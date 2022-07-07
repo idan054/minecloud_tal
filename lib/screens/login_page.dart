@@ -7,7 +7,9 @@ import 'package:minecloud_tal/widgets/textFieldW.dart';
 
 import '../common/theme/colors.dart';
 import '../common/theme/constants.dart';
+import '../functions/loadingDialogW.dart';
 import '../widgets/buttonsWs.dart';
+import 'localHomePage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -17,6 +19,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool isPassHidden = true;
+
   @override
   Widget build(BuildContext context) {
     Widget containerDivider() =>
@@ -54,7 +58,17 @@ class _LoginPageState extends State<LoginPage> {
                     darkTxtField(label: 'Email', hintText: 'Enter your Email...'),
                     Column(
                       children: [
-                        darkTxtField(label: 'Password', hintText: 'Enter your Password...'),
+                        darkTxtField(
+                            isPass: true,
+                            label: 'Password',
+                            hintText: 'Enter your Password...',
+                            isPassHidden: isPassHidden,
+                            onEyeTapped: (){
+                              setState(() =>
+                                isPassHidden = !isPassHidden
+                              );
+                            }
+                        ),
                     InkWell(
                       splashColor: kDetailedWhite60,
                       onTap: () =>
@@ -69,7 +83,14 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                       ],
                     ),
-                    positiveButton('Log In'),
+                    positiveButton('Log In',
+                    onPressed: (){
+                        showLoaderDialog(context, 'Logging you in...');
+                        Future.delayed( const Duration(seconds: 3), () =>
+                          kPushNavigator(context, const LocalHomePage())
+                        );
+                      }
+                    ),
 
                     Row(
                       children: [
