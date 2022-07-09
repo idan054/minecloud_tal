@@ -3,14 +3,14 @@ import 'colors.dart';
 
 TextStyle poppinsRegular()=>
     TextStyle(
-        fontFamily: 'Poppins',
+        fontFamily: 'poppinsRegular',
         fontWeight: FontWeight.w500,
         color: kPositiveWhite,
         fontSize: 11);
 
 TextStyle poppinsMedium()=>
     TextStyle(
-        fontFamily: 'Poppins',
-        fontWeight: FontWeight.w600,
+        fontFamily: 'poppinsMedium',
+        fontWeight: FontWeight.w500,
         color: kPositiveWhite,
         fontSize: 16);

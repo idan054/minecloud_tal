@@ -55,7 +55,9 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text('Sign In', style: poppinsMedium()),
+
                     darkTxtField(label: 'Email', hintText: 'Enter your Email...'),
+
                     Column(
                       children: [
                         darkTxtField(
@@ -112,33 +114,38 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
 
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Divider(color: kTapBorderAssets,
-                // thickness: 1,
-                indent: 20,
-                endIndent: 20,),
-                const SizedBox(height: 10,),
-                InkWell(
-                  splashColor: kDetailedWhite60,
-                  onTap: (){},
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                    Text("Don't have an account? ", style: poppinsRegular()),
-                    Text('Sign Up.', style: poppinsMedium()
-                        .copyWith(fontSize: 11,
-                      fontWeight: FontWeight.bold
-                    )),
-                  ],),
-                )
-              ],
-            ),
+            buildBottomSignup(),
           ],
         ),
       ),
     );
   }
+}
+
+Column buildBottomSignup() {
+  return Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Divider(color: kTapBorderAssets,
+        // thickness: 1,
+        indent: 20,
+        endIndent: 20,),
+      const SizedBox(height: 10,),
+      InkWell(
+        splashColor: kDetailedWhite60,
+        onTap: (){},
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Don't have an account? ",
+                style: poppinsRegular()),
+            Text('Sign Up.', style: poppinsMedium()
+                .copyWith(fontSize: 11,
+                fontWeight: FontWeight.bold
+            )),
+          ],),
+      )
+    ],
+  );
 }

@@ -18,22 +18,84 @@ class _LocalHomePageState extends State<LocalHomePage> {
           backgroundColor: kEmptyColor,
           drawer: Drawer(),
           appBar: AppBar(
-
             centerTitle: true,
             backgroundColor: kTapBorderAssets,
-            title: Text('Local Data', style: poppinsMedium(),),
+            title: Text(
+              'Local Data',
+              style: poppinsMedium(),
+            ),
             actions: [
               Padding(
                 padding: EdgeInsets.only(right: 16.0),
                 child: CircleAvatar(
                   radius: 15,
-                  backgroundColor: kTapBorderAssets,),
-            )],
+                  backgroundColor: kTapBorderAssets,
+                ),
+              )
+            ],
             toolbarHeight: 120, //
             // bottom: Container(
             //   color: kTapBorderAssets,
             //   child: Divider()
             // ),
+          ),
+          body: Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: ListView.builder(
+              itemCount: 3,
+              itemBuilder: (context, index) {
+                return
+                  Card(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+                  color: kTapBorderAssets,
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 6,
+                    ),
+                    dense: true,
+                    leading: ClipRRect(
+                      borderRadius: const BorderRadius.all(Radius.circular(6)),
+                      child: Container(
+                        height: 90 * 0.6,
+                        width: 90,
+                        color: kTapBorderAssets,
+                        child: Image.network(
+                          'https://static.wikia.nocookie.net/minecraft_gamepedia/images/4/47/Glacier_b1.7.3.png/revision/latest?cb=20200607182238',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    title: Text(
+                      'Clear Vanilla',
+                      style: poppinsRegular().copyWith(fontSize: 13),
+                    ),
+                    subtitle: Text(
+                      '21:08 - 21.3 MB',
+                      style: poppinsRegular()
+                          .copyWith(fontSize: 10, color: kDetailedWhite60),
+                    ),
+                    trailing:
+                            Column(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.all(Radius.circular(4)),
+                                  child: Container(
+                                    color: kTapBorderAssets,
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 6, vertical: 4),
+                                    child: Text('SYNCED',
+                                        style: poppinsRegular()
+                                            .copyWith(fontSize: 10, color: kDetailedWhite60,
+                                        )),
+                    ),
+                                ),
+                              ],
+                            ),
+                  ),
+                );
+              },
+            ),
           ),
         ));
   }
