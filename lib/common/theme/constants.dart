@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'colors.dart';
+
 // STRUCTURE:
 // Lib
 // Lib -> dump
@@ -34,3 +36,10 @@ Future<dynamic> kPushNavigator(context, screen,{bool replace = false}) =>
         MaterialPageRoute(builder: (context) => screen))
         : Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => screen));
+
+Widget lightDivider() =>
+    Container(
+      margin: const EdgeInsets.symmetric(horizontal: 15),
+      color: kTapBorderAssets,
+      height: 1,
+    );

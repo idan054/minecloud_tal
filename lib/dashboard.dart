@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/screens/main_page.dart';
 
 import 'common/theme/colors.dart';
 import 'common/theme/text.dart';
+import 'functions/loadingDialogW.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -33,12 +35,18 @@ class _DashboardState extends State<Dashboard> {
           controller: _pageController,
           children: <Widget>[
             MainPage(isLocalPage: true,
-                isShowPack: _chipIndex == 0),
+                isPackView: _chipIndex == 0),
             MainPage(isLocalPage: false,
-                isShowPack: _chipIndex == 0),
+                isPackView: _chipIndex == 0),
           ],
           physics: const NeverScrollableScrollPhysics(), // disable swipe
           onPageChanged: (pageIndex) { // On Swipe left or right
+
+            if(_selectedIndex == 1) {
+              showLoaderDialog(context, 'Loading your data...');
+              Future.delayed(const Duration(milliseconds: 1250),
+                  () => kNavigator(context).pop());
+            }
             setState(() => _selectedIndex = pageIndex);
           },
         ),
@@ -168,11 +176,7 @@ class _DashboardState extends State<Dashboard> {
         preferredSize: Size(9999, 50),
         child: Column(
           children: [
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 15),
-              color: kTapBorderAssets,
-              height: 1,
-            ),
+            lightDivider(),
             SizedBox(
               height: 70,
               child: ListView.builder(

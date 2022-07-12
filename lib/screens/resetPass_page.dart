@@ -22,9 +22,7 @@ class _ResetPassPageState extends State<ResetPassPage> {
   Widget build(BuildContext context) {
     Widget containerDivider() =>
         Expanded(
-          child: Container(
-            color: kTapBorderAssets,
-            height: 1,),
+          child: lightDivider(),
         );
 
     return Container(

@@ -26,11 +26,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     Widget containerDivider() =>
-        Expanded(
-          child: Container(
-            color: kTapBorderAssets,
-            height: 1,),
-        );
+        Expanded(child: lightDivider());
 
     return Container(
       decoration: BoxDecoration(gradient: darkBackgroundGradient),
