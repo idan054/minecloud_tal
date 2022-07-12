@@ -7,9 +7,11 @@ import 'package:minecloud_tal/widgets/textFieldW.dart';
 
 import '../common/theme/colors.dart';
 import '../common/theme/constants.dart';
+import '../dashboard.dart';
 import '../functions/loadingDialogW.dart';
+import '../widgets/builds/login_bottomSignUp.dart';
 import '../widgets/buttonsWs.dart';
-import 'localHomePage.dart';
+import 'main_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -89,7 +91,8 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: (){
                         showLoaderDialog(context, 'Logging you in...');
                         Future.delayed( const Duration(seconds: 3), () =>
-                          kPushNavigator(context, const LocalHomePage())
+                          kPushNavigator(context,
+                              const Dashboard(), replace: true)
                         );
                       }
                     ),
@@ -120,32 +123,4 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-}
-
-Column buildBottomSignup() {
-  return Column(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      Divider(color: kTapBorderAssets,
-        // thickness: 1,
-        indent: 20,
-        endIndent: 20,),
-      const SizedBox(height: 10,),
-      InkWell(
-        splashColor: kDetailedWhite60,
-        onTap: (){},
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Don't have an account? ",
-                style: poppinsRegular()),
-            Text('Sign Up.', style: poppinsMedium()
-                .copyWith(fontSize: 11,
-                fontWeight: FontWeight.bold
-            )),
-          ],),
-      )
-    ],
-  );
 }

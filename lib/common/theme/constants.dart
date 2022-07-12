@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 // Lib -> widgets
 // Lib -> screens
 
+double maxSize = 9999;
+
 // in use in: colors.dart
 LinearGradient gradientBase(List<Color> colorList){
   return LinearGradient(

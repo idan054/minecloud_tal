@@ -37,6 +37,7 @@ const kProgressBar = Color(0xFF1E4661);
 // When tap, or actual assets (worlds, packs...) or borders.
 var kTapBorderAssets = const Color(0xFF6690B8)
     .withOpacity(0.30); // 10% opacity
+var kTapBorderAssetsFull = const Color(0xFF1F3A51);
 // Secondary buttons, such as unselected tabs, delete...
 var kSecondaryButton = const Color(0xFF6690B8)
     .withOpacity(0.50); // 20% opacity
