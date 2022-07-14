@@ -11,6 +11,7 @@ import '../dashboard.dart';
 import '../functions/loadingDialogW.dart';
 import '../widgets/builds/login_bottomSignUp.dart';
 import '../widgets/buttonsWs.dart';
+import '../widgets/simpleWs.dart';
 import 'main_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -29,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
         Expanded(child: lightDivider());
 
     return Container(
-      decoration: BoxDecoration(gradient: darkBackgroundGradient),
+      decoration: const BoxDecoration(gradient: darkBackgroundGradient),
       child: Scaffold(
         backgroundColor: kEmptyColor,
         body: Column(
@@ -84,12 +85,15 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                     positiveButton('Log In',
-                    onPressed: (){
+                    onPressed: () async {
                         showLoaderDialog(context, 'Logging you in...');
-                        Future.delayed( const Duration(seconds: 3), () =>
-                          kPushNavigator(context,
-                              const Dashboard(), replace: true)
+                        await Future.delayed( const Duration(seconds: 3), () =>
+                            // todo Backend Email Auth Here.
+                            // print('Login done.')
+                          kNavigator(context).pop()
                         );
+                        kPushNavigator(context,
+                            const Dashboard(), replace: true);
                       }
                     ),
 
@@ -105,6 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
 
                     secondaryIconButton(
+                      // todo Backend Google Auth Here.
                       text: 'Continue with Google',
                       iconW: SvgPicture.asset('assets/svg/G-logo-icon.svg',),),
 
@@ -113,6 +118,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
 
+            // todo Add signup Page Here (& Backend).
             buildBottomSignup(),
           ],
         ),

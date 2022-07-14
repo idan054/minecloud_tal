@@ -8,6 +8,7 @@ import '../common/theme/colors.dart';
 import '../common/theme/constants.dart';
 import '../widgets/builds/login_bottomSignUp.dart';
 import '../widgets/buttonsWs.dart';
+import '../widgets/simpleWs.dart';
 import 'login_page.dart';
 
 class ResetPassPage extends StatefulWidget {
@@ -26,7 +27,7 @@ class _ResetPassPageState extends State<ResetPassPage> {
         );
 
     return Container(
-      decoration: BoxDecoration(gradient: darkBackgroundGradient),
+      decoration: const BoxDecoration(gradient: darkBackgroundGradient),
       child: Scaffold(
         backgroundColor: kEmptyColor,
         body: Column(
@@ -61,7 +62,8 @@ class _ResetPassPageState extends State<ResetPassPage> {
 
                     secondaryIconButton(
                       text: 'Log In',
-                      // SvgPicture.asset('assets/svg/G-logo-icon.svg',),
+                      onPressed: () =>
+                          kPushNavigator(context, const LoginPage())
                     ),
 
                   ],

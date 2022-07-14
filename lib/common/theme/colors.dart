@@ -5,8 +5,16 @@ const kEmptyColor = Color(0x00000000); // 100% Empty
 
 /// Main Colors
 // Used in any screen, just for background.
-var darkBackgroundGradient = gradientBase([
-  const Color(0xff0D1E29), const Color(0xff0F283E)],);
+// var darkBackgroundGradient = gradientBase([
+//   const Color(0xff0D1E29), const Color(0xff0F283E)],);
+
+const darkBg = Color(0xff0F283E);
+const extraDarkBg = Color(0xff0D1E29);
+const darkBackgroundGradient = LinearGradient(
+    begin: Alignment.topRight,
+    end: Alignment.bottomLeft,
+    colors: [extraDarkBg, darkBg]);
+
 
 // Used in main buttons, such as selected tabs, login and sync.
 var positiveBlueButtonGradient = gradientBase([
@@ -35,17 +43,36 @@ const kPositiveBlueGui = Color(0xFF1E76DE);
 // Appears behind the state of progress bars.
 const kProgressBar = Color(0xFF1E4661);
 // When tap, or actual assets (worlds, packs...) or borders.
-var kTapBorderAssets = const Color(0xFF6690B8)
-    .withOpacity(0.30); // 10% opacity
+const kTapBorderAssets = Color(0x4D6690B8); // 30% But 10% is original
 var kTapBorderAssetsFull = const Color(0xFF1F3A51);
 // Secondary buttons, such as unselected tabs, delete...
-var kSecondaryButton = const Color(0xFF6690B8)
-    .withOpacity(0.50); // 20% opacity
+const kSecondaryButton = Color(0x666690B8); // 50% But 20% is original
 // Fields (login)
 const kFieldsDark = Color(0xFF0E2130);
 
 const kDialogBg = Color(0xFF3E5F7E);
 
-
+//~ Hex Opacity Values:
+// 100% — FF
+// 95% — F2
+// 90% — E6
+// 85% — D9
+// 80% — CC
+// 75% — BF
+// 70% — B3
+// 65% — A6
+// 60% — 99
+// 55% — 8C
+// 50% — 80
+// 45% — 73
+// 40% — 66
+// 35% — 59
+// 30% — 4D
+// 25% — 40
+// 20% — 33
+// 15% — 26
+// 10% — 1A
+// 5% — 0D
+// 0% — 00
 
 

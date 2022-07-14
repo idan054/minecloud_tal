@@ -7,7 +7,10 @@ import 'leading_image.dart';
 
 Widget worldPackTile(context, {
       required bool isPack,
-      required SetBottomSheet setBottomSheet}) {
+      required BottomSheetType bottomSheetType,
+      required String title,
+      required String image,
+}) {
   return Card(
     margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
     shape: RoundedRectangleBorder(
@@ -15,7 +18,11 @@ Widget worldPackTile(context, {
     ),
     color: kTapBorderAssets,
     child: ListTile(
-      onTap: () => showMyBottomSheet(context, setBottomSheet),
+      onTap: () => showMyBottomSheet(context,
+          title: title,
+          isPack: isPack,
+          bottomSheetType: bottomSheetType
+      ),
       contentPadding: const EdgeInsets.symmetric(
         horizontal: 6,
       ),

@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:minecloud_tal/functions/bottomSheetW.dart';
 import '../common/theme/colors.dart';
+import '../widgets/drawerW.dart';
 import '../widgets/worldPackTile/worldPackTileW.dart';
 
 class MainPage extends StatefulWidget {
@@ -20,27 +22,54 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(gradient: darkBackgroundGradient),
+        decoration: const BoxDecoration(gradient: darkBackgroundGradient),
         child: Scaffold(
           backgroundColor: kEmptyColor,
-          drawer: const Drawer(),
           body: Padding(
             padding: const EdgeInsets.only(top: 8.0),
-            child: ListView.builder(
-              itemCount: 3,
-              itemBuilder: (context, index) {
-                return worldPackTile(context,
-                    isPack: widget.isPackView,
-                    setBottomSheet: SetBottomSheet(
-                      isWorld: widget.isPackView,
-                      title: "Tal's World",
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: InkWell(
+                    onTap: (){
+                      showMyBottomSheet(context,
+                          title: 'Sort by',
+                          bottomSheetType: BottomSheetType.sortBy
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.fromLTRB(12,8,12,8),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Name',
+                            style: poppinsRegular().copyWith(color: kDetailedWhite60),
+                          ),
+                          const SizedBox(width: 8),
+                          Icon(Icons.south, color: kDetailedWhite60, size: 14),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    return worldPackTile(
+                      context,
+                      isPack: widget.isPackView,
+                      bottomSheetType: widget.isLocalPage
+                          ? BottomSheetType.local
+                          : BottomSheetType.cloud,
+                      title: "Clear Vanilla",
                       image: 'PlaceHolder',
-                      action1Icon: Icons.cloud_upload,
-                      action2Icon: Icons.delete_outline,
-                      action1text: 'Upload to cloud',
-                      action2text: 'Delete locally',
-                    ));
-              },
+                    );
+                  },
+                ),
+              ],
             ),
           ),
         ));

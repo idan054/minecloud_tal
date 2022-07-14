@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/screens/main_page.dart';
+import 'package:minecloud_tal/widgets/cleanAppBarW.dart';
+import 'package:minecloud_tal/widgets/drawerW.dart';
+import 'package:minecloud_tal/widgets/simpleWs.dart';
 
 import 'common/theme/colors.dart';
 import 'common/theme/text.dart';
+import 'functions/bottomSheetW.dart';
 import 'functions/loadingDialogW.dart';
 
 class Dashboard extends StatefulWidget {
@@ -28,9 +32,8 @@ class _DashboardState extends State<Dashboard> {
       decoration: BoxDecoration(gradient: darkBackgroundGradient),
       child: Scaffold(
         backgroundColor: kEmptyColor,
-        appBar: buildChipAppBar(
-            _selectedIndex == 0 ? 'Local Data' : 'Cloud Storage'
-        ),
+        appBar: buildChipAppBar(),
+        drawer: DrawerW(),
         body: PageView(
           controller: _pageController,
           children: <Widget>[
@@ -66,7 +69,12 @@ class _DashboardState extends State<Dashboard> {
       child: FloatingActionButton(
         elevation: 0,
         mini: true,
-        onPressed: () {},
+        onPressed: () {
+          showMyBottomSheet(context,
+            title: 'Synchronize',
+            bottomSheetType: BottomSheetType.syncHome
+          );
+        },
         child: Container(
           width: 60,
           height: 60,
@@ -152,87 +160,49 @@ class _DashboardState extends State<Dashboard> {
       ],
     );
   }
-
-  AppBar buildChipAppBar(String title) {
-    return AppBar(
-      centerTitle: true,
-      backgroundColor: kTapBorderAssets,
-      title: Text(
-        title,
-        style: poppinsMedium(),
-      ),
-      actions: [
-        Padding(
-          padding: EdgeInsets.only(right: 16.0),
-          child: CircleAvatar(
-            radius: 15,
-            backgroundColor: kTapBorderAssets,
+  AppBar buildChipAppBar() {
+    return cleanAppBar(
+        _selectedIndex == 0 ? 'Local Data' : 'Cloud Storage',
+        chipsW: PreferredSize(
+          preferredSize: Size(9999, 50),
+          child: Column(
+            children: [
+              lightDivider(),
+              SizedBox(
+                height: 70,
+                child: ListView.builder(
+                    itemCount: _chips.length,
+                    scrollDirection: Axis.horizontal,
+                    // shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          child: ChoiceChip(
+                            label: Text(_chips[index]),
+                            selected: _chipIndex == index,
+                            selectedColor: Color(0xff1E76DE),
+                            onSelected: (bool selected) {
+                              setState(() {
+                                _chipIndex = selected ? index : 0;
+                              });
+                            },
+                            backgroundColor: kTapBorderAssetsFull,
+                            shape: StadiumBorder(
+                                side: BorderSide(
+                                  width: 1.5,
+                                  color:
+                                  index == _chipIndex ?
+                                  Color(0xff1E76DE) : kTapBorderAssets,
+                                )),
+                            labelStyle: poppinsRegular().copyWith(fontSize: 12),
+                          ),
+                        );
+                    }),
+              )
+            ],
           ),
         )
-      ],
-      toolbarHeight: 75,
-      // 55 = default
-      bottom: PreferredSize(
-        preferredSize: Size(9999, 50),
-        child: Column(
-          children: [
-            lightDivider(),
-            SizedBox(
-              height: 70,
-              child: ListView.builder(
-                  itemCount: _chips.length,
-                  scrollDirection: Axis.horizontal,
-                  // shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5),
-                        child: ChoiceChip(
-                          label: Text(_chips[index]),
-                          selected: _chipIndex == index,
-                          selectedColor: Color(0xff1E76DE),
-                          onSelected: (bool selected) {
-                            setState(() {
-                              _chipIndex = selected ? index : 0;
-                            });
-                          },
-                          backgroundColor: kTapBorderAssetsFull,
-                          shape: StadiumBorder(
-                              side: BorderSide(
-                                width: 1.5,
-                                color:
-                                index == _chipIndex ?
-                                Color(0xff1E76DE) : kTapBorderAssets,
-                              )),
-                          labelStyle: poppinsRegular().copyWith(fontSize: 12),
-                        ),
-                      );
-
-                    /*InkWell(
-                          onTap: () {},
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(
-                                vertical: 18, horizontal: 4),
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 8, horizontal: 12),
-                            decoration: BoxDecoration(
-                              color: kTapBorderAssets,
-                              borderRadius: BorderRadius.circular(99),
-                              border: Border.all(color: kTapBorderAssets, width: 1.5)
-                            ),
-                            // width: 80,
-                            child: Center(
-                                child: Text(
-                              'wwwdvdiv',
-                              style: poppinsRegular(),
-                            )),
-                          ),
-                        );*/
-                  }),
-            )
-          ],
-        ),
-      ),
     );
   }
 }
