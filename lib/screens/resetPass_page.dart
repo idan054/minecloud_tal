@@ -55,6 +55,7 @@ class _ResetPassPageState extends State<ResetPassPage> {
                     darkTxtField(label: 'Email', hintText: 'Enter your Email...'),
                     const SizedBox(height: 30,),
 
+                    // todo Backend Email Reset Here.
                     positiveButton('Send Email'),
                     Row(
                       children: [containerDivider(),],
@@ -71,6 +72,7 @@ class _ResetPassPageState extends State<ResetPassPage> {
               ),
             ),
 
+            // todo Add signup Page Here (& Backend).
             buildBottomSignup()
           ],
         ),

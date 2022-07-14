@@ -67,18 +67,24 @@ Future<void> showMyBottomSheet(
               buildTopTitle(context, isPack, title, image),
                // switch (bottomSheetType){ case: break }
               if (bottomSheetType == BottomSheetType.local) ...[
+                // todo upload local world to GCloud
                 actionTile(Icons.cloud_upload_outlined, 'Upload to cloud'),
+                // todo delete world from local
                 actionTile(Icons.delete_outline, 'Delete locally',
                   onTap: () => showDeleteDialog(context, isPack!, bottomSheetType, image),
                 ),
               ],
               if (bottomSheetType == BottomSheetType.cloud) ...[
+                // todo download local world to GCloud
                 actionTile(Icons.cloud_download_outlined, 'Download'),
+                // todo delete world from GCloud
                 actionTile(Icons.delete_outline, 'Delete from cloud',
                   onTap: () => showDeleteDialog(context, isPack!, bottomSheetType, image),),
               ],
               if (bottomSheetType == BottomSheetType.syncHome) ...[
+                // todo SYNC - get list of files in local & cloud & compare
                 actionTile(Icons.sync_outlined, 'Sync'),
+                //  todo SYNC then Run Minecraft
                 actionTile(Icons.rocket_launch_outlined, 'Sync & Launch',
                     subTitle: 'Launch Minecraft automatically after the sync.'),
               ],
