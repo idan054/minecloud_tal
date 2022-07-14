@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:minecloud_tal/functions/bottomSheetW.dart';
 import '../common/theme/colors.dart';
@@ -45,10 +46,7 @@ class _MainPageState extends State<MainPage> {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(
-                            'Name',
-                            style: poppinsRegular().copyWith(color: kDetailedWhite60),
-                          ),
+                          Text(kUniModel(context, listen: true).sortBy, style: poppinsRegular().copyWith(color: kDetailedWhite60),),
                           const SizedBox(width: 8),
                           Icon(Icons.south, color: kDetailedWhite60, size: 14),
                         ],

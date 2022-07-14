@@ -12,13 +12,20 @@ class RadioButtons extends StatefulWidget {
 }
 
 class _RadioButtonsState extends State<RadioButtons> {
-  int selectedIndex = 1;
+  int? selectedIndex;
   List typeIndex = [0, 1, 2];
-  List types = ['Last modified', 'Name', 'Size'];
+  List types = ['Name', 'Last modified', 'Size'];
+  String? _sortBy;
+
   // Todo make "Sort by" works
 
   @override
   Widget build(BuildContext context) {
+    _sortBy = kUniModel(context).sortBy;
+    if(_sortBy == 'Name') selectedIndex = 0;
+    if(_sortBy == 'Last modified') selectedIndex = 1;
+    if(_sortBy == 'Size') selectedIndex = 2;
+
     return Column(
       children: <Widget>[
         // for (int i = 1; i <= 3; i++)
@@ -43,6 +50,7 @@ class _RadioButtonsState extends State<RadioButtons> {
                   onChanged: (int? value) {
                     setState(() {
                       selectedIndex = value!;
+                      kUniModel(context).updateSortBy(types[selectedIndex!]);
                       kNavigator(context).pop();
                     });
                   },

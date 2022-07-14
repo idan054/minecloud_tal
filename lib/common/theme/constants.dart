@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../models/universal_models.dart';
 import 'colors.dart';
 
 // STRUCTURE:
@@ -36,3 +38,7 @@ Future<dynamic> kPushNavigator(context, screen,{bool replace = false}) =>
         MaterialPageRoute(builder: (context) => screen))
         : Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => screen));
+
+// Provider models shortcuts
+UniModel kUniModel(context, {bool listen = false})
+    => Provider.of<UniModel>(context, listen: listen);

@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/screens/login_page.dart';
+import 'package:provider/provider.dart';
 
+import 'common/models/universal_models.dart';
 import 'dashboard.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
+  runApp(
+    MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => UniModel()),
+          // Provider.value(value: StreamModel().serverClient),
+          // FutureProvider<List<Activity>?>.value(
+          //     value: StreamModel().getFeedActivities(), initialData: const []),
+        ],
+        // builder:(context, child) =>
+        child: const MyApp()),
+  );
 }
+
 
 // Lib
 // Lib -> dump
