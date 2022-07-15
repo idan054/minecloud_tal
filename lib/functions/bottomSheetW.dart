@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
+import 'package:minecloud_tal/functions/snackbarW.dart';
 
 import '../screens/syncProgress_page.dart';
 import '../widgets/actionTileWs.dart';
@@ -41,7 +42,7 @@ enum BottomSheetType {
 }
 
 Future<void> showMyBottomSheet(
-  context, {
+    scaffoldContext, {
   bool? isPack,
   required BottomSheetType bottomSheetType,
   required String title,
@@ -49,7 +50,7 @@ Future<void> showMyBottomSheet(
 }) async {
 
   return showModalBottomSheet(
-      context: context,
+      context: scaffoldContext,
       backgroundColor: kEmptyColor,
       builder: (context) {
         return Container(
@@ -83,7 +84,11 @@ Future<void> showMyBottomSheet(
               ],
               if (bottomSheetType == BottomSheetType.syncHome) ...[
                 // todo SYNC - get list of files in local & cloud & compare
-                actionTile(Icons.sync_outlined, 'Sync'),
+                actionTile(Icons.sync_outlined, 'Sync',
+                onTap: () {
+                  kNavigator(context).pop();
+                  showMySnackBar(scaffoldContext, () => kNavigator(context).pop(),);
+                }),
                 //  todo SYNC then Run Minecraft
                 actionTile(Icons.rocket_launch_outlined, 'Sync & Launch',
                     subTitle: 'Launch Minecraft automatically after the sync.'),
