@@ -21,7 +21,8 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   String sortBy = 'Name';
-
+  bool isExpanded = false;
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,6 +33,7 @@ class _MainPageState extends State<MainPage> {
             padding: const EdgeInsets.only(top: 8.0),
             child: Column(
               children: [
+                
                 Align(
                   alignment: Alignment.centerLeft,
                   child: InkWell(

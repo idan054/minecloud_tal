@@ -26,7 +26,7 @@ var darkPopupGradient = gradientBase([
   const Color(0xff172F43)],);
 
 /// Icons & Text Colors
-var kPositiveWhite = Colors.white; // - positive
+const kPositiveWhite = Colors.white; // - positive
 var kImportantWhite80 = Colors.white.withOpacity(0.8); // 0.8 - Important
 var kDetailedWhite60 = Colors.white.withOpacity(0.6); // 0.6 - detailed
 var kVerySpecificWhite40 = Colors.white.withOpacity(0.4); // 0.4 verySpecific

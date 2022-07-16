@@ -4,7 +4,11 @@ import '../common/theme/constants.dart';
 import '../common/theme/text.dart';
 import '../widgets/actionTileWs.dart';
 import '../widgets/buttonsWs.dart';
+import '../widgets/questionAnswer.dart';
+import '../widgets/simpleWs.dart';
 import 'bottomSheetW.dart';
+import 'dart:math' as math;
+
 
 Future<void> accountDialog(
   BuildContext context, {
@@ -61,7 +65,7 @@ Future<void> accountDialog(
               // todo change to listView.builder based AccountInfoTile() Widget
               Card(
                 color: kTapBorderAssets,
-                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 7.5),
+                margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 7.5),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
                 child: ListTile(
@@ -104,25 +108,50 @@ Future<void> accountDialog(
                   ),
                 ),
               ),
-              Row(
-                children: [
-                  const SizedBox(width: 85),
-                  if (secondaryTxtButton != null)
-                    Expanded(
-                        child: secondaryIconButton(
-                            text: secondaryTxtButton,
-                            onPressed: secondaryPressed,
-                            miniMode: true)),
-                  Expanded(
-                      child: secondaryIconButton(
-                          text: '$mainTxtButton',
-                          miniMode: true,
-                          buttonColor: kLoadingGrey,
-                          onPressed: mainPressed)),
-                  const SizedBox(width: 15),
-                ],
+
+              AccountDetails(
+                question: 'מה הדרך הנכונה להיות גבר?',
+                answer: 'פשוט תקלל מל עד שתרגיש גבר אחושרמוטה יואו',
               ),
-              const SizedBox(height: 15),
+
+              
+              Container(
+                width: 150,
+                // height: 35,
+                margin: const EdgeInsets.only(bottom: 15, top: 5),
+                child: Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: secondaryIconButton(
+                      text: 'Show more',
+                      textColor: kImportantWhite80,
+                      onPressed: secondaryPressed,
+                      iconW:   Icon(Icons.south, color: kDetailedWhite60, size: 14),
+                      showBorder: true,
+                      miniMode: true),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: lightDivider(),
+              ),
+              ListTile(
+                  horizontalTitleGap: 0,
+                  // contentPadding: EdgeInsets.zero,
+                  leading: Transform.rotate(
+                    angle: 180 * math.pi / 180,
+                    child: Icon(
+                      Icons.logout,
+                      color: kDetailedWhite60,
+                      size: 22,
+                    ),
+                  ),
+                  onTap: () {
+                  // todo logout Auth
+                  },
+                  title: Text('Log Out',
+                      style: poppinsRegular()
+                          .copyWith(fontSize: 12)),
+              ),
             ],
           ));
     },

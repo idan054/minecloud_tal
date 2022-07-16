@@ -111,7 +111,8 @@ class _LoginPageState extends State<LoginPage> {
                     secondaryIconButton(
                       // todo Backend Google Auth Here.
                       text: 'Continue with Google',
-                      iconW: SvgPicture.asset('assets/svg/G-logo-icon.svg',),),
+                      iconW: SvgPicture.asset('assets/svg/G-logo-icon.svg',),
+                    ),
 
                   ],
                 ),

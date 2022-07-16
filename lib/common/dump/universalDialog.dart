@@ -42,11 +42,14 @@ Future<void> universalDialog(
                         child: secondaryIconButton(
                             text: secondaryTxtButton,
                             onPressed: secondaryPressed,
-                            miniMode: true)),
+                            miniMode: true,
+                            showBorder: false,
+                        )),
                   Expanded(
                       child: secondaryIconButton(
                           text: '$mainTxtButton',
                           miniMode: true,
+                          showBorder: false,
                           buttonColor: kLoadingGrey,
                           onPressed: mainPressed)),
                   const SizedBox(width: 15),
