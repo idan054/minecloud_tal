@@ -8,7 +8,9 @@ import 'package:minecloud_tal/widgets/simpleWs.dart';
 import 'common/theme/colors.dart';
 import 'common/theme/text.dart';
 import 'functions/bottomSheetW.dart';
+import 'functions/deleteDialogW.dart';
 import 'functions/loadingDialogW.dart';
+import 'functions/accountDialog.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -26,8 +28,19 @@ class _DashboardState extends State<Dashboard> {
   ['Worlds', 'Resources Packs', 'Behavior Packs', 'Skin Packs'];
   int _chipIndex = 0;
 
+  int w = 0;
+
   @override
   Widget build(BuildContext context) {
+
+    // todo: Show permission dialog & make it work
+    // universalDialog(context,
+    //     title: 'One more step...',
+    //     desc: 'We need a required permission of "Files and media". Make sure to allow management of all files.',
+    //     mainTxtButton: 'Go to settings',
+    //     mainPressed: () => kNavigator(context).pop()
+    // );
+
     return Container(
       decoration: BoxDecoration(gradient: darkBackgroundGradient),
       child: Scaffold(
@@ -162,6 +175,7 @@ class _DashboardState extends State<Dashboard> {
   }
   AppBar buildChipAppBar() {
     return cleanAppBar(
+        context,
         _selectedIndex == 0 ? 'Local Data' : 'Cloud Storage',
         chipsW: PreferredSize(
           preferredSize: Size(9999, 50),

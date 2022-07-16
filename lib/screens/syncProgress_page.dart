@@ -24,7 +24,7 @@ class _SyncProgressPageState extends State<SyncProgressPage> {
         child: Scaffold(
           backgroundColor: kEmptyColor,
           drawer: const DrawerW(isSyncPage: true),
-          appBar: cleanAppBar('Sync Progress'),
+          appBar: cleanAppBar(context, 'Sync Progress'),
           body: Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: ListView.builder(

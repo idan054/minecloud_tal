@@ -65,7 +65,10 @@ Future<void> showMyBottomSheet(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              buildTopTitle(context, isPack, title, image),
+              buildTopTitle(context,
+                  isPack: isPack,
+                  title: title,
+                  image: image),
                // switch (bottomSheetType){ case: break }
               if (bottomSheetType == BottomSheetType.local) ...[
                 // todo upload local world to GCloud
@@ -115,29 +118,31 @@ Future<void> showMyBottomSheet(
 
 Column buildTopTitle(
     BuildContext context,
+    {
     bool? isPack,
-    String title,
+    String? title,
     String? image,
-    ) {
+      Widget? customTitle,
+      bool showDivider = true,
+    }) {
   return Column(
               children: [
                 ListTile(
-                  leading: isPack != null
-                      ? buildLeadingImage(isPack, 60, image)
-                      : null,
+                  leading: isPack != null ? buildLeadingImage(isPack, 60, image) : null,
                   trailing: circleIcon(closeButton: true),
-                  title: Text(
+                  title: title != null && customTitle == null ? Text(
                     title,
                     style: poppinsMedium().copyWith(fontSize: 13),
-                  ),
+                  ) : customTitle,
                   onTap: () {
                     Navigator.pop(context);
                   },
                 ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: lightDivider(),
-              ),
+              if(showDivider)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: lightDivider(),
+                  ),
             ],
           );
 }

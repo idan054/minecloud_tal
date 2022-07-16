@@ -3,8 +3,9 @@ import 'package:minecloud_tal/common/theme/constants.dart';
 
 import '../common/theme/colors.dart';
 import '../common/theme/text.dart';
+import '../functions/accountDialog.dart';
 
-AppBar cleanAppBar(String title, {PreferredSizeWidget? chipsW}) {
+AppBar cleanAppBar(context, String title, {PreferredSizeWidget? chipsW}) {
   return AppBar(
     centerTitle: true,
     backgroundColor: kTapBorderAssets,
@@ -19,9 +20,19 @@ AppBar cleanAppBar(String title, {PreferredSizeWidget? chipsW}) {
     actions: [
       Padding(
         padding: const EdgeInsets.only(right: 16.0),
-        child: CircleAvatar(
-          radius: 15,
-          backgroundColor: kTapBorderAssets,
+        child: IconButton(
+          onPressed: (){
+
+            accountDialog(context,
+                mainTxtButton: 'Go to settings',
+                mainPressed: () => kNavigator(context).pop()
+            );
+
+          },
+          icon: const CircleAvatar(
+            radius: 15,
+            backgroundColor: kTapBorderAssets,
+          ),
         ),
       )
     ],

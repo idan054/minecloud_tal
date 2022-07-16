@@ -36,8 +36,10 @@ Future<void> showDeleteDialog(
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              buildTopTitle(context, isPack,
-                  isPack ? 'Delete this pack?' : 'Delete this world?', image),
+              buildTopTitle(context,
+                  isPack: isPack,
+                  title: isPack ? 'Delete this pack?' : 'Delete this world?',
+                  image: image),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 10),

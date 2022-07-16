@@ -3,6 +3,7 @@ import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 
+import '../screens/syncProgress_page.dart';
 import '../widgets/simpleWs.dart';
 
 void showMySnackBar(context, VoidCallback closeAction) =>
@@ -32,7 +33,7 @@ void showMySnackBar(context, VoidCallback closeAction) =>
                             backgroundColor: MaterialStateProperty.all(kTapBorderAssets),
                             foregroundColor: MaterialStateProperty.all(kDetailedWhite60),
                         ),
-                        onPressed: () {},
+                        onPressed: () => kPushNavigator(context, const SyncProgressPage()),
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 0.0),
                           child: Text(' Show',
