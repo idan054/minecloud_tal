@@ -114,22 +114,8 @@ Future<void> accountDialog(
                 answer: 'פשוט תקלל מל עד שתרגיש גבר אחושרמוטה יואו',
               ),
 
-              
-              Container(
-                width: 150,
-                // height: 35,
-                margin: const EdgeInsets.only(bottom: 15, top: 5),
-                child: Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: secondaryIconButton(
-                      text: 'Show more',
-                      textColor: kImportantWhite80,
-                      onPressed: secondaryPressed,
-                      iconW:   Icon(Icons.south, color: kDetailedWhite60, size: 14),
-                      showBorder: true,
-                      miniMode: true),
-                ),
-              ),
+
+
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: lightDivider(),

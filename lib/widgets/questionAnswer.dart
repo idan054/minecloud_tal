@@ -3,6 +3,8 @@ import 'package:animate_icons/animate_icons.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 
+import 'buttonsWs.dart';
+
 class AccountDetails extends StatefulWidget {
   final String question;
   final String? answer;
@@ -41,14 +43,6 @@ class _AccountDetailsState extends State<AccountDetails> {
                     isAnswerOpen = false;
                   });
                 }
-                print("Clicked!");
-/*                            Scaffold.of(context).showSnackBar(
-                                SnackBar(
-                                  content:
-                                  Text("Animate using controller, onPress not called"),
-                                  duration: Duration(seconds: 1),
-                                ),
-                              );*/
               },
               child: Container(
                 color: Colors.white.withOpacity(0.00),
@@ -114,6 +108,35 @@ class _AccountDetailsState extends State<AccountDetails> {
                     ),
                   ],
                 ),
+              ),
+            ),
+            Container(
+              width: 150,
+              // height: 35,
+              margin: const EdgeInsets.only(bottom: 15, top: 5),
+              child: Directionality(
+                textDirection: TextDirection.rtl,
+                child: secondaryIconButton(
+                    text: isAnswerOpen ? 'Show less' : 'Show more',
+                    textColor: kImportantWhite80,
+                    onPressed: (){
+                      if (arrowController.isStart()) {
+                        arrowController.animateToEnd();
+                        setState(() {
+                          isAnswerOpen = true;
+                        });
+                      } else if (arrowController.isEnd()) {
+                        arrowController.animateToStart();
+                        setState(() {
+                          isAnswerOpen = false;
+                        });
+                      }
+                    },
+                    iconW:   Icon(
+                        isAnswerOpen ? Icons.north
+                        : Icons.south, color: kDetailedWhite60, size: 14),
+                    showBorder: true,
+                    miniMode: true),
               ),
             ),
           ],
