@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/screens/login_page.dart';
 import '../common/theme/colors.dart';
 import '../common/theme/constants.dart';
 import '../common/theme/text.dart';
@@ -62,53 +63,6 @@ Future<void> accountDialog(
                     size: 20,
                   )),
 
-              // todo change to listView.builder based AccountInfoTile() Widget
-              Card(
-                color: kTapBorderAssets,
-                margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 7.5),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                child: ListTile(
-                  leading: const CircleAvatar(
-                    radius: 20,
-                    backgroundColor: kTapBorderAssets,
-                  ),
-                  onTap: () {},
-                  title: Text(
-                    'Cloud Storage',
-                    style: poppinsMedium()
-                        .copyWith(color: kImportantWhite80, fontSize: 12),
-                  ),
-                  // todo show User email here
-                  subtitle: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: ClipRRect(
-                          borderRadius:  BorderRadius.circular(99),
-                          child: const  LinearProgressIndicator(
-                            value: 0.6,
-                            color: kLoadingGrey,
-                            backgroundColor: kProgressBar,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Text('58.91 MB used',
-                              style: poppinsRegular().copyWith(
-                                  fontSize: 11, color: kDetailedWhite60)),
-                          const Spacer(),
-                          Text('of 500 MB',
-                              style: poppinsRegular().copyWith(
-                                  fontSize: 11, color: kDetailedWhite60)),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-
               AccountDetails(
                 question: 'מה הדרך הנכונה להיות גבר?',
                 answer: 'פשוט תקלל מל עד שתרגיש גבר אחושרמוטה יואו',
@@ -133,6 +87,7 @@ Future<void> accountDialog(
                   ),
                   onTap: () {
                   // todo logout Auth
+                    kPushNavigator(context, const LoginPage());
                   },
                   title: Text('Log Out',
                       style: poppinsRegular()
