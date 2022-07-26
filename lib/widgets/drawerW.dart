@@ -5,6 +5,7 @@ import 'package:minecloud_tal/widgets/simpleWs.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../common/theme/constants.dart';
 import '../common/theme/text.dart';
+import '../screens/plansPage.dart';
 import '../screens/syncProgress_page.dart';
 import 'actionTileWs.dart';
 import 'buttonsWs.dart';
@@ -88,7 +89,10 @@ class DrawerW extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: maxHeight * 0.055, vertical: 10),
-                    child: positiveButton('Upgrade', onPressed: (){}),
+                    child: positiveButton('Upgrade',
+                        onPressed: () => kPushNavigator(
+                            context, const PlansPage(),
+                        )),
                   )
                 ],
               ),

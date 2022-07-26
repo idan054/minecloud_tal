@@ -73,7 +73,7 @@ class _ResetPassPageState extends State<ResetPassPage> {
             ),
 
             // todo Add signup Page Here (& Backend).
-            buildBottomSignup()
+            bottomDividerTxtBtn("Don't have an account? ", "Sign Up."),
           ],
         ),
       ),

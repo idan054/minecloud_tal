@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:minecloud_tal/screens/resetPass_page.dart';
+import 'package:minecloud_tal/screens/signUp_page.dart';
 import 'package:minecloud_tal/widgets/textFieldW.dart';
 
 import '../common/theme/colors.dart';
@@ -120,7 +121,8 @@ class _LoginPageState extends State<LoginPage> {
             ),
 
             // todo Add signup Page Here (& Backend).
-            buildBottomSignup(),
+            bottomDividerTxtBtn("Don't have an account? ", "Sign Up.",
+            onTap: () => kPushNavigator(context, const SignupPage())),
           ],
         ),
       ),

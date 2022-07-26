@@ -4,29 +4,34 @@ import '../../common/theme/colors.dart';
 import '../../common/theme/text.dart';
 
 // On login_page.dart
-Column buildBottomSignup() {
+Column bottomDividerTxtBtn(startText, endText,
+    {VoidCallback? onTap, bool showDivider = true}) {
   return Column(
     mainAxisSize: MainAxisSize.min,
     children: [
-      Divider(color: kTapBorderAssets,
+      if(showDivider)...[
+      const Divider(
+        color: kTapBorderAssets,
         // thickness: 1,
         indent: 20,
-        endIndent: 20,),
-      const SizedBox(height: 10,),
+        endIndent: 20,
+      ),
+      const SizedBox(
+        height: 10,
+      )],
       InkWell(
         splashColor: kDetailedWhite60,
-        onTap: (){},
+        onTap: onTap ?? () {},
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Don't have an account? ",
-                style: poppinsRegular()),
-            Text('Sign Up.', style: poppinsMedium()
-                .copyWith(fontSize: 11,
-                fontWeight: FontWeight.bold
-            )),
-          ],),
+            Text(startText, style: poppinsRegular()),
+            Text(endText,
+                style: poppinsMedium()
+                    .copyWith(fontSize: 11, fontWeight: FontWeight.bold)),
+          ],
+        ),
       )
     ],
   );

@@ -11,7 +11,8 @@ Widget worldPackTile(context, {
       required String title,
       required String image,
 }) {
-  return Card(
+  return
+    Card(
     margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(8), // <-- Radius
