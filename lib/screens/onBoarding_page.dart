@@ -18,8 +18,9 @@ class OnBoardingPage extends StatefulWidget {
 }
 
 class _OnBoardingPageState extends State<OnBoardingPage> {
-  int _selectedIndex = 1;
-  final PageController _pageController = PageController(initialPage: 1);
+  int _selectedIndex = 0;
+  final PageController _pageController
+      = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
