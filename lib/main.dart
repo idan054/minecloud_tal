@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:minecloud_tal/screens/boadring_pages.dart';
-import 'package:minecloud_tal/screens/boadring_pages2.dart';
+import 'package:minecloud_tal/screens/onBoarding_page.dart';
 import 'package:minecloud_tal/screens/login_page.dart';
 import 'package:provider/provider.dart';
 
@@ -46,7 +45,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: const LoginPage(),
-      home: const OnBoardingPage2(),
+      home: const OnBoardingPage(),
       // home: const Dashboard(),
     );
   }
