@@ -6,7 +6,7 @@ import 'package:minecloud_tal/widgets/textFieldW.dart';
 
 import '../common/theme/colors.dart';
 import '../common/theme/constants.dart';
-import '../widgets/builds/login_bottomSignUp.dart';
+import '../widgets/components/login_bottomSignUp.dart';
 import '../widgets/buttonsWs.dart';
 import '../widgets/simpleWs.dart';
 import 'login_page.dart';

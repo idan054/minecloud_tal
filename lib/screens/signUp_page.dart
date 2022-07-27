@@ -11,7 +11,7 @@ import '../common/theme/constants.dart';
 import '../dashboard.dart';
 import '../functions/cleanDialogW.dart';
 import '../functions/loadingDialogW.dart';
-import '../widgets/builds/login_bottomSignUp.dart';
+import '../widgets/components/login_bottomSignUp.dart';
 import '../widgets/buttonsWs.dart';
 import '../widgets/simpleWs.dart';
 import 'main_page.dart';

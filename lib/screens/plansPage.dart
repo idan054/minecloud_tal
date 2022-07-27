@@ -4,8 +4,8 @@ import 'package:minecloud_tal/common/theme/text.dart';
 import '../common/theme/colors.dart';
 import '../common/theme/constants.dart';
 import '../functions/bottomSheetW.dart';
-import '../widgets/builds/login_bottomSignUp.dart';
 import '../widgets/buttonsWs.dart';
+import '../widgets/components/login_bottomSignUp.dart';
 import '../widgets/worldPackTile/plansCleanTiles.dart';
 import '../widgets/worldPackTile/worldPackTileW.dart';
 
