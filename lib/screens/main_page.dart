@@ -1,80 +1,90 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:minecloud_tal/common/theme/constants.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
-import 'package:minecloud_tal/functions/bottomSheetW.dart';
+import 'package:minecloud_tal/screens/resetPass_page.dart';
+import 'package:minecloud_tal/screens/signUp_page.dart';
+import 'package:minecloud_tal/widgets/textFieldW.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
 import '../common/theme/colors.dart';
-import '../widgets/drawerW.dart';
-import '../widgets/worldPackTile/worldPackTileW.dart';
+import '../common/theme/constants.dart';
+import '../dashboard.dart';
+import '../functions/loadingDialogW.dart';
+import '../widgets/components/login_bottomSignUp.dart';
+import '../widgets/buttonsWs.dart';
+import '../widgets/components/mainBoardingSlider.dart';
+import '../widgets/simpleWs.dart';
+import 'main_page.dart';
+import 'onBoarding_page.dart';
 
 class MainPage extends StatefulWidget {
-  final bool isLocalPage;
-  final bool isPackView;
-
-  const MainPage(
-      {required this.isLocalPage, required this.isPackView, Key? key})
-      : super(key: key);
+  const MainPage({Key? key}) : super(key: key);
 
   @override
   State<MainPage> createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
-  String sortBy = 'Name';
-  bool isExpanded = false;
-  
+  bool isPassHidden = true;
+
+  Widget containerDivider() => Expanded(child: lightDivider());
+  Timer? timer;
+  int _selectedIndex = 0;
+  final PageController _pageController = PageController(initialPage: 0);
+
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(const Duration(milliseconds: 2500), (Timer t) {
+      // _pageController.nextPage(
+      //     curve: Curves.easeInOut,
+      //     duration: const Duration(milliseconds: 150));
+      try {
+        setState(() {
+          _selectedIndex = _selectedIndex + 1;
+          if (_selectedIndex == 3) _selectedIndex = 0;
+          // print('_selectedIndex $_selectedIndex');
+          _pageController.animateToPage(_selectedIndex,
+              curve: Curves.easeInOut,
+              duration: const Duration(milliseconds: 250));
+        });
+      } catch (e) {
+        print('Something went wrong at _pageController');
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: const BoxDecoration(gradient: darkBackgroundGradient),
-        child: Scaffold(
+      decoration: const BoxDecoration(gradient: darkBackgroundGradient),
+      child: Scaffold(
           backgroundColor: kEmptyColor,
-          body: Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Column(
-              children: [
-                
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: InkWell(
-                    onTap: (){
-                      showMyBottomSheet(context,
-                          title: 'Sort by',
-                          bottomSheetType: BottomSheetType.sortBy
-                      );
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.fromLTRB(12,8,12,8),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(kUniModel(context, listen: true).sortBy, style: poppinsRegular().copyWith(color: kDetailedWhite60),),
-                          const SizedBox(width: 8),
-                          Icon(Icons.south, color: kDetailedWhite60, size: 14),
-                        ],
-                      ),
-                    ),
+          body: LayoutBuilder(builder: (context, constraints) {
+            if (constraints.maxWidth < 600) {
+              return const 5;
+            } else {
+              return Row(
+                children: [
+                  Flexible(
+                    child: MainBoardingSlider(_selectedIndex, _pageController),
                   ),
-                ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    // todo show List of worlds\ packs from local & cloud.
-                    return worldPackTile(
-                      context,
-                      isPack: widget.isPackView,
-                      bottomSheetType: widget.isLocalPage
-                          ? BottomSheetType.local
-                          : BottomSheetType.cloud,
-                      title: "Clear Vanilla",
-                      image: 'PlaceHolder',
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
-        ));
+                  const SizedBox(width: 400,
+                      child: ResetPassMobile()
+                  ),
+                ],
+              );
+            }
+          })),
+    );
   }
 }

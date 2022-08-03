@@ -112,7 +112,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 32),
                   child: _selectedIndex == 2
                       ? positiveButton('Get Started',
-                          onPressed: () => kPushNavigator(context, const LoginPage(),
+                          onPressed: () => kPushNavigator(context, const MainPage(),
                               replace: true))
                       : positiveButton('Next', onPressed: () async {
                           // _pageController.jumpToPage(pageIndex);

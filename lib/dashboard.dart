@@ -115,7 +115,7 @@ class _DashboardState extends State<Dashboard> {
         // onTap Bottom icon
         setState((){
         _selectedIndex = value;
-        print('_selectedIndex $_selectedIndex');
+        // print('_selectedIndex $_selectedIndex');
         _pageController.jumpToPage(value);
         });
       },

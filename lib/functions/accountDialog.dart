@@ -87,7 +87,7 @@ Future<void> accountDialog(
                   ),
                   onTap: () {
                   // todo logout Auth
-                    kPushNavigator(context, const LoginPage());
+                    kPushNavigator(context, const MainPage());
                   },
                   title: Text('Log Out',
                       style: poppinsRegular()

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:minecloud_tal/screens/onBoarding_page.dart';
 import 'package:minecloud_tal/screens/login_page.dart';
 import 'package:provider/provider.dart';
-
+import 'dart:io' show Platform;
 import 'common/models/universal_models.dart';
 import 'dashboard.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,6 @@ void main() async {
         child: const MyApp()),
   );
 }
-
 
 // Lib
 // Lib -> dump
@@ -41,13 +41,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
       ),
-      // home: const LoginPage(),
-      home: const OnBoardingPage(),
+      home: Platform.isWindows || kIsWeb
+          ? const MainPage()
+          : const OnBoardingPage(),
+      // home: const OnBoardingPage(),
       // home: const Dashboard(),
     );
   }
 }
-

@@ -137,7 +137,7 @@ class _SignupPageState extends State<SignupPage> {
             // todo Add signup Page Here (& Backend).
             bottomDividerTxtBtn("Already have an account? ", "Sign In.",
                 onTap: () =>
-                    kPushNavigator(context, const LoginPage(), replace: true)),
+                    kPushNavigator(context, const MainPage(), replace: true)),
           ],
         ),
       ),

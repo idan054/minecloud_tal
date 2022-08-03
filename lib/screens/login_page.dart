@@ -20,21 +20,20 @@ import '../widgets/simpleWs.dart';
 import 'main_page.dart';
 import 'onBoarding_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _MainPageState extends State<MainPage> {
   bool isPassHidden = true;
 
   Widget containerDivider() => Expanded(child: lightDivider());
+  Timer? timer;
   int _selectedIndex = 0;
   final PageController _pageController = PageController(initialPage: 0);
-
-  Timer? timer;
 
   @override
   void initState() {
@@ -43,14 +42,18 @@ class _LoginPageState extends State<LoginPage> {
       // _pageController.nextPage(
       //     curve: Curves.easeInOut,
       //     duration: const Duration(milliseconds: 150));
-
-      setState(() {
-        _selectedIndex = _selectedIndex + 1;
-        if (_selectedIndex == 3) _selectedIndex = 0;
-      });
-      print('_selectedIndex $_selectedIndex');
-      _pageController.animateToPage(_selectedIndex,
-          curve: Curves.easeInOut, duration: const Duration(milliseconds: 250));
+      try {
+        setState(() {
+          _selectedIndex = _selectedIndex + 1;
+          if (_selectedIndex == 3) _selectedIndex = 0;
+          // print('_selectedIndex $_selectedIndex');
+          _pageController.animateToPage(_selectedIndex,
+              curve: Curves.easeInOut,
+              duration: const Duration(milliseconds: 250));
+        });
+      } catch (e) {
+        print('Something went wrong at _pageController');
+      }
     });
   }
 
@@ -68,14 +71,19 @@ class _LoginPageState extends State<LoginPage> {
           backgroundColor: kEmptyColor,
           body: LayoutBuilder(builder: (context, constraints) {
             if (constraints.maxWidth < 600) {
-              return LoginMobile();
+              Widget currentPage = const ResetPassMobile();
+
+              return const 5;
             } else {
               return Row(
                 children: [
                   Flexible(
                     child: MainBoardingSlider(_selectedIndex, _pageController),
                   ),
-                  SizedBox(width: 400, child: LoginMobile()),
+                  const SizedBox(width: 400,
+                      // child: LoginMobile()
+                      child: ResetPassMobile()
+                  ),
                 ],
               );
             }
@@ -135,7 +143,7 @@ class _LoginMobileState extends State<LoginMobile> {
                     InkWell(
                       splashColor: kDetailedWhite60,
                       onTap: () =>
-                          kPushNavigator(context, const ResetPassPage()),
+                          kPushNavigator(context, const ResetPassMobile()),
                       child: Container(
                         alignment: Alignment.topLeft,
                         margin: const EdgeInsets.only(top: 7.5),
