@@ -10,54 +10,54 @@ Widget darkTxtField({
   bool isPass = false,
   bool? isPassHidden,
   GestureTapCallback? onEyeTapped,
-})
-    {
-
-      return Column(
-        children: [
-          Container(
-            alignment: Alignment.centerLeft,
-            margin: const EdgeInsets.only(bottom: 7.5),
-            child: Text(label, style: poppinsRegular().copyWith(fontSize: 13)),
-          ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: TextField(
-              obscureText: isPass ? isPassHidden! : false,
-              style: poppinsRegular().copyWith(color: kPositiveWhite),
-              decoration: InputDecoration(
-                  suffixIcon: isPass ?
+}) {
+  return Column(
+    children: [
+      Container(
+        alignment: Alignment.centerLeft,
+        margin: const EdgeInsets.only(bottom: 7.5),
+        child: Text(label, style: poppinsRegular().copyWith(fontSize: 13)),
+      ),
+      ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: TextField(
+          obscureText: isPass ? isPassHidden! : false,
+          style: poppinsRegular().copyWith(color: kPositiveWhite),
+          decoration: InputDecoration(
+              suffixIcon: isPass
+                  ?
                   // suffix: isPass ?
-                      InkWell(
-                          onTap: onEyeTapped,
-                          child: SizedBox.shrink(
-                            child: Row(
-                              children: [
-                                VerticalDivider(
-                                  indent: 10,
-                                  endIndent: 10,
-                                  thickness: 1.5,
-                                  color: kSecondaryButton,
-                                ),
-                                Icon(
-                                    isPassHidden! ?
-                                        Icons.visibility
-                                        : Icons.visibility_off,
-                                  color: kVerySpecificWhite40,
-                                ),
-                              ],
+                  InkWell(
+                      onTap: onEyeTapped,
+                      child: SizedBox.shrink(
+                        child: Row(
+                          children: [
+                           const VerticalDivider(
+                              indent: 10,
+                              endIndent: 10,
+                              thickness: 1.5,
+                              color: kSecondaryButton,
                             ),
-                          )) : null,
-                  filled: true,
-                  fillColor: Colors.black26,
-                  border: InputBorder.none,
-                  hintText: hintText,
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-                  hintStyle:
-                      poppinsRegular().copyWith(color: kVerySpecificWhite40)),
-            ),
-          ),
-        ],
-      );
-    }
+                            Icon(
+                              isPassHidden!
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: kVerySpecificWhite40,
+                            ),
+                          ],
+                        ),
+                      ))
+                  : null,
+              filled: true,
+              fillColor: Colors.black26,
+              border: InputBorder.none,
+              hintText: hintText,
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+              hintStyle:
+                  poppinsRegular().copyWith(color: kVerySpecificWhite40)),
+        ),
+      ),
+    ],
+  );
+}

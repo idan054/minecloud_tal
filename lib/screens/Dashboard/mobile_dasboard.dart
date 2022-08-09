@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
-import 'package:minecloud_tal/screens/main_page.dart';
 import 'package:minecloud_tal/widgets/cleanAppBarW.dart';
 import 'package:minecloud_tal/widgets/drawerW.dart';
 import 'package:minecloud_tal/widgets/simpleWs.dart';
 
-import 'common/theme/colors.dart';
-import 'common/theme/text.dart';
-import 'functions/bottomSheetW.dart';
-import 'functions/deleteDialogW.dart';
-import 'functions/loadingDialogW.dart';
-import 'functions/accountDialog.dart';
+import '../../common/theme/colors.dart';
+import '../../common/theme/text.dart';
+import '../../functions/bottomSheetW.dart';
+import '../../functions/deleteDialogW.dart';
+import '../../functions/loadingDialogW.dart';
+import '../../functions/accountDialog.dart';
+import '../Pageviewer/mainpage.dart';
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({Key? key}) : super(key: key);
+class MobileDashboard extends StatefulWidget {
+  const MobileDashboard({Key? key}) : super(key: key);
 
   @override
-  State<Dashboard> createState() => _DashboardState();
+  State<MobileDashboard> createState() => _MobileDashboardState();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _MobileDashboardState extends State<MobileDashboard> {
   int _selectedIndex = 0;
   final PageController _pageController = PageController();
 
@@ -115,7 +115,7 @@ class _DashboardState extends State<Dashboard> {
         // onTap Bottom icon
         setState((){
         _selectedIndex = value;
-        // print('_selectedIndex $_selectedIndex');
+        print('_selectedIndex $_selectedIndex');
         _pageController.jumpToPage(value);
         });
       },

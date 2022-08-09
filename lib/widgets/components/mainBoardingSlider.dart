@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../common/theme/colors.dart';
@@ -21,11 +22,11 @@ class _MainBoardingSliderState extends State<MainBoardingSlider> {
   Widget build(BuildContext context) {
     var selectedIndex = widget.selectedIndex;
     var pageController = widget.pageController;
-
+  var height =  maxHeight(context) / 100;
     return Column(
       children: [
         SizedBox(
-          height: 450,
+          height: height*60,
           child: PageView(
             // physics: const NeverScrollableScrollPhysics(), // disable swipe
             controller: pageController,
@@ -85,13 +86,14 @@ class _MainBoardingSliderState extends State<MainBoardingSlider> {
   }
 
   Column buildMainBlock({title, desc, image}) {
+    var height =  maxHeight(context) / 100;
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         // const SizedBox(height: 50),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Image.asset('$image'),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Image.asset('$image',height: height*40,fit: BoxFit.cover,),
         ),
         Text(
           '$title',

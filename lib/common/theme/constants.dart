@@ -28,8 +28,8 @@ LinearGradient gradientBase(List<Color> colorList){
 
 // Contexts shortcuts
 Size kMediaQuerySize(context) => MediaQuery.of(context).size;
-double maxWidth(context) => kMediaQuerySize(context).width;
-double maxHeight(context) => kMediaQuerySize(context).height;
+ double maxWidth(context) => kMediaQuerySize(context).width;
+ double maxHeight(context) => kMediaQuerySize(context).height;
 
 ThemeData kTheme(context) => Theme.of(context);
 NavigatorState kNavigator(context) => Navigator.of(context);

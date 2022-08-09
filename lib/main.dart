@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+
+import 'package:minecloud_tal/screens/login/login.dart';
 import 'package:minecloud_tal/screens/onBoarding_page.dart';
-import 'package:minecloud_tal/screens/login_page.dart';
 import 'package:provider/provider.dart';
 import 'dart:io' show Platform;
+
 import 'common/models/universal_models.dart';
-import 'dashboard.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +23,7 @@ void main() async {
   );
 }
 
+
 // Lib
 // Lib -> dump
 // Lib -> common -> models
@@ -39,15 +40,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'MiniCLoud',
       theme: ThemeData(
+
         primarySwatch: Colors.blue,
       ),
-      home: Platform.isWindows || kIsWeb
-          ? const MainPage()
-          : const OnBoardingPage(),
-      // home: const OnBoardingPage(),
+      home:  Platform.isIOS || Platform.isAndroid ?
+          const OnBoardingPage() : LoginScreen(),
+      // home:  DashBoard(),
       // home: const Dashboard(),
     );
   }
 }
+

@@ -4,36 +4,39 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
-import 'package:minecloud_tal/screens/resetPass_page.dart';
-import 'package:minecloud_tal/screens/signUp_page.dart';
+import 'package:minecloud_tal/screens/reset/mobile_reset.dart';
+import 'package:minecloud_tal/screens/reset/reset.dart';
+import 'package:minecloud_tal/screens/signup/mobile_signup.dart';
+import 'package:minecloud_tal/screens/signup/signup.dart';
 import 'package:minecloud_tal/widgets/textFieldW.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../common/theme/colors.dart';
-import '../common/theme/constants.dart';
-import '../dashboard.dart';
-import '../functions/loadingDialogW.dart';
-import '../widgets/components/login_bottomSignUp.dart';
-import '../widgets/buttonsWs.dart';
-import '../widgets/components/mainBoardingSlider.dart';
-import '../widgets/simpleWs.dart';
-import 'main_page.dart';
-import 'onBoarding_page.dart';
+import '../../common/theme/colors.dart';
+import '../../common/theme/constants.dart';
+import '../Dashboard/dashboard.dart';
+import '../Dashboard/mobile_dasboard.dart';
+import '../../functions/loadingDialogW.dart';
+import '../../widgets/components/login_bottomSignUp.dart';
+import '../../widgets/buttonsWs.dart';
+import '../../widgets/components/mainBoardingSlider.dart';
+import '../../widgets/simpleWs.dart';
+import '../onBoarding_page.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+class MobileLoginPage extends StatefulWidget {
+  const MobileLoginPage({Key? key}) : super(key: key);
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<MobileLoginPage> createState() => _MobileLoginPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MobileLoginPageState extends State<MobileLoginPage> {
   bool isPassHidden = true;
 
   Widget containerDivider() => Expanded(child: lightDivider());
-  Timer? timer;
   int _selectedIndex = 0;
   final PageController _pageController = PageController(initialPage: 0);
+
+  Timer? timer;
 
   @override
   void initState() {
@@ -42,18 +45,14 @@ class _MainPageState extends State<MainPage> {
       // _pageController.nextPage(
       //     curve: Curves.easeInOut,
       //     duration: const Duration(milliseconds: 150));
-      try {
-        setState(() {
-          _selectedIndex = _selectedIndex + 1;
-          if (_selectedIndex == 3) _selectedIndex = 0;
-          // print('_selectedIndex $_selectedIndex');
-          _pageController.animateToPage(_selectedIndex,
-              curve: Curves.easeInOut,
-              duration: const Duration(milliseconds: 250));
-        });
-      } catch (e) {
-        print('Something went wrong at _pageController');
-      }
+
+      setState(() {
+        _selectedIndex = _selectedIndex + 1;
+        if (_selectedIndex == 3) _selectedIndex = 0;
+      });
+      print('_selectedIndex $_selectedIndex');
+      _pageController.animateToPage(_selectedIndex,
+          curve: Curves.easeInOut, duration: const Duration(milliseconds: 250));
     });
   }
 
@@ -67,27 +66,23 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(gradient: darkBackgroundGradient),
-      child: Scaffold(
+      child: const Scaffold(
           backgroundColor: kEmptyColor,
-          body: LayoutBuilder(builder: (context, constraints) {
-            if (constraints.maxWidth < 600) {
-              Widget currentPage = const ResetPassMobile();
-
-              return const 5;
-            } else {
-              return Row(
-                children: [
-                  Flexible(
-                    child: MainBoardingSlider(_selectedIndex, _pageController),
-                  ),
-                  const SizedBox(width: 400,
-                      // child: LoginMobile()
-                      child: ResetPassMobile()
-                  ),
-                ],
-              );
-            }
-          })),
+          body:LoginMobile()),
+          //  LayoutBuilder(builder: (context, constraints) {
+          //   if (constraints.maxWidth < 600) {
+          //     return LoginMobile();
+          //   } else {
+          //     return Row(
+          //       children: [
+          //         Flexible(
+          //           child: MainBoardingSlider(_selectedIndex, _pageController),
+          //         ),
+          //         SizedBox(width: 400, child: LoginMobile()),
+          //       ],
+          //     );
+          //   }
+          // })),
     );
   }
 }
@@ -143,7 +138,7 @@ class _LoginMobileState extends State<LoginMobile> {
                     InkWell(
                       splashColor: kDetailedWhite60,
                       onTap: () =>
-                          kPushNavigator(context, const ResetPassMobile()),
+                          kPushNavigator(context, ResetPage()),
                       child: Container(
                         alignment: Alignment.topLeft,
                         margin: const EdgeInsets.only(top: 7.5),
@@ -163,7 +158,7 @@ class _LoginMobileState extends State<LoginMobile> {
                           // todo Backend Email Auth Here.
                           // print('Login done.')
                           kNavigator(context).pop());
-                  kPushNavigator(context, const Dashboard(), replace: true);
+                  kPushNavigator(context,  DashBoard(), replace: true);
                 }),
                 Row(
                   children: [
@@ -189,7 +184,7 @@ class _LoginMobileState extends State<LoginMobile> {
 
         // todo Add signup Page Here (& Backend).
         bottomDividerTxtBtn("Don't have an account? ", "Sign Up.",
-            onTap: () => kPushNavigator(context, const SignupPage())),
+            onTap: () => kPushNavigator(context,  SignupPage())),
       ],
     );
   }

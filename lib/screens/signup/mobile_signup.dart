@@ -1,29 +1,27 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
-import 'package:minecloud_tal/screens/login_page.dart';
-import 'package:minecloud_tal/screens/resetPass_page.dart';
+import 'package:minecloud_tal/screens/login/login.dart';
 import 'package:minecloud_tal/widgets/textFieldW.dart';
 
-import '../common/theme/colors.dart';
-import '../common/theme/constants.dart';
-import '../dashboard.dart';
-import '../functions/cleanDialogW.dart';
-import '../functions/loadingDialogW.dart';
-import '../widgets/components/login_bottomSignUp.dart';
-import '../widgets/buttonsWs.dart';
-import '../widgets/simpleWs.dart';
-import 'main_page.dart';
+import '../../common/theme/colors.dart';
+import '../../common/theme/constants.dart';
+import '../Dashboard/dashboard.dart';
+import '../../functions/cleanDialogW.dart';
+import '../../functions/loadingDialogW.dart';
+import '../../widgets/components/login_bottomSignUp.dart';
+import '../../widgets/buttonsWs.dart';
+import '../../widgets/simpleWs.dart';
 
-class SignupPage extends StatefulWidget {
-  const SignupPage({Key? key}) : super(key: key);
+class MobileSignup extends StatefulWidget {
+  const MobileSignup({Key? key}) : super(key: key);
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<MobileSignup> createState() => _MobileSignupPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _MobileSignupPageState extends State<MobileSignup> {
   bool isPassHidden = true;
   bool isAgreeChecked = false;
 
@@ -63,18 +61,19 @@ class _SignupPageState extends State<SignupPage> {
                     Column(
                       children: [
                         darkTxtField(
-                            isPass: true,
-                            label: 'Password',
-                            hintText: 'Enter your Password...',
-                            isPassHidden: isPassHidden,
-                            onEyeTapped: () {
-                              setState(() => isPassHidden = !isPassHidden);
-                            }),
+                          isPass: true,
+                          label: 'Password',
+                          hintText: 'Enter your Password...',
+                          isPassHidden: isPassHidden,
+                          onEyeTapped: () {
+                            setState(() => isPassHidden = !isPassHidden);
+                          },
+                        ),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Checkbox(
-                              shape: const  RoundedRectangleBorder(
+                              shape: const RoundedRectangleBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(3))),
                               fillColor: MaterialStateProperty.all(
@@ -88,15 +87,15 @@ class _SignupPageState extends State<SignupPage> {
                             ),
                             bottomDividerTxtBtn(
                                 "I agree to the ", "terms & Condition.",
-                                showDivider: false,
-                                onTap: () {
-                                  showCleanDialog(
-                                    context,
-                                    title: 'Terms & Conditions',
-                                    desc: '''fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes''',
-                                    showButtons: false,
-                                  );
-                                }),
+                                showDivider: false, onTap: () {
+                              showCleanDialog(
+                                context,
+                                title: 'Terms & Conditions',
+                                desc:
+                                    '''fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes''',
+                                showButtons: false,
+                              );
+                            }),
                             const Spacer()
                           ],
                         )
@@ -110,7 +109,7 @@ class _SignupPageState extends State<SignupPage> {
                               // todo Backend Email Auth Here.
                               // print('Login done.')
                               kNavigator(context).pop());
-                      kPushNavigator(context, const Dashboard(), replace: true);
+                      kPushNavigator(context, DashBoard(), replace: true);
                     }),
                     Row(
                       children: [
@@ -137,7 +136,7 @@ class _SignupPageState extends State<SignupPage> {
             // todo Add signup Page Here (& Backend).
             bottomDividerTxtBtn("Already have an account? ", "Sign In.",
                 onTap: () =>
-                    kPushNavigator(context, const MainPage(), replace: true)),
+                    kPushNavigator(context,  LoginScreen(), replace: true)),
           ],
         ),
       ),

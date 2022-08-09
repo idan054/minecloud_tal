@@ -14,3 +14,9 @@ TextStyle poppinsMedium()=>
         fontWeight: FontWeight.w500,
         color: kPositiveWhite,
         fontSize: 16);
+        TextStyle poppinsStandard()=>
+    TextStyle(
+        fontFamily: 'poppinsMedium',
+        fontWeight: FontWeight.w300,
+        color: kPositiveWhite,
+        fontSize: 14);

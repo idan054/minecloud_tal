@@ -132,7 +132,7 @@ Column buildTopTitle(
                   trailing: circleIcon(closeButton: true),
                   title: title != null && customTitle == null ? Text(
                     title,
-                    style: poppinsMedium().copyWith(fontSize: 13),
+                    style: poppinsMedium().copyWith(fontSize: 16),
                   ) : customTitle,
                   onTap: () {
                     Navigator.pop(context);

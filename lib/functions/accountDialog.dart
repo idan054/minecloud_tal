@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:minecloud_tal/screens/login_page.dart';
+import 'package:minecloud_tal/screens/login/mobile_login.dart';
 import '../common/theme/colors.dart';
 import '../common/theme/constants.dart';
 import '../common/theme/text.dart';
+import '../screens/login/login.dart';
 import '../widgets/actionTileWs.dart';
 import '../widgets/buttonsWs.dart';
 import '../widgets/questionAnswer.dart';
@@ -87,7 +88,7 @@ Future<void> accountDialog(
                   ),
                   onTap: () {
                   // todo logout Auth
-                    kPushNavigator(context, const MainPage());
+                    kPushNavigator(context,  LoginScreen());
                   },
                   title: Text('Log Out',
                       style: poppinsRegular()

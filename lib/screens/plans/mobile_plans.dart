@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 
-import '../common/theme/colors.dart';
-import '../common/theme/constants.dart';
-import '../functions/bottomSheetW.dart';
-import '../widgets/buttonsWs.dart';
-import '../widgets/components/login_bottomSignUp.dart';
-import '../widgets/worldPackTile/plansCleanTiles.dart';
-import '../widgets/worldPackTile/worldPackTileW.dart';
+import '../../common/theme/colors.dart';
+import '../../common/theme/constants.dart';
+import '../../widgets/buttonsWs.dart';
+import '../../widgets/components/login_bottomSignUp.dart';
+import '../../widgets/worldPackTile/plansCleanTiles.dart';
 
-class PlansPage extends StatefulWidget {
-  const PlansPage({Key? key}) : super(key: key);
+class MobilePlans extends StatefulWidget {
+  const MobilePlans({Key? key}) : super(key: key);
 
   @override
-  State<PlansPage> createState() => _PlansPageState();
+  State<MobilePlans> createState() => _MobilePlansState();
 }
 
-class _PlansPageState extends State<PlansPage> {
+class _MobilePlansState extends State<MobilePlans> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Container(
       decoration: const BoxDecoration(gradient: darkBackgroundGradient),
       child: Scaffold(
@@ -44,7 +42,7 @@ class _PlansPageState extends State<PlansPage> {
                     dense: true,
                     visualDensity: VisualDensity.compact,
                     horizontalTitleGap: 0,
-                    leading: Icon(
+                    leading: const Icon(
                       Icons.done,
                       color: Colors.blue,
                     ),
@@ -66,7 +64,7 @@ class _PlansPageState extends State<PlansPage> {
                     dense: true,
                     visualDensity: VisualDensity.compact,
                     horizontalTitleGap: 0,
-                    leading: Icon(
+                    leading: const Icon(
                       Icons.done,
                       color: Colors.blue,
                     ),
@@ -88,7 +86,7 @@ class _PlansPageState extends State<PlansPage> {
                     dense: true,
                     visualDensity: VisualDensity.compact,
                     horizontalTitleGap: 0,
-                    leading: Icon(
+                    leading: const Icon(
                       Icons.done,
                       color: Colors.blue,
                     ),
