@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:minecloud_tal/screens/login/web_login.dart';
-
-
+import 'package:minecloud_tal/screens/plans/mobile_plans.dart';
 import '../Dashboard/dashboard.dart';
-import '../plans/mobile_plans.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -12,8 +9,8 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-      MyResponsiveScreen(
-        mobileScreen: const MobilePlans(),
+      const MyResponsiveScreen(
+        mobileScreen: MobilePlans(),
         webScreen: WebLogin(),
       );
   }

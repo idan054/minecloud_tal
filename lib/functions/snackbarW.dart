@@ -22,7 +22,7 @@ void showMySnackBar(context, VoidCallback closeAction) =>
                 children: [
                   Text("Download completed.",
                     style: poppinsRegular().copyWith(fontSize: 12),),
-                  Spacer(),
+                  const Spacer(),
                   SizedBox(
                     height: 32,
                     child: TextButton(
@@ -48,26 +48,5 @@ void showMySnackBar(context, VoidCallback closeAction) =>
                       child: circleIcon(closeButton: true))
                 ],
               )),
-          duration: Duration(seconds: 6),
+          duration: const Duration(seconds: 6),
         ));
-
-// SnackBar(
-//           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-//           behavior: SnackBarBehavior.floating,
-//           // padding: const EdgeInsets.only(bottom: 15),
-//           // backgroundColor: kColorSpiderRed.withOpacity(0.80),
-//           backgroundColor: Colors.red[500]?.withOpacity(0.85),
-//           padding: const EdgeInsets.all(10),
-//           // content: Text(S.of(context).warning(message)),
-//           content: Text(
-//             'errorNotes',
-//             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-//           ),
-//           duration: Duration(seconds: 3),
-//           action: SnackBarAction(
-//             label: 'סגור',
-//             onPressed: () {
-//               ScaffoldMessenger.of(context).hideCurrentSnackBar();
-//             },
-//           ),
-//         )

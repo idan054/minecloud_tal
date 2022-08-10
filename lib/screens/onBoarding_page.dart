@@ -1,11 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
+import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:minecloud_tal/screens/login/login.dart';
-
-import '../common/theme/constants.dart';
-import '../widgets/buttonsWs.dart';
+import 'package:minecloud_tal/widgets/buttonsWs.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingPage extends StatefulWidget {
@@ -49,12 +47,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 SizedBox(
                   height: 450,
                   child: PageView(
-                    // physics: const NeverScrollableScrollPhysics(), // disable swipe
                     controller: _pageController,
                     onPageChanged: (pageIndex) {
                       setState(() => _selectedIndex = pageIndex);
-                      // On Swipe left or right
-                      // _pageController.jumpToPage(pageIndex);
                       _pageController.animateToPage(pageIndex,
                           curve: Curves.easeInOut,
                           duration: const Duration(milliseconds: 150));
@@ -100,8 +95,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                         activeDotColor: Colors.white,
                         dotColor: Colors.white24,
                         strokeWidth: 1,
-                        // dotColor: cGrey100,
-                        // activeDotColor: cRilDarkPurple.withOpacity(0.65)),
                       ),
                     );
                   }),
@@ -110,10 +103,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 32),
                   child: _selectedIndex == 2
                       ? positiveButton('Get Started',
-                          onPressed: () => kPushNavigator(context,  LoginScreen(),
+                          onPressed: () => kPushNavigator(context,  const LoginScreen(),
                               replace: true))
                       : positiveButton('Next', onPressed: () async {
-                          // _pageController.jumpToPage(pageIndex);
                           _pageController.nextPage(
                               curve: Curves.easeInOut,
                               duration: const Duration(milliseconds: 150));
@@ -132,7 +124,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        // const SizedBox(height: 50),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Image.asset('$image'),

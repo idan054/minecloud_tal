@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
+import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
-
-import '../common/theme/constants.dart';
 
 class RadioButtons extends StatefulWidget {
   const RadioButtons({Key? key}) : super(key: key);
@@ -28,7 +27,6 @@ class _RadioButtonsState extends State<RadioButtons> {
 
     return Column(
       children: <Widget>[
-        // for (int i = 1; i <= 3; i++)
         for (int i in typeIndex)
           Builder(
             builder: (context) {

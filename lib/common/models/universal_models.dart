@@ -5,7 +5,6 @@ class UniModel with ChangeNotifier{
 
   void updateSortBy(String data){
     sortBy = data;
-    // print('sortBy $sortBy');
     notifyListeners();
   }
 }

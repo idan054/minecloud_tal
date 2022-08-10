@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/models/universal_models.dart';
 import 'package:provider/provider.dart';
-
-import '../models/universal_models.dart';
-import 'colors.dart';
 
 // STRUCTURE:
 // Lib
@@ -21,7 +19,6 @@ LinearGradient gradientBase(List<Color> colorList){
   return LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
-    // stops: [0.05, 0.35, 0.50, 0.60, 0.80],
     colors: colorList,
   );
 }

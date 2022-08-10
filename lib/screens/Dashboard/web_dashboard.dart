@@ -1,24 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:minecloud_tal/functions/webpopups/logoutdailog.dart';
-import 'package:minecloud_tal/functions/webpopups/webdefaultdialog.dart';
-import 'package:minecloud_tal/screens/Dashboard/dashboard.dart';
-import 'package:minecloud_tal/widgets/dropdown.dart';
-import 'package:minecloud_tal/widgets/popup_menu.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
+import 'package:minecloud_tal/common/theme/constants.dart';
+import 'package:minecloud_tal/common/theme/text.dart';
+import 'package:minecloud_tal/functions/loadingDialogW.dart';
+import 'package:minecloud_tal/functions/popup.dart';
+import 'package:minecloud_tal/functions/webpopups/common_show_dialog.dart';
+import 'package:minecloud_tal/screens/Pageviewer/mainpage.dart';
+import 'package:minecloud_tal/screens/Pageviewer/standardplan.dart';
 import 'package:minecloud_tal/widgets/sidebar.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import '../../common/theme/colors.dart';
-import '../../common/theme/constants.dart';
-import '../../common/theme/text.dart';
-import '../../functions/loadingDialogW.dart';
-import '../../functions/popup.dart';
-import '../../widgets/actionTileWs.dart';
-import '../../widgets/buttonsWs.dart';
-import '../../widgets/simpleWs.dart';
-import '../Pageviewer/mainpage.dart';
-import '../Pageviewer/standardplan.dart';
-import '../plans/plans.dart';
-import '../syncProgress_page.dart';
 import 'filtersWebBar.dart';
 
 class WebDashBoard extends StatefulWidget {
@@ -49,17 +38,16 @@ class _WebDashBoardState extends State<WebDashBoard> {
           children: [
             Expanded(
               flex: 2,
-              child: Container(
-                  child: SideBar(
+              child: SideBar(
                 selectedIndex: _selectedIndex,
                 onChanged: (value) {
-                  setState(() {
-                    _selectedIndex = value;
-                    print('_selectedIndex $_selectedIndex');
-                    _pageController.jumpToPage(value);
-                  });
+              setState(() {
+                _selectedIndex = value;
+                debugPrint('_selectedIndex $_selectedIndex');
+                _pageController.jumpToPage(value);
+              });
                 },
-              )),
+              ),
             ),
             Expanded(
               flex: 8,
@@ -128,11 +116,11 @@ class _WebDashBoardState extends State<WebDashBoard> {
                                 // shrinkWrap: true,
                                 itemBuilder: (context, index) {
                                   return Padding(
-                                    padding: EdgeInsets.only(left: 10),
+                                    padding: const EdgeInsets.only(left: 10),
                                     child: ChoiceChip(
                                       label: Text(_chips[index]),
                                       selected: _chipIndex == index,
-                                      selectedColor: Color(0xff1E76DE),
+                                      selectedColor: const Color(0xff1E76DE),
                                       onSelected: (bool selected) {
                                         setState(() {
                                           _chipIndex = selected ? index : 0;
@@ -143,7 +131,7 @@ class _WebDashBoardState extends State<WebDashBoard> {
                                           side: BorderSide(
                                         width: 0,
                                         color: index == _chipIndex
-                                            ? Color(0xff1E76DE)
+                                            ? const Color(0xff1E76DE)
                                             : kTapBorderAssets,
                                       )),
                                       labelStyle: poppinsRegular()
@@ -208,15 +196,15 @@ class _WebDashBoardState extends State<WebDashBoard> {
 //web appbar down
 
 class WebAppbar extends StatefulWidget {
-  WebAppbar({
+  const WebAppbar({
     required this.title,
     required this.subTitle,
     required this.onChanged,
     Key? key,
   }) : super(key: key);
-  String title;
-  String subTitle;
-  Function onChanged;
+  final String title;
+  final String subTitle;
+  final Function onChanged;
 
   @override
   State<WebAppbar> createState() => _WebAppbarState();
@@ -235,32 +223,29 @@ class _WebAppbarState extends State<WebAppbar> {
       required Function()? onTap}) {
     return InkWell(
       onTap: onTap,
-      child: Container(
-        // width: 300,
-        child: ListTile(
-          leading: Icon(
-            leadingIcon,
-            color: Colors.white,
-            size: 20,
-          ),
-          title: Text(
-            title,
-            style: poppinsMedium()
-                .copyWith(fontWeight: FontWeight.w300, fontSize: 13),
-          ),
-          subtitle: Text(
-            subTitle,
-            style: poppinsRegular().copyWith(
-                color: Colors.white.withOpacity(
-                  0.5,
-                ),
-                fontSize: 10),
-          ),
-          trailing: Icon(
-            trailing,
-            size: 20,
-            color: Colors.white,
-          ),
+      child: ListTile(
+        leading: Icon(
+          leadingIcon,
+          color: Colors.white,
+          size: 20,
+        ),
+        title: Text(
+          title,
+          style: poppinsMedium()
+              .copyWith(fontWeight: FontWeight.w300, fontSize: 13),
+        ),
+        subtitle: Text(
+          subTitle,
+          style: poppinsRegular().copyWith(
+              color: Colors.white.withOpacity(
+                0.5,
+              ),
+              fontSize: 10),
+        ),
+        trailing: Icon(
+          trailing,
+          size: 20,
+          color: Colors.white,
         ),
       ),
     );
@@ -346,8 +331,8 @@ class _WebAppbarState extends State<WebAppbar> {
                           color: Colors.white,
                         ),
                         style: ElevatedButton.styleFrom(
-                          minimumSize: Size(47, 47),
-                          maximumSize: Size(100, 47),
+                          minimumSize: const Size(47, 47),
+                          maximumSize: const Size(100, 47),
                         ),
                         label: Text(
                           isSync ? 'Syncing...' : 'Sync',
@@ -384,8 +369,12 @@ class _WebAppbarState extends State<WebAppbar> {
                                   title: 'Logout',
                                   subTitle: 'Logout from Minecloud',
                                   onTap: () {
-                                    showLogoutDialog(
-                                        context: context, title: 'Logout');
+                                    commonShowDialog(
+                                        context: context,
+                                        title: 'Logout',
+                                        desc: 'Remember my info?',
+                                        isCheckBox: true,
+                                        buttonTitle: 'Logout');
                                   }),
                             ),
                           ]);

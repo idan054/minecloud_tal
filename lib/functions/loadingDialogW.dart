@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../common/theme/colors.dart';
-import '../common/theme/text.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
+import 'package:minecloud_tal/common/theme/text.dart';
 
 Future<void> showLoaderDialog(context, String text) async {
   return showDialog<void>(
@@ -16,7 +15,7 @@ Future<void> showLoaderDialog(context, String text) async {
           content:
           Row(
             children: [
-              CircularProgressIndicator(
+              const CircularProgressIndicator(
                 color: kSecondaryButton,
                 strokeWidth: 4,
               ),

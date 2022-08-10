@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
+import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
-
-import '../../common/theme/colors.dart';
-import '../../common/theme/constants.dart';
-import '../../widgets/buttonsWs.dart';
-import '../../widgets/components/login_bottomSignUp.dart';
-import '../../widgets/worldPackTile/plansCleanTiles.dart';
+import 'package:minecloud_tal/common/widgets/common_plan.dart';
+import 'package:minecloud_tal/widgets/buttonsWs.dart';
+import 'package:minecloud_tal/widgets/components/login_bottom_sign_up.dart';
+import 'package:minecloud_tal/widgets/worldPackTile/plansCleanTiles.dart';
 
 class MobilePlans extends StatefulWidget {
   const MobilePlans({Key? key}) : super(key: key);
@@ -15,8 +15,10 @@ class MobilePlans extends StatefulWidget {
 }
 
 class _MobilePlansState extends State<MobilePlans> {
+  bool isCheck = true;
+
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(gradient: darkBackgroundGradient),
       child: Scaffold(
@@ -37,81 +39,9 @@ class _MobilePlansState extends State<MobilePlans> {
                       .copyWith(fontSize: 12, color: kDetailedWhite60),
                 ),
                 const SizedBox(height: 50), // maxHeight(context) * 0.125
-
-                ListTile(
-                    dense: true,
-                    visualDensity: VisualDensity.compact,
-                    horizontalTitleGap: 0,
-                    leading: const Icon(
-                      Icons.done,
-                      color: Colors.blue,
-                    ),
-                    title: RichText(
-                        text: TextSpan(
-                      text: '125 MB ',
-                      style: poppinsRegular()
-                          .copyWith(fontSize: 12, fontWeight: FontWeight.bold),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'cloud storage',
-                          style: poppinsRegular()
-                              .copyWith(fontSize: 12, color: kDetailedWhite60),
-                        )
-                      ],
-                    ))),
-
-                ListTile(
-                    dense: true,
-                    visualDensity: VisualDensity.compact,
-                    horizontalTitleGap: 0,
-                    leading: const Icon(
-                      Icons.done,
-                      color: Colors.blue,
-                    ),
-                    title: RichText(
-                        text: TextSpan(
-                      text: '2 ',
-                      style: poppinsRegular()
-                          .copyWith(fontSize: 12, fontWeight: FontWeight.bold),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'uploads & downloads per day',
-                          style: poppinsRegular()
-                              .copyWith(fontSize: 12, color: kDetailedWhite60),
-                        )
-                      ],
-                    ))),
-
-                ListTile(
-                    dense: true,
-                    visualDensity: VisualDensity.compact,
-                    horizontalTitleGap: 0,
-                    leading: const Icon(
-                      Icons.done,
-                      color: Colors.blue,
-                    ),
-                    title: RichText(
-                        text: TextSpan(
-                      text: 'up to',
-                      style: poppinsRegular()
-                          .copyWith(fontSize: 12, color: kDetailedWhite60),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: ' 2 ',
-                          style: poppinsRegular().copyWith(
-                              fontSize: 12, fontWeight: FontWeight.bold),
-                        ),
-                        TextSpan(
-                          text: 'connected devices',
-                          style: poppinsRegular()
-                              .copyWith(fontSize: 12, color: kDetailedWhite60),
-                        )
-                      ],
-                    ))),
-
+                CommonPlan(),
                 const SizedBox(height: 35), // maxHeight(context) * 0.125
-
-                const PlansCleanTiles('Basic', 'Free foreverr'),
+                const PlansCleanTiles('Basic', 'Free forever'),
                 const Spacer(),
                 // todo connect to payment
                 SizedBox(
@@ -122,7 +52,7 @@ class _MobilePlansState extends State<MobilePlans> {
                 ),
                 const Spacer(),
                 // todo connect open plans $ features
-                bottomDividerTxtBtn("Learn more about our ", "plans & features."),
+                bottomDividerTxtBtn( "plans & features.", startText: "Learn more about our "),
               ],
             ),
           ),

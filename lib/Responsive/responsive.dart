@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ResponsiveLayout extends StatelessWidget {
-  Widget mobileLayout;
-  Widget webLayout;
+ final Widget mobileLayout;
+ final Widget webLayout;
 
-  ResponsiveLayout({
+  const ResponsiveLayout({Key? key,
     required this.mobileLayout,
     required this.webLayout,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../common/theme/colors.dart';
-import '../common/theme/constants.dart';
 import '../common/theme/text.dart';
 import 'simpleWs.dart';
 
@@ -33,7 +32,7 @@ Widget quickTile({
   bool isActive=false,
 }) {
   return Container(
-   color: isActive?Color.fromRGBO(102,144,184,0.16):Colors.transparent,
+   color: isActive?const Color.fromRGBO(102,144,184,0.16):Colors.transparent,
     child: ListTile(
       horizontalTitleGap: 4.0, // 16 default
       leading: Icon(

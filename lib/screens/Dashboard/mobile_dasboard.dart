@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
+import 'package:minecloud_tal/common/theme/text.dart';
+import 'package:minecloud_tal/functions/bottomSheetW.dart';
+import 'package:minecloud_tal/functions/loadingDialogW.dart';
+import 'package:minecloud_tal/screens/Pageviewer/mainpage.dart';
 import 'package:minecloud_tal/widgets/cleanAppBarW.dart';
 import 'package:minecloud_tal/widgets/drawerW.dart';
 import 'package:minecloud_tal/widgets/simpleWs.dart';
-
-import '../../common/theme/colors.dart';
-import '../../common/theme/text.dart';
-import '../../functions/bottomSheetW.dart';
-import '../../functions/deleteDialogW.dart';
-import '../../functions/loadingDialogW.dart';
-import '../../functions/accountDialog.dart';
-import '../Pageviewer/mainpage.dart';
 
 class MobileDashboard extends StatefulWidget {
   const MobileDashboard({Key? key}) : super(key: key);
@@ -32,21 +29,12 @@ class _MobileDashboardState extends State<MobileDashboard> {
 
   @override
   Widget build(BuildContext context) {
-
-    // todo: Show permission dialog & make it work
-    // universalDialog(context,
-    //     title: 'One more step...',
-    //     desc: 'We need a required permission of "Files and media". Make sure to allow management of all files.',
-    //     mainTxtButton: 'Go to settings',
-    //     mainPressed: () => kNavigator(context).pop()
-    // );
-
     return Container(
-      decoration: BoxDecoration(gradient: darkBackgroundGradient),
+      decoration: const BoxDecoration(gradient: darkBackgroundGradient),
       child: Scaffold(
         backgroundColor: kEmptyColor,
         appBar: buildChipAppBar(),
-        drawer: DrawerW(),
+        drawer: const DrawerW(),
         body: PageView(
           controller: _pageController,
           children: <Widget>[
@@ -115,7 +103,7 @@ class _MobileDashboardState extends State<MobileDashboard> {
         // onTap Bottom icon
         setState((){
         _selectedIndex = value;
-        print('_selectedIndex $_selectedIndex');
+        debugPrint('_selectedIndex $_selectedIndex');
         _pageController.jumpToPage(value);
         });
       },
@@ -126,7 +114,7 @@ class _MobileDashboardState extends State<MobileDashboard> {
             child: _selectedIndex == 0
                 ? Container(
                 padding:
-                EdgeInsets.symmetric(horizontal: 22, vertical: 4),
+                const EdgeInsets.symmetric(horizontal: 22, vertical: 4),
                 color: kTapBorderAssets,
                 child: Icon(
                   Icons.folder_rounded,
@@ -135,7 +123,7 @@ class _MobileDashboardState extends State<MobileDashboard> {
                 ))
                 : Container(
                 padding:
-                EdgeInsets.symmetric(horizontal: 22, vertical: 4),
+                const EdgeInsets.symmetric(horizontal: 22, vertical: 4),
                 color: kEmptyColor,
                 child: Icon(
                   Icons.folder_open_rounded,
@@ -151,7 +139,7 @@ class _MobileDashboardState extends State<MobileDashboard> {
             child: _selectedIndex == 1
                 ? Container(
                 padding:
-                EdgeInsets.symmetric(horizontal: 22, vertical: 4),
+                const EdgeInsets.symmetric(horizontal: 22, vertical: 4),
                 color: kTapBorderAssets,
                 child: Icon(
                   Icons.cloud_rounded,
@@ -160,7 +148,7 @@ class _MobileDashboardState extends State<MobileDashboard> {
                 ))
                 : Container(
                 padding:
-                EdgeInsets.symmetric(horizontal: 22, vertical: 4),
+                const EdgeInsets.symmetric(horizontal: 22, vertical: 4),
                 color: kEmptyColor,
                 child: Icon(
                   Icons.cloud_outlined,
@@ -178,7 +166,7 @@ class _MobileDashboardState extends State<MobileDashboard> {
         context,
         _selectedIndex == 0 ? 'Local Data' : 'Cloud Storage',
         chipsW: PreferredSize(
-          preferredSize: Size(9999, 50),
+          preferredSize: const Size(9999, 50),
           child: Column(
             children: [
               lightDivider(),
@@ -191,11 +179,11 @@ class _MobileDashboardState extends State<MobileDashboard> {
                     itemBuilder: (context, index) {
                       return
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
                           child: ChoiceChip(
                             label: Text(_chips[index]),
                             selected: _chipIndex == index,
-                            selectedColor: Color(0xff1E76DE),
+                            selectedColor: const Color(0xff1E76DE),
                             onSelected: (bool selected) {
                               setState(() {
                                 _chipIndex = selected ? index : 0;
@@ -207,7 +195,7 @@ class _MobileDashboardState extends State<MobileDashboard> {
                                   width: 1.5,
                                   color:
                                   index == _chipIndex ?
-                                  Color(0xff1E76DE) : kTapBorderAssets,
+                                  const Color(0xff1E76DE) : kTapBorderAssets,
                                 )),
                             labelStyle: poppinsRegular().copyWith(fontSize: 12),
                           ),

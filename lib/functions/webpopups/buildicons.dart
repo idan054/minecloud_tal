@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
-
-import '../svgIconWidget.dart';
+import 'package:minecloud_tal/functions/svgIconWidget.dart';
 
 Widget buildIconRow(BuildContext context) {
   return Row(

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:minecloud_tal/common/theme/constants.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 
-import '../common/theme/colors.dart';
-
 class CustomDropDown extends StatefulWidget {
-  CustomDropDown({required this.onChanged, required this.items});
+  const CustomDropDown({Key? key, required this.onChanged, required this.items}) : super(key: key);
 
-  Function onChanged;
-  List<String> items;
+  final Function onChanged;
+  final List<String> items;
 
   @override
   _CustomDropDownState createState() => _CustomDropDownState();
@@ -20,23 +18,21 @@ class _CustomDropDownState extends State<CustomDropDown> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-        // gradient:darkBackgroundGradient ,
         color: kProgressBar.withOpacity(0.2),
         borderRadius: BorderRadius.circular(15),
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton(
           dropdownColor: kProgressBar,
-          // isExpanded: true,
-          icon: Icon(
+          icon: const Icon(
             Icons.keyboard_arrow_down_outlined,
             color: Colors.white,
           ),
 
           value: widget.items[selectedIndex].toString(),
-          style: TextStyle(fontSize: 2),
+          style: const TextStyle(fontSize: 2),
           items: widget.items.map(buildMenuItem).toList(),
           onChanged: (value) {
             widget.onChanged(value);

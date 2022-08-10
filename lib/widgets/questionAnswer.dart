@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:animate_icons/animate_icons.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
-import 'package:minecloud_tal/common/theme/text.dart';
-
 import 'accountInfoTileW.dart';
 import 'buttonsWs.dart';
 
@@ -11,7 +8,7 @@ class AccountDetails extends StatefulWidget {
   final String? answer;
   final Widget? richAnswer;
 
-  AccountDetails({required this.question, this.answer, this.richAnswer});
+  const AccountDetails({Key? key, required this.question, this.answer, this.richAnswer}) : super(key: key);
 
   @override
   _AccountDetailsState createState() => _AccountDetailsState();
@@ -49,7 +46,6 @@ class _AccountDetailsState extends State<AccountDetails> {
                       usage: '3 Device(s)',
                       usageValue: 0.42,
                     ),
-
                     AccountInfoTileW(
                       type: 'Uploads & Downloads',
                       limit: 'of 2 total',
@@ -64,7 +60,6 @@ class _AccountDetailsState extends State<AccountDetails> {
         ),
         Container(
           width: 150,
-          // height: 35,
           margin: const EdgeInsets.only(bottom: 15, top: 5),
           child: Directionality(
             textDirection: TextDirection.rtl,

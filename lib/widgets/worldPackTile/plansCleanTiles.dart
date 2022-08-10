@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../common/theme/colors.dart';
-import '../../common/theme/text.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
+import 'package:minecloud_tal/common/theme/text.dart';
 
 class PlansCleanTiles extends StatefulWidget {
   final String title;
@@ -22,7 +22,7 @@ class _PlansCleanTilesState extends State<PlansCleanTiles> {
 
   @override
   Widget build(BuildContext context) {
-    print('selectedContainers $isPlanSelected');
+    debugPrint('selectedContainers $isPlanSelected');
 
     return Column(
       children: [
@@ -73,7 +73,7 @@ class _PlansCleanTilesState extends State<PlansCleanTiles> {
     required Color selectedColor,
     bool bestValue = false,
   }) {
-    print('planCleanTile Rebuilt');
+    debugPrint('planCleanTile Rebuilt');
 
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),

@@ -7,7 +7,7 @@ import 'package:minecloud_tal/screens/signup/web_signup.dart';
 import '../../common/theme/colors.dart';
 
 class SignupPage extends StatelessWidget {
-  SignupPage({Key? key}) : super(key: key);
+  const SignupPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class SignupPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: kEmptyColor,
         body: ResponsiveLayout(
-          mobileLayout: MobileSignup(),
+          mobileLayout: const MobileSignup(),
           webLayout: Stack(children: [
             Container(
               decoration: const BoxDecoration(gradient: darkBackgroundGradient),
@@ -48,7 +48,7 @@ class SignupPage extends StatelessWidget {
                 ],
               ),
             ),
-            WebSignup(),
+            const WebSignup(),
           ]),
         ),
       ),

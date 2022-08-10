@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
+import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../../common/theme/colors.dart';
-import '../../common/theme/text.dart';
 
 class MainBoardingSlider extends StatefulWidget {
   final int selectedIndex;
@@ -28,7 +27,6 @@ class _MainBoardingSliderState extends State<MainBoardingSlider> {
         SizedBox(
           height: height*60,
           child: PageView(
-            // physics: const NeverScrollableScrollPhysics(), // disable swipe
             controller: pageController,
             onPageChanged: (pageIndex) {
               // print('In sIx: $selectedIndex');

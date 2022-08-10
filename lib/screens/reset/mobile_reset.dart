@@ -5,7 +5,7 @@ import 'package:minecloud_tal/widgets/textFieldW.dart';
 
 import '../../common/theme/colors.dart';
 import '../../common/theme/constants.dart';
-import '../../widgets/components/login_bottomSignUp.dart';
+import '../../widgets/components/login_bottom_sign_up.dart';
 import '../../widgets/buttonsWs.dart';
 import '../../widgets/simpleWs.dart';
 import '../login/login.dart';
@@ -63,7 +63,7 @@ class _MobileResetPassState extends State<MobileResetPass> {
                     secondaryIconButton(
                       text: 'Log In',
                       onPressed: () =>
-                          kPushNavigator(context,  LoginScreen())
+                          kPushNavigator(context,  const LoginScreen())
                     ),
 
                   ],
@@ -72,7 +72,7 @@ class _MobileResetPassState extends State<MobileResetPass> {
             ),
 
             // todo Add signup Page Here (& Backend).
-            bottomDividerTxtBtn("Don't have an account? ", "Sign Up."),
+            bottomDividerTxtBtn("Sign Up."),
           ],
         ),
       ),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../common/theme/colors.dart';
-import '../common/theme/text.dart';
-import '../widgets/buttonsWs.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
+import 'package:minecloud_tal/common/theme/text.dart';
+import 'package:minecloud_tal/widgets/buttonsWs.dart';
 import 'bottomSheetW.dart';
 
 Future<void> showDeleteDialog(

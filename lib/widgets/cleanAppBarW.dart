@@ -9,10 +9,6 @@ AppBar cleanAppBar(context, String title, {PreferredSizeWidget? chipsW}) {
   return AppBar(
     centerTitle: true,
     backgroundColor: kTapBorderAssets,
-    // leading: IconButton(
-    //   icon: Icon(Icons.menu),
-    //   onPressed: () => Scaffold.of(context).openDrawer(),
-    // ),
     title: Text(
       title,
       style: poppinsMedium(),

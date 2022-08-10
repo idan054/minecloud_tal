@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:minecloud_tal/Responsive/responsive.dart';
-import 'package:minecloud_tal/common/theme/constants.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/screens/Pageviewer/web_main.dart';
-
-import '../../common/theme/colors.dart';
 import 'mobile_mai.dart';
 
 class MainPage extends StatelessWidget {
   final bool isLocalPage;
   final bool isPackView;
 
-  MainPage({required this.isLocalPage, required this.isPackView, Key? key})
+  const MainPage({required this.isLocalPage, required this.isPackView, Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var height = maxHeight(context) / 100;
     return Container(
       decoration: const BoxDecoration(gradient: darkBackgroundGradient),
       child: Scaffold(

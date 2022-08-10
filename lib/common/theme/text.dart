@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 
 TextStyle poppinsRegular()=>
-    TextStyle(
+    const TextStyle(
         fontFamily: 'poppinsRegular',
         fontWeight: FontWeight.w500,
         color: kPositiveWhite,
         fontSize: 11);
 
 TextStyle poppinsMedium()=>
-    TextStyle(
+    const TextStyle(
         fontFamily: 'poppinsMedium',
         fontWeight: FontWeight.w500,
         color: kPositiveWhite,
         fontSize: 16);
         TextStyle poppinsStandard()=>
-    TextStyle(
+    const TextStyle(
         fontFamily: 'poppinsMedium',
         fontWeight: FontWeight.w300,
         color: kPositiveWhite,

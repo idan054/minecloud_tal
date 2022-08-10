@@ -3,34 +3,11 @@ import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:minecloud_tal/functions/snackbarW.dart';
-
-import '../screens/syncProgress_page.dart';
 import '../widgets/actionTileWs.dart';
 import '../widgets/radioButtonsW.dart';
 import '../widgets/simpleWs.dart';
 import '../widgets/worldPackTile/leading_image.dart';
 import 'deleteDialogW.dart';
-
-/*class SetBottomSheet{
-  final bool isPack;
-  final String title;
-  final String image;
-  final IconData action1Icon;
-  final String action1text;
-  final IconData action2Icon;
-  final String action2text;
-
-  SetBottomSheet(
-  {
-    required this.isPack,
-    required this.title,
-    required this.image,
-    required this.action1Icon,
-    required this.action1text,
-    required this.action2Icon,
-    required this.action2text, 
-  });
-}*/
 
 enum BottomSheetType {
   local,
@@ -69,7 +46,6 @@ Future<void> showMyBottomSheet(
                   isPack: isPack,
                   title: title,
                   image: image),
-               // switch (bottomSheetType){ case: break }
               if (bottomSheetType == BottomSheetType.local) ...[
                 // todo upload local world to GCloud
                 actionTile(Icons.cloud_upload_outlined, 'Upload to cloud'),

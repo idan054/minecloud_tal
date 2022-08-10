@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
-import 'package:minecloud_tal/screens/Dashboard/mobile_dasboard.dart';
 import 'package:minecloud_tal/widgets/simpleWs.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../common/theme/constants.dart';
@@ -36,7 +35,7 @@ class DrawerW extends StatelessWidget {
             quickTile(
               name: 'Home',
               onTap: () => isSyncPage
-                  ? kPushNavigator(context,  DashBoard(), replace: true)
+                  ? kPushNavigator(context,  const DashBoard(), replace: true)
                   : kNavigator(context).pop(),
               leadingIcon: Icons.home,
             ),
@@ -92,7 +91,7 @@ class DrawerW extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: maxHeight * 0.055, vertical: 10),
                     child: positiveButton('Upgrade',
                         onPressed: () => kPushNavigator(
-                            context,  PlansPage(),
+                            context,  const PlansPage(),
                         )),
                   )
                 ],

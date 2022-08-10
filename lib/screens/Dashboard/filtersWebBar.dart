@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../common/theme/text.dart';
-import '../../widgets/popup_menu.dart';
+import 'package:minecloud_tal/common/theme/text.dart';
+import 'package:minecloud_tal/widgets/popup_menu.dart';
 
 class FiltersWebBar extends StatelessWidget {
   const FiltersWebBar({Key? key}) : super(key: key);
@@ -26,7 +25,7 @@ class FiltersWebBar extends StatelessWidget {
                   style: poppinsRegular()
                       .copyWith(fontSize: 13),
                 ),
-                Container(
+                SizedBox(
                   width: 80,
                   child: CustomPopUpMenu(
                     parent: Row(
@@ -101,7 +100,7 @@ class FiltersWebBar extends StatelessWidget {
                   style: poppinsRegular()
                       .copyWith(fontSize: 13),
                 ),
-                Container(
+                SizedBox(
                   width: 80,
                   child: CustomPopUpMenu(
                     parent: Row(

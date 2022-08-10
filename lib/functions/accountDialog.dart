@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:minecloud_tal/screens/login/mobile_login.dart';
 import '../common/theme/colors.dart';
 import '../common/theme/constants.dart';
 import '../common/theme/text.dart';
 import '../screens/login/login.dart';
-import '../widgets/actionTileWs.dart';
-import '../widgets/buttonsWs.dart';
 import '../widgets/questionAnswer.dart';
 import '../widgets/simpleWs.dart';
 import 'bottomSheetW.dart';
@@ -14,8 +11,6 @@ import 'dart:math' as math;
 
 Future<void> accountDialog(
   BuildContext context, {
-  // Widget title = const Offstage(),
-  // Widget content = const Offstage(),
   String? mainTxtButton,
   VoidCallback? mainPressed,
   String? secondaryTxtButton,
@@ -24,7 +19,6 @@ Future<void> accountDialog(
   return showDialog<void>(
     context: context,
     barrierDismissible: true,
-    // barrierColor: Colors.black26,
     builder: (BuildContext context) {
       return AlertDialog(
           shape:
@@ -35,7 +29,6 @@ Future<void> accountDialog(
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // buildTopTitle(context, null, '$title', null),
               buildTopTitle(context,
                   customTitle: Center(
                       child: Image.asset(
@@ -63,8 +56,7 @@ Future<void> accountDialog(
                     color: kVerySpecificWhite40,
                     size: 20,
                   )),
-
-              AccountDetails(
+              const AccountDetails(
                 question: 'מה הדרך הנכונה להיות גבר?',
                 answer: 'פשוט תקלל מל עד שתרגיש גבר אחושרמוטה יואו',
               ),
@@ -77,7 +69,6 @@ Future<void> accountDialog(
               ),
               ListTile(
                   horizontalTitleGap: 0,
-                  // contentPadding: EdgeInsets.zero,
                   leading: Transform.rotate(
                     angle: 180 * math.pi / 180,
                     child: Icon(
@@ -88,7 +79,7 @@ Future<void> accountDialog(
                   ),
                   onTap: () {
                   // todo logout Auth
-                    kPushNavigator(context,  LoginScreen());
+                    kPushNavigator(context,  const LoginScreen());
                   },
                   title: Text('Log Out',
                       style: poppinsRegular()

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../functions/bottomSheetW.dart';
-import '../../widgets/buttonsWs.dart';
-import '../theme/colors.dart';
-import '../theme/text.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
+import 'package:minecloud_tal/common/theme/text.dart';
+import 'package:minecloud_tal/functions/bottomSheetW.dart';
+import 'package:minecloud_tal/widgets/buttonsWs.dart';
 
 
 Future<void> universalDialog(

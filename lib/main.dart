@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home:  Platform.isIOS || Platform.isAndroid ?
-          const OnBoardingPage() : LoginScreen(),
+          const OnBoardingPage() : const LoginScreen(),
       // home:  DashBoard(),
       // home: const Dashboard(),
     );

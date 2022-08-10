@@ -10,7 +10,7 @@ import '../../common/theme/constants.dart';
 import '../Dashboard/dashboard.dart';
 import '../../functions/cleanDialogW.dart';
 import '../../functions/loadingDialogW.dart';
-import '../../widgets/components/login_bottomSignUp.dart';
+import '../../widgets/components/login_bottom_sign_up.dart';
 import '../../widgets/buttonsWs.dart';
 import '../../widgets/simpleWs.dart';
 
@@ -86,7 +86,7 @@ class _MobileSignupPageState extends State<MobileSignup> {
                               },
                             ),
                             bottomDividerTxtBtn(
-                                "I agree to the ", "terms & Condition.",
+                                "terms & Condition.",
                                 showDivider: false, onTap: () {
                               showCleanDialog(
                                 context,
@@ -109,7 +109,7 @@ class _MobileSignupPageState extends State<MobileSignup> {
                               // todo Backend Email Auth Here.
                               // print('Login done.')
                               kNavigator(context).pop());
-                      kPushNavigator(context, DashBoard(), replace: true);
+                      kPushNavigator(context, const DashBoard(), replace: true);
                     }),
                     Row(
                       children: [
@@ -134,9 +134,9 @@ class _MobileSignupPageState extends State<MobileSignup> {
             ),
 
             // todo Add signup Page Here (& Backend).
-            bottomDividerTxtBtn("Already have an account? ", "Sign In.",
+            bottomDividerTxtBtn("Sign In.",startText: "Already have an account?",
                 onTap: () =>
-                    kPushNavigator(context,  LoginScreen(), replace: true)),
+                    kPushNavigator(context,  const LoginScreen(), replace: true)),
           ],
         ),
       ),

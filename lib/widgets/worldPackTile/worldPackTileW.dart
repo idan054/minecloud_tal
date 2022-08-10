@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
-import 'package:minecloud_tal/functions/webpopups/deletedailog.dart';
-
-import '../../common/theme/colors.dart';
-import '../../common/theme/text.dart';
-import '../../functions/bottomSheetW.dart';
-import '../../functions/webpopups/webdefaultdialog.dart';
+import 'package:minecloud_tal/common/theme/text.dart';
+import 'package:minecloud_tal/functions/bottomSheetW.dart';
+import 'package:minecloud_tal/functions/webpopups/common_show_dialog.dart';
 import 'leading_image.dart';
 
 Widget worldPackTile(
@@ -13,7 +11,7 @@ Widget worldPackTile(
   required bool isPack,
   required BottomSheetType bottomSheetType,
   required String title,
-  bool? isLocalpage,
+  bool? isLocalPage,
   required String image,
 }) {
   return Card(
@@ -24,25 +22,28 @@ Widget worldPackTile(
     color: kTapBorderAssets,
     child: ListTile(
       onTap: () {
-        print(maxWidth(context));
         if (maxWidth(context) < 1000) {
           showMyBottomSheet(context,
               title: title, isPack: isPack, bottomSheetType: bottomSheetType);
         }
         if (maxWidth(context) >= 1000) {
-          showWebDialog(
+          commonShowDialog(
               context: context,
-              isPack: isPack,
               title: title,
-              okayTap: () {},
-              isLocal: isLocalpage,
-              OkayBtn: isLocalpage! ? 'Download' : 'Upload',
-              cancelBtn: 'Delete',
-              cancelTap: () {
+              buttonTitle: isLocalPage! ? 'Download' : 'Upload',
+              onTap: () {},
+              cancelTitle: 'Delete',
+              cancelOnTap: () {
                 Navigator.of(context).pop();
-                showDeleteDialog(
-                    context: context, isPack: isPack, title: title);
-              });
+                commonShowDialog(
+                    context: context,
+                    title: title,
+                    buttonTitle: 'Delete',
+                    desc:
+                        "It will be deleted locally, but not from the cloud or from other registered devices.");
+              },
+              desc:
+                  'You\'ve selected one of your local worlds.What would you like to do?');
         }
       },
       contentPadding: const EdgeInsets.symmetric(

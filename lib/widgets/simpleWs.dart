@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../common/theme/colors.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
 
 Widget lightDivider() =>
     Container(

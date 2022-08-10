@@ -1,27 +1,18 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
+import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
-import 'package:minecloud_tal/screens/reset/mobile_reset.dart';
+import 'package:minecloud_tal/functions/loadingDialogW.dart';
+import 'package:minecloud_tal/screens/Dashboard/dashboard.dart';
 import 'package:minecloud_tal/screens/reset/reset.dart';
-import 'package:minecloud_tal/screens/signup/mobile_signup.dart';
 import 'package:minecloud_tal/screens/signup/signup.dart';
+import 'package:minecloud_tal/widgets/buttonsWs.dart';
+import 'package:minecloud_tal/widgets/components/login_bottom_sign_up.dart';
+import 'package:minecloud_tal/widgets/simpleWs.dart';
 import 'package:minecloud_tal/widgets/textFieldW.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../../common/theme/colors.dart';
-import '../../common/theme/constants.dart';
-import '../Dashboard/dashboard.dart';
-import '../Dashboard/mobile_dasboard.dart';
-import '../../functions/loadingDialogW.dart';
-import '../../widgets/components/login_bottomSignUp.dart';
-import '../../widgets/buttonsWs.dart';
-import '../../widgets/components/mainBoardingSlider.dart';
-import '../../widgets/simpleWs.dart';
-import '../onBoarding_page.dart';
-
 class MobileLoginPage extends StatefulWidget {
   const MobileLoginPage({Key? key}) : super(key: key);
 
@@ -50,7 +41,7 @@ class _MobileLoginPageState extends State<MobileLoginPage> {
         _selectedIndex = _selectedIndex + 1;
         if (_selectedIndex == 3) _selectedIndex = 0;
       });
-      print('_selectedIndex $_selectedIndex');
+      debugPrint('_selectedIndex $_selectedIndex');
       _pageController.animateToPage(_selectedIndex,
           curve: Curves.easeInOut, duration: const Duration(milliseconds: 250));
     });
@@ -69,20 +60,6 @@ class _MobileLoginPageState extends State<MobileLoginPage> {
       child: const Scaffold(
           backgroundColor: kEmptyColor,
           body:LoginMobile()),
-          //  LayoutBuilder(builder: (context, constraints) {
-          //   if (constraints.maxWidth < 600) {
-          //     return LoginMobile();
-          //   } else {
-          //     return Row(
-          //       children: [
-          //         Flexible(
-          //           child: MainBoardingSlider(_selectedIndex, _pageController),
-          //         ),
-          //         SizedBox(width: 400, child: LoginMobile()),
-          //       ],
-          //     );
-          //   }
-          // })),
     );
   }
 }
@@ -138,7 +115,7 @@ class _LoginMobileState extends State<LoginMobile> {
                     InkWell(
                       splashColor: kDetailedWhite60,
                       onTap: () =>
-                          kPushNavigator(context, ResetPage()),
+                          kPushNavigator(context, const ResetPage()),
                       child: Container(
                         alignment: Alignment.topLeft,
                         margin: const EdgeInsets.only(top: 7.5),
@@ -158,7 +135,7 @@ class _LoginMobileState extends State<LoginMobile> {
                           // todo Backend Email Auth Here.
                           // print('Login done.')
                           kNavigator(context).pop());
-                  kPushNavigator(context,  DashBoard(), replace: true);
+                  kPushNavigator(context,  const DashBoard(), replace: true);
                 }),
                 Row(
                   children: [
@@ -183,8 +160,8 @@ class _LoginMobileState extends State<LoginMobile> {
         ),
 
         // todo Add signup Page Here (& Backend).
-        bottomDividerTxtBtn("Don't have an account? ", "Sign Up.",
-            onTap: () => kPushNavigator(context,  SignupPage())),
+        bottomDividerTxtBtn("Sign Up.",
+            onTap: () => kPushNavigator(context,  const SignupPage())),
       ],
     );
   }

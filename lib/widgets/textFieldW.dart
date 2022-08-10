@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../common/theme/colors.dart';
-import '../common/theme/text.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
+import 'package:minecloud_tal/common/theme/text.dart';
 
 Widget darkTxtField({
   required String label,
@@ -26,7 +24,6 @@ Widget darkTxtField({
           decoration: InputDecoration(
               suffixIcon: isPass
                   ?
-                  // suffix: isPass ?
                   InkWell(
                       onTap: onEyeTapped,
                       child: SizedBox.shrink(

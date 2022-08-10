@@ -4,15 +4,14 @@ import '../../common/theme/colors.dart';
 import '../../common/theme/text.dart';
 
 // On login_page.dart
-Column bottomDividerTxtBtn(startText, endText,
-    {VoidCallback? onTap, bool showDivider = true}) {
+Column bottomDividerTxtBtn(endText,
+    {String startText = 'Don\'t have an account?', VoidCallback? onTap, bool showDivider = true}) {
   return Column(
     mainAxisSize: MainAxisSize.min,
     children: [
       if(showDivider)...[
       const Divider(
         color: kTapBorderAssets,
-        // thickness: 1,
         indent: 20,
         endIndent: 20,
       ),
