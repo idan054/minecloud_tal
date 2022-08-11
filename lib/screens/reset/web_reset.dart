@@ -28,10 +28,6 @@ class _WebResetPassState extends State<WebResetPass> {
   void initState() {
     super.initState();
     timer = Timer.periodic(const Duration(milliseconds: 2500), (Timer t) {
-      // _pageController.nextPage(
-      //     curve: Curves.easeInOut,
-      //     duration: const Duration(milliseconds: 150));
-
       setState(() {
         _selectedIndex = _selectedIndex + 1;
         if (_selectedIndex == 3) _selectedIndex = 0;
@@ -77,13 +73,9 @@ class _WebResetPassState extends State<WebResetPass> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                // SizedBox(height: kMediaQuerySize(context).height * 0.2,),
-
                 Center(child: Image.asset('assets/images/minecloudLogo.png')),
-
                 Container(
                   width: 400,
-                  // height: kMediaQuerySize(context).height * 0.5,
                   height: 350,
                   margin: const EdgeInsets.symmetric(horizontal: 20),
                   decoration: BoxDecoration(
@@ -101,7 +93,6 @@ class _WebResetPassState extends State<WebResetPass> {
                         const SizedBox(
                           height: 30,
                         ),
-
                         // todo Backend Email Reset Here.
                         positiveButton('Send Email'),
                         Row(
@@ -109,7 +100,6 @@ class _WebResetPassState extends State<WebResetPass> {
                             containerDivider(),
                           ],
                         ),
-
                         secondaryIconButton(
                             text: 'Log In',
                             onPressed: () =>
@@ -118,7 +108,6 @@ class _WebResetPassState extends State<WebResetPass> {
                     ),
                   ),
                 ),
-
                 // todo Add signup Page Here (& Backend).
                 bottomDividerTxtBtn("Sign Up."),
               ],

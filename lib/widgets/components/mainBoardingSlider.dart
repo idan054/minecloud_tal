@@ -29,7 +29,6 @@ class _MainBoardingSliderState extends State<MainBoardingSlider> {
           child: PageView(
             controller: pageController,
             onPageChanged: (pageIndex) {
-              // print('In sIx: $selectedIndex');
               setState(() => selectedIndex = pageIndex);
             },
             children: [

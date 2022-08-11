@@ -3,7 +3,7 @@ import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:minecloud_tal/functions/bottomSheetW.dart';
-import 'package:minecloud_tal/functions/webpopups/common_show_dialog.dart';
+import 'package:minecloud_tal/common/widgets/common_show_dialog.dart';
 import 'leading_image.dart';
 
 Widget worldPackTile(

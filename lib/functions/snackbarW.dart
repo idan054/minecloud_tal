@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
-
-import '../screens/syncProgress_page.dart';
-import '../widgets/simpleWs.dart';
+import 'package:minecloud_tal/screens/syncProgress_page.dart';
+import 'package:minecloud_tal/widgets/simpleWs.dart';
 
 void showMySnackBar(context, VoidCallback closeAction) =>
     ScaffoldMessenger.of(context).showSnackBar(

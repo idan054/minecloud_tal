@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
+import 'package:minecloud_tal/common/theme/text.dart';
 
-import '../../common/theme/colors.dart';
-import '../../common/theme/text.dart';
-
-// On login_page.dart
 Column bottomDividerTxtBtn(endText,
     {String startText = 'Don\'t have an account?', VoidCallback? onTap, bool showDivider = true}) {
   return Column(

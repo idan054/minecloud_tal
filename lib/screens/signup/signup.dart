@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/Responsive/responsive.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/screens/signup/mobile_signup.dart';
 import 'package:minecloud_tal/screens/signup/web_signup.dart';
-
-import '../../common/theme/colors.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({Key? key}) : super(key: key);

@@ -30,6 +30,3 @@ class MainPage extends StatelessWidget {
   }
 }
 
-
-  // mobileLayout: MobileMainPage(isLocalPage: isLocalPage,isPackView: isPackView,),
-  //         webLayout: WebMainPage(isLocalPage: isLocalPage,isPackView: isPackView,),

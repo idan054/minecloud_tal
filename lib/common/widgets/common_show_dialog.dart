@@ -7,7 +7,7 @@ import 'package:minecloud_tal/functions/bottomSheetW.dart';
 
 Future<void> commonShowDialog({
   required BuildContext context,
-  required String title,
+  String? title,
   required String desc,
   required String buttonTitle,
   String? cancelTitle,
@@ -15,6 +15,8 @@ Future<void> commonShowDialog({
   Function()? onTap,
   Function()? cancelOnTap,
   bool isCheckBox = false,
+  bool isTitle = true,
+  bool showButtons = true,
 }) async {
   bool isCheck = true;
   return showDialog<void>(
@@ -32,7 +34,7 @@ Future<void> commonShowDialog({
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                buildTopTitle(context, title: title, image: image),
+                if(isTitle)buildTopTitle(context, title: title!, image: image),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10)
@@ -59,7 +61,6 @@ Future<void> commonShowDialog({
                           desc,
                           style: poppinsRegular().copyWith(
                             color: kDetailedWhite60,
-                            fontSize: 13,
                           ),
                         ),
                       ),
@@ -67,25 +68,26 @@ Future<void> commonShowDialog({
                   ),
                 ),
                 SizedBox(height: maxHeight(context) * 0.05),
-                Row(
-                  children: [
-                    Expanded(
-                      child: CommonDialogButton(
-                        text: 'Cancel',
-                        btnColor: kTapBorderAssets,
-                        onPressed:
-                            cancelOnTap ?? () => Navigator.of(context).pop(),
+                if (showButtons)
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CommonDialogButton(
+                          text: 'Cancel',
+                          btnColor: kTapBorderAssets,
+                          onPressed:
+                              cancelOnTap ?? () => Navigator.of(context).pop(),
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: CommonDialogButton(
-                        text: buttonTitle,
-                        btnColor: kLoadingGrey,
-                        onPressed: onTap,
+                      Expanded(
+                        child: CommonDialogButton(
+                          text: buttonTitle,
+                          btnColor: kLoadingGrey,
+                          onPressed: onTap,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
               ],
             ),
           ));

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../common/theme/colors.dart';
-import '../common/theme/constants.dart';
-import '../common/theme/text.dart';
-import '../screens/login/login.dart';
-import '../widgets/questionAnswer.dart';
-import '../widgets/simpleWs.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
+import 'package:minecloud_tal/common/theme/constants.dart';
+import 'package:minecloud_tal/common/theme/text.dart';
+import 'package:minecloud_tal/screens/login/login.dart';
+import 'package:minecloud_tal/widgets/questionAnswer.dart';
+import 'package:minecloud_tal/widgets/simpleWs.dart';
 import 'bottomSheetW.dart';
 import 'dart:math' as math;
 
@@ -60,9 +60,6 @@ Future<void> accountDialog(
                 question: 'מה הדרך הנכונה להיות גבר?',
                 answer: 'פשוט תקלל מל עד שתרגיש גבר אחושרמוטה יואו',
               ),
-
-
-
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: lightDivider(),

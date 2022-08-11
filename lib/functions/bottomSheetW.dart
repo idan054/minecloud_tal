@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
+import 'package:minecloud_tal/common/widgets/common_show_dialog.dart';
 import 'package:minecloud_tal/functions/snackbarW.dart';
-import '../widgets/actionTileWs.dart';
-import '../widgets/radioButtonsW.dart';
-import '../widgets/simpleWs.dart';
-import '../widgets/worldPackTile/leading_image.dart';
-import 'deleteDialogW.dart';
+import 'package:minecloud_tal/widgets/actionTileWs.dart';
+import 'package:minecloud_tal/widgets/radioButtonsW.dart';
+import 'package:minecloud_tal/widgets/simpleWs.dart';
+import 'package:minecloud_tal/widgets/worldPackTile/leading_image.dart';
 
 enum BottomSheetType {
   local,
@@ -51,15 +51,30 @@ Future<void> showMyBottomSheet(
                 actionTile(Icons.cloud_upload_outlined, 'Upload to cloud'),
                 // todo delete world from local
                 actionTile(Icons.delete_outline, 'Delete locally',
-                  onTap: () => showDeleteDialog(context, isPack!, bottomSheetType, image),
-                ),
+                    onTap: () => commonShowDialog(
+                        context: context,
+                        desc:
+                            'It will be deleted locally, but not from the cloud or from other registered devices.',
+                        buttonTitle: isPack!
+                            ? 'Delete this pack?'
+                            : 'Delete this world?',
+                        image: image)),
               ],
               if (bottomSheetType == BottomSheetType.cloud) ...[
                 // todo download local world to GCloud
                 actionTile(Icons.cloud_download_outlined, 'Download'),
                 // todo delete world from GCloud
-                actionTile(Icons.delete_outline, 'Delete from cloud',
-                  onTap: () => showDeleteDialog(context, isPack!, bottomSheetType, image),),
+                actionTile(
+                  Icons.delete_outline,
+                  'Delete from cloud',
+                  onTap: () => commonShowDialog(
+                      context: context,
+                      desc:
+                          "It will be deleted from the cloud, but not locally. So you'll still be able to access and play it.",
+                      buttonTitle:
+                          isPack! ? 'Delete this pack?' : 'Delete this world?',
+                      image: image),
+                )
               ],
               if (bottomSheetType == BottomSheetType.syncHome) ...[
                 // todo SYNC - get list of files in local & cloud & compare

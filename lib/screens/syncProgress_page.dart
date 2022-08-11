@@ -1,12 +1,10 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-
-import '../common/theme/colors.dart';
-import '../functions/bottomSheetW.dart';
-import '../widgets/cleanAppBarW.dart';
-import '../widgets/drawerW.dart';
-import '../widgets/worldPackTile/worldPackTileW.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
+import 'package:minecloud_tal/functions/bottomSheetW.dart';
+import 'package:minecloud_tal/widgets/cleanAppBarW.dart';
+import 'package:minecloud_tal/widgets/drawerW.dart';
+import 'package:minecloud_tal/widgets/worldPackTile/worldPackTileW.dart';
 
 class SyncProgressPage extends StatefulWidget {
   const SyncProgressPage({Key? key}) : super(key: key);

@@ -1,18 +1,16 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
+import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
+import 'package:minecloud_tal/common/widgets/common_show_dialog.dart';
+import 'package:minecloud_tal/functions/loadingDialogW.dart';
+import 'package:minecloud_tal/screens/Dashboard/dashboard.dart';
 import 'package:minecloud_tal/screens/login/login.dart';
+import 'package:minecloud_tal/widgets/buttonsWs.dart';
+import 'package:minecloud_tal/widgets/components/login_bottom_sign_up.dart';
+import 'package:minecloud_tal/widgets/simpleWs.dart';
 import 'package:minecloud_tal/widgets/textFieldW.dart';
-
-import '../../common/theme/colors.dart';
-import '../../common/theme/constants.dart';
-import '../Dashboard/dashboard.dart';
-import '../../functions/cleanDialogW.dart';
-import '../../functions/loadingDialogW.dart';
-import '../../widgets/components/login_bottom_sign_up.dart';
-import '../../widgets/buttonsWs.dart';
-import '../../widgets/simpleWs.dart';
 
 class MobileSignup extends StatefulWidget {
   const MobileSignup({Key? key}) : super(key: key);
@@ -36,12 +34,10 @@ class _MobileSignupPageState extends State<MobileSignup> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            // SizedBox(height: kMediaQuerySize(context).height * 0.2,),
             const SizedBox(
               height: 15,
             ),
             Center(child: Image.asset('assets/images/minecloudLogo.png')),
-
             Container(
               width: kMediaQuerySize(context).width,
               height: 500,
@@ -88,13 +84,14 @@ class _MobileSignupPageState extends State<MobileSignup> {
                             bottomDividerTxtBtn(
                                 "terms & Condition.",
                                 showDivider: false, onTap: () {
-                              showCleanDialog(
-                                context,
-                                title: 'Terms & Conditions',
-                                desc:
-                                    '''fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes''',
-                                showButtons: false,
+                              commonShowDialog(
+                                  context: context,
+                                  title: 'Terms & Conditions',
+                                  desc: 'fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes',
+                                  buttonTitle: 'Delete',
+                                  showButtons: false
                               );
+
                             }),
                             const Spacer()
                           ],
@@ -107,7 +104,6 @@ class _MobileSignupPageState extends State<MobileSignup> {
                           const Duration(seconds: 3),
                           () =>
                               // todo Backend Email Auth Here.
-                              // print('Login done.')
                               kNavigator(context).pop());
                       kPushNavigator(context, const DashBoard(), replace: true);
                     }),

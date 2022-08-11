@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
-import 'package:minecloud_tal/functions/cleanDialogW.dart';
+import 'package:minecloud_tal/common/widgets/common_show_dialog.dart';
 import 'package:minecloud_tal/functions/loadingDialogW.dart';
 import 'package:minecloud_tal/functions/webpopups/buildIcons.dart';
 import 'package:minecloud_tal/screens/Dashboard/dashboard.dart';
@@ -33,10 +33,6 @@ class _WebSignupPageState extends State<WebSignup> {
   void initState() {
     super.initState();
     timer = Timer.periodic(const Duration(milliseconds: 2500), (Timer t) {
-      // _pageController.nextPage(
-      //     curve: Curves.easeInOut,
-      //     duration: const Duration(milliseconds: 150));
-
       setState(() {
         _selectedIndex = _selectedIndex + 1;
         if (_selectedIndex == 3) _selectedIndex = 0;
@@ -78,10 +74,7 @@ class _WebSignupPageState extends State<WebSignup> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                // SizedBox(height: kMediaQuerySize(context).height * 0.2,),
-
                 Center(child: Image.asset('assets/images/minecloudLogo.png')),
-
                 Container(
                   width: 400,
                   height: 500,
@@ -128,13 +121,13 @@ class _WebSignupPageState extends State<WebSignup> {
                                 bottomDividerTxtBtn("terms & Condition.",
                                     startText: "I agree to the ",
                                     showDivider: false, onTap: () {
-                                  showCleanDialog(
-                                    context,
-                                    title: 'Terms & Conditions',
-                                    desc:
-                                        '''fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes''',
-                                    showButtons: false,
-                                  );
+                                      commonShowDialog(
+                                          context: context,
+                                          title: 'Terms & Conditions',
+                                          desc: 'fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes',
+                                          buttonTitle: 'Delete',
+                                        showButtons: false,
+                                      );
                                 }),
                                 const Spacer()
                               ],
@@ -174,7 +167,6 @@ class _WebSignupPageState extends State<WebSignup> {
                     ),
                   ),
                 ),
-
                 // todo Add signup Page Here (& Backend).
                 bottomDividerTxtBtn("Sign In.",startText: "Already have an account? ",
                     onTap: () => kPushNavigator(context, const LoginScreen(),

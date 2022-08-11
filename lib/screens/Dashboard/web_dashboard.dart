@@ -4,7 +4,7 @@ import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:minecloud_tal/functions/loadingDialogW.dart';
 import 'package:minecloud_tal/functions/popup.dart';
-import 'package:minecloud_tal/functions/webpopups/common_show_dialog.dart';
+import 'package:minecloud_tal/common/widgets/common_show_dialog.dart';
 import 'package:minecloud_tal/screens/Pageviewer/mainpage.dart';
 import 'package:minecloud_tal/screens/Pageviewer/standardplan.dart';
 import 'package:minecloud_tal/widgets/sidebar.dart';
@@ -106,14 +106,11 @@ class _WebDashBoardState extends State<WebDashBoard> {
                         children: [
                           Expanded(
                             flex: 6,
-
-                            //  width: maxWidth(context)*0.5,
                             child: SizedBox(
                               height: maxHeight(context) * 0.04,
                               child: ListView.builder(
                                 itemCount: _chips.length,
                                 scrollDirection: Axis.horizontal,
-                                // shrinkWrap: true,
                                 itemBuilder: (context, index) {
                                   return Padding(
                                     padding: const EdgeInsets.only(left: 10),
@@ -142,16 +139,12 @@ class _WebDashBoardState extends State<WebDashBoard> {
                               ),
                             ),
                           ),
-                          //Pop ups for sorting and release
-                          const FiltersWebBar()
-                          //    //Pop ups for sorting and release ended
+                          FiltersWebBar()
                         ],
                       ),
                     SizedBox(
                       height: maxHeight(context) * 0.02,
                     ),
-
-                    //Main area
                     Expanded(
                       child: PageView(
                         controller: _pageController,

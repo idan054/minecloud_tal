@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:minecloud_tal/functions/svgIconWidget.dart';
-
-import '../../common/theme/colors.dart';
 
 class MyPlanScreen extends StatelessWidget {
   const MyPlanScreen({Key? key}) : super(key: key);
@@ -28,39 +27,35 @@ class MyPlanScreen extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        //Cloud Storage box start
                         Expanded(
                           flex: 4,
-                          child: Align(
-                            // alignment: Alignment.centerLeft,
-                            child: Stack(children: [
-                              Container(
-                                height: maxHeight(context) * 0.1,
-                                width: maxHeight(context) * 0.1,
-                                decoration: BoxDecoration(
-                                    color:
-                                        const Color.fromRGBO(102, 144, 184, 0.04),
-                                    borderRadius:
-                                        BorderRadius.circular(50)),
-                                child: Center(
-                                  child: Text(
-                                    '75%',
-                                    style: poppinsRegular(),
-                                  ),
+                          child: Stack(children: [
+                            Container(
+                              height: maxHeight(context) * 0.1,
+                              width: maxHeight(context) * 0.1,
+                              decoration: BoxDecoration(
+                                  color:
+                                      const Color.fromRGBO(102, 144, 184, 0.04),
+                                  borderRadius:
+                                      BorderRadius.circular(50)),
+                              child: Center(
+                                child: Text(
+                                  '75%',
+                                  style: poppinsRegular(),
                                 ),
                               ),
-                              SizedBox(
-                                  height: maxHeight(context) * 0.1,
-                                  width: maxHeight(context) * 0.1,
-                                  child: const Directionality(
-                                    textDirection: TextDirection.rtl,
-                                    child: CircularProgressIndicator(
-                                      color: kPositiveBlueGui,
-                                      value: (75 / 100),
-                                    ),
-                                  )),
-                            ]),
-                          ),
+                            ),
+                            SizedBox(
+                                height: maxHeight(context) * 0.1,
+                                width: maxHeight(context) * 0.1,
+                                child: const Directionality(
+                                  textDirection: TextDirection.rtl,
+                                  child: CircularProgressIndicator(
+                                    color: kPositiveBlueGui,
+                                    value: (75 / 100),
+                                  ),
+                                )),
+                          ]),
                         ),
                         // Expanded(flex: 1, child: Container()),
 

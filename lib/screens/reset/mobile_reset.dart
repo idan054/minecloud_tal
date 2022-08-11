@@ -32,7 +32,6 @@ class _MobileResetPassState extends State<MobileResetPass> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            // SizedBox(height: kMediaQuerySize(context).height * 0.2,),
             const SizedBox(height: 15,),
             Center(
                 child: Image.asset('assets/images/minecloudLogo.png')),
@@ -40,7 +39,6 @@ class _MobileResetPassState extends State<MobileResetPass> {
             Container(
               width: kMediaQuerySize(context).width,
               height: kMediaQuerySize(context).height * 0.5,
-              // height: 500,
               margin: const EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(gradient: darkPopupGradient,
                   borderRadius: const BorderRadius.all(Radius.circular(20)
@@ -59,13 +57,11 @@ class _MobileResetPassState extends State<MobileResetPass> {
                     Row(
                       children: [containerDivider(),],
                     ),
-
                     secondaryIconButton(
                       text: 'Log In',
                       onPressed: () =>
                           kPushNavigator(context,  const LoginScreen())
                     ),
-
                   ],
                 ),
               ),

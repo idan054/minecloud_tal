@@ -29,7 +29,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             Padding(
               padding: const EdgeInsets.only(top: 0),
               child: Container(
-                // color: Colors.green,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('assets/images/circleBG_cut.png'),

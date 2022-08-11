@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
@@ -13,6 +12,7 @@ import 'package:minecloud_tal/widgets/buttonsWs.dart';
 import 'package:minecloud_tal/widgets/components/login_bottom_sign_up.dart';
 import 'package:minecloud_tal/widgets/simpleWs.dart';
 import 'package:minecloud_tal/widgets/textFieldW.dart';
+
 class MobileLoginPage extends StatefulWidget {
   const MobileLoginPage({Key? key}) : super(key: key);
 
@@ -33,9 +33,6 @@ class _MobileLoginPageState extends State<MobileLoginPage> {
   void initState() {
     super.initState();
     timer = Timer.periodic(const Duration(milliseconds: 2500), (Timer t) {
-      // _pageController.nextPage(
-      //     curve: Curves.easeInOut,
-      //     duration: const Duration(milliseconds: 150));
 
       setState(() {
         _selectedIndex = _selectedIndex + 1;
@@ -81,12 +78,10 @@ class _LoginMobileState extends State<LoginMobile> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        // SizedBox(height: kMediaQuerySize(context).height * 0.2,),
         const SizedBox(
           height: 15,
         ),
         Center(child: Image.asset('assets/images/minecloudLogo.png')),
-
         Container(
           width: kMediaQuerySize(context).width,
           height: 500,
@@ -158,7 +153,6 @@ class _LoginMobileState extends State<LoginMobile> {
             ),
           ),
         ),
-
         // todo Add signup Page Here (& Backend).
         bottomDividerTxtBtn("Sign Up.",
             onTap: () => kPushNavigator(context,  const SignupPage())),

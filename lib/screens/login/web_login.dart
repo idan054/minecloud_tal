@@ -35,9 +35,6 @@ class _WebLoginState extends State<WebLogin> {
   void initState() {
     super.initState();
     timer = Timer.periodic(const Duration(milliseconds: 2500), (Timer t) {
-      // _pageController.nextPage(
-      //     curve: Curves.easeInOut,
-      //     duration: const Duration(milliseconds: 150));
 
       setState(() {
         _selectedIndex = _selectedIndex + 1;
@@ -86,17 +83,11 @@ class _WebLoginState extends State<WebLogin> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                // SizedBox(height: kMediaQuerySize(context).height * 0.2,),
-
                 Center(child: Image.asset('assets/images/minecloudLogo.png')),
-
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 20),
-                  // width: maxWidth(context) * 100,
-                  // height: maxWidth(context) * 30,
                   width: 400,
                   height: 500,
-
                   margin: const EdgeInsets.symmetric(horizontal: 20),
                   decoration: BoxDecoration(
                     gradient: darkPopupGradient,
@@ -110,9 +101,6 @@ class _WebLoginState extends State<WebLogin> {
                         Text('Sign In', style: poppinsMedium()),
                         darkTxtField(
                             label: 'Email', hintText: 'Enter your Email...'),
-                        // SizedBox(
-                        //   height: maxHeight(context)*1,
-                        // ),
                         Column(
                           children: [
                             darkTxtField(
@@ -139,16 +127,12 @@ class _WebLoginState extends State<WebLogin> {
                             ),
                           ],
                         ),
-                        // SizedBox(
-                        //     height: maxHeight(context)*2,
-                        //   ),
                         positiveButton('Log In', onPressed: () async {
                           showLoaderDialog(context, 'Logging you in...');
                           await Future.delayed(
                               const Duration(seconds: 3),
                               () =>
                                   // todo Backend Email Auth Here.
-                                  // print('Login done.')
                                   kNavigator(context).pop());
                           kPushNavigator(context,  const DashBoard(),
                               replace: true);

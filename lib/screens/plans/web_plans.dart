@@ -27,9 +27,6 @@ class _WebPlansState extends State<WebPlans> {
   void initState() {
     super.initState();
     timer = Timer.periodic(const Duration(milliseconds: 2500), (Timer t) {
-      // _pageController.nextPage(
-      //     curve: Curves.easeInOut,
-      //     duration: const Duration(milliseconds: 150));
 
       setState(() {
         _selectedIndex = _selectedIndex + 1;
