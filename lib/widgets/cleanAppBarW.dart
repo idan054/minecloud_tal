@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
-
-import '../common/theme/colors.dart';
-import '../common/theme/text.dart';
-import '../functions/accountDialog.dart';
+import 'package:minecloud_tal/common/theme/text.dart';
+import 'package:minecloud_tal/functions/accountDialog.dart';
 
 AppBar cleanAppBar(context, String title, {PreferredSizeWidget? chipsW}) {
   return AppBar(

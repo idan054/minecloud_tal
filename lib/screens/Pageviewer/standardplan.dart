@@ -92,7 +92,6 @@ class MyPlanScreen extends StatelessWidget {
               SizedBox(
                 width: maxWidth(context) * 0.02,
               ),
-              // Webiste Box Start
               Expanded(
                 flex: 6,
                 child: Container(
@@ -147,11 +146,8 @@ class MyPlanScreen extends StatelessWidget {
                               ),
                               Container(
                                 height: 35,
-                                // width: 120,
                                 padding: const EdgeInsets.symmetric(
                                 horizontal: 5),
-                                // height: maxHeight(context) * 0.04,
-                                // width: maxWidth(context) * 0.002,
                                 decoration: BoxDecoration(
                                     color: const Color.fromRGBO(
                                         255, 255, 255, 0.2),

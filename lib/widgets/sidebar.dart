@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
+import 'package:minecloud_tal/common/theme/constants.dart';
+import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:minecloud_tal/widgets/actionTileWs.dart';
 import 'package:minecloud_tal/widgets/simpleWs.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../common/theme/colors.dart';
-import '../common/theme/constants.dart';
-import '../common/theme/text.dart';
-
 class SideBar extends StatefulWidget {
   const SideBar({
     Key? key,
@@ -38,33 +37,30 @@ class _SideBarState extends State<SideBar> {
                   Center(child: Image.asset('assets/images/minecloudLogo.png')),
             ),
             lightDivider(),
-            InkWell(
+            quickTile(
+              name: 'Local',
               onTap: () {
                 setState(() {
                   widget.onChanged(0);
                   select = 0;
                 });
               },
-              child: quickTile(
-                name: 'Local',
-                leadingIcon: Icons.home,
-                isActive: widget.selectedIndex == 0,
-              ),
+              leadingIcon: Icons.home,
+              isActive: widget.selectedIndex == 0,
             ),
-            InkWell(
+            quickTile(
+              name: 'Cloud',
               onTap: () {
                 setState(() {
                   widget.onChanged(1);
                   select = 1;
                 });
               },
-              child: quickTile(
-                name: 'Cloud',
-                leadingIcon: Icons.cloud_outlined,
-                isActive: widget.selectedIndex == 1,
-              ),
+              leadingIcon: Icons.cloud_outlined,
+              isActive: widget.selectedIndex == 1,
             ),
-            InkWell(
+            quickTile(
+              name: 'Sync progress',
               onTap: () {
                 debugPrint('two');
                 setState(() {
@@ -72,29 +68,24 @@ class _SideBarState extends State<SideBar> {
                   select = 2;
                 });
               },
-              child: quickTile(
-                name: 'Sync progress',
-                leadingIcon: Icons.playlist_add_check_outlined,
-                isActive: widget.selectedIndex == 2,
-              ),
+              leadingIcon: Icons.playlist_add_check_outlined,
+              isActive: widget.selectedIndex == 2,
             ),
             SizedBox(
               height: kMediaQuerySize(context).height * 0.025,
             ),
             lightDivider(),
             SizedBox(height: maxHeight(context) * 0.02),
-            InkWell(
+            quickTile(
+              name: 'Plan Details',
               onTap: () {
                 setState(() {
                   widget.onChanged(3);
                   select = 3;
                 });
               },
-              child: quickTile(
-                name: 'Plan Details',
-                leadingIcon: Icons.person_outline,
-                isActive: widget.selectedIndex == 3,
-              ),
+              leadingIcon: Icons.person_outline,
+              isActive: widget.selectedIndex == 3,
             ),
             quickTile(
                 name: 'Help & feedback',

@@ -33,7 +33,6 @@ Future<void> showMyBottomSheet(
         return Container(
           decoration: const BoxDecoration(
               color: Color(0xff172F43),
-              // gradient: darkBackgroundGradient
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(15),
                 topLeft: Radius.circular(15),

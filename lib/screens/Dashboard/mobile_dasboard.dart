@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
+import 'package:minecloud_tal/common/widgets/common_choice_chip.dart';
 import 'package:minecloud_tal/functions/bottomSheetW.dart';
 import 'package:minecloud_tal/functions/loadingDialogW.dart';
 import 'package:minecloud_tal/screens/Pageviewer/mainpage.dart';
@@ -98,46 +99,45 @@ class _MobileDashboardState extends State<MobileDashboard> {
       },
       items: [
         BottomNavigationBarItem(
-          icon: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: _selectedIndex == 0
-                  ? buildContainer(
-                      color: kDetailedWhite60,
-                      icon: Icons.folder_rounded,
-                    )
-                  : buildContainer(
-                      color: kEmptyColor,
-                      icon: Icons.folder_open_rounded,
-                    )),
+          icon: _selectedIndex == 0
+              ? buildContainer(
+                  color: kDetailedWhite60,
+                  icon: Icons.folder_rounded,
+                )
+              : buildContainer(
+                  color: kEmptyColor,
+                  icon: Icons.folder_open_rounded,
+                ),
           label: 'Local',
         ),
         BottomNavigationBarItem(
-          icon: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: _selectedIndex == 1
-                  ? buildContainer(
-                      color: kTapBorderAssets,
-                      icon: Icons.cloud_rounded,
-                    )
-                  : buildContainer(
-                      color: kEmptyColor,
-                      icon: Icons.cloud_off_outlined,
-                    )),
+          icon: _selectedIndex == 1
+              ? buildContainer(
+                  color: kTapBorderAssets,
+                  icon: Icons.cloud_rounded,
+                )
+              : buildContainer(
+                  color: kEmptyColor,
+                  icon: Icons.cloud_off_outlined,
+                ),
           label: 'Cloud',
         ),
       ],
     );
   }
 
-  Container buildContainer({required Color color, required IconData icon}) {
-    return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 4),
-        color: color,
-        child: Icon(
-          icon,
-          color: kDetailedWhite60,
-          size: 20,
-        ));
+  ClipRRect buildContainer({required Color color, required IconData icon}) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8),
+      child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 4),
+          color: color,
+          child: Icon(
+            icon,
+            color: kDetailedWhite60,
+            size: 20,
+          )),
+    );
   }
 
   AppBar buildChipAppBar() {
@@ -156,24 +156,15 @@ class _MobileDashboardState extends State<MobileDashboard> {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 5),
-                        child: ChoiceChip(
-                          label: Text(_chips[index]),
-                          selected: _chipIndex == index,
-                          selectedColor: const Color(0xff1E76DE),
+                        child: CommonChoiceChip(
+                          text: _chips[index],
                           onSelected: (bool selected) {
                             setState(() {
                               _chipIndex = selected ? index : 0;
                             });
                           },
-                          backgroundColor: kTapBorderAssetsFull,
-                          shape: StadiumBorder(
-                              side: BorderSide(
-                            width: 1.5,
-                            color: index == _chipIndex
-                                ? const Color(0xff1E76DE)
-                                : kTapBorderAssets,
-                          )),
-                          labelStyle: poppinsRegular().copyWith(fontSize: 12),
+                          index: index,
+                          chipIndex: _chipIndex,
                         ),
                       );
                     }),

@@ -1,10 +1,9 @@
-
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:minecloud_tal/functions/bottomSheetW.dart';
-import '../../common/theme/colors.dart';
-import '../../widgets/worldPackTile/worldPackTileW.dart';
+import 'package:minecloud_tal/widgets/worldPackTile/worldPackTileW.dart';
 
 class MobileMainPage extends StatefulWidget {
   final bool isLocalPage;

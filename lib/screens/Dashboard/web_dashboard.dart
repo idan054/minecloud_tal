@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
+import 'package:minecloud_tal/common/widgets/common_choice_chip.dart';
 import 'package:minecloud_tal/functions/loadingDialogW.dart';
 import 'package:minecloud_tal/functions/popup.dart';
 import 'package:minecloud_tal/common/widgets/common_show_dialog.dart';
@@ -41,11 +42,11 @@ class _WebDashBoardState extends State<WebDashBoard> {
               child: SideBar(
                 selectedIndex: _selectedIndex,
                 onChanged: (value) {
-              setState(() {
-                _selectedIndex = value;
-                debugPrint('_selectedIndex $_selectedIndex');
-                _pageController.jumpToPage(value);
-              });
+                  setState(() {
+                    _selectedIndex = value;
+                    debugPrint('_selectedIndex $_selectedIndex');
+                    _pageController.jumpToPage(value);
+                  });
                 },
               ),
             ),
@@ -114,25 +115,15 @@ class _WebDashBoardState extends State<WebDashBoard> {
                                 itemBuilder: (context, index) {
                                   return Padding(
                                     padding: const EdgeInsets.only(left: 10),
-                                    child: ChoiceChip(
-                                      label: Text(_chips[index]),
-                                      selected: _chipIndex == index,
-                                      selectedColor: const Color(0xff1E76DE),
+                                    child: CommonChoiceChip(
+                                      text: _chips[index],
                                       onSelected: (bool selected) {
                                         setState(() {
                                           _chipIndex = selected ? index : 0;
                                         });
                                       },
-                                      backgroundColor: kTapBorderAssetsFull,
-                                      shape: StadiumBorder(
-                                          side: BorderSide(
-                                        width: 0,
-                                        color: index == _chipIndex
-                                            ? const Color(0xff1E76DE)
-                                            : kTapBorderAssets,
-                                      )),
-                                      labelStyle: poppinsRegular()
-                                          .copyWith(fontSize: 11),
+                                      index: index,
+                                      chipIndex: _chipIndex,
                                     ),
                                   );
                                 },
@@ -155,7 +146,7 @@ class _WebDashBoardState extends State<WebDashBoard> {
                               isLocalPage: false, isPackView: _chipIndex == 0),
                           MainPage(
                               isLocalPage: true, isPackView: _chipIndex == 0),
-                         const MyPlanScreen(),
+                          const MyPlanScreen(),
                         ],
                         physics:
                             const NeverScrollableScrollPhysics(), // disable swipe
@@ -208,37 +199,39 @@ class _WebAppbarState extends State<WebAppbar> {
   bool isSync = false;
   bool isExpanded = false;
 
-  Widget buildListTile(
+  PopupMenuItem buildListTile(
       {required IconData leadingIcon,
       IconData? trailing,
       required String title,
       required String subTitle,
       required Function()? onTap}) {
-    return InkWell(
-      onTap: onTap,
-      child: ListTile(
-        leading: Icon(
-          leadingIcon,
-          color: Colors.white,
-          size: 20,
-        ),
-        title: Text(
-          title,
-          style: poppinsMedium()
-              .copyWith(fontWeight: FontWeight.w300, fontSize: 13),
-        ),
-        subtitle: Text(
-          subTitle,
-          style: poppinsRegular().copyWith(
-              color: Colors.white.withOpacity(
-                0.5,
-              ),
-              fontSize: 10),
-        ),
-        trailing: Icon(
-          trailing,
-          size: 20,
-          color: Colors.white,
+    return PopupMenuItem(
+      child: InkWell(
+        onTap: onTap,
+        child: ListTile(
+          leading: Icon(
+            leadingIcon,
+            color: Colors.white,
+            size: 20,
+          ),
+          title: Text(
+            title,
+            style: poppinsMedium()
+                .copyWith(fontWeight: FontWeight.w300, fontSize: 13),
+          ),
+          subtitle: Text(
+            subTitle,
+            style: poppinsRegular().copyWith(
+                color: Colors.white.withOpacity(
+                  0.5,
+                ),
+                fontSize: 10),
+          ),
+          trailing: Icon(
+            trailing,
+            size: 20,
+            color: Colors.white,
+          ),
         ),
       ),
     );
@@ -273,50 +266,42 @@ class _WebAppbarState extends State<WebAppbar> {
                         onPressed: () {
                           isSync
                               ? showPopupMenu(popups: [
-                                  PopupMenuItem(
-                                    child: buildListTile(
-                                        leadingIcon: Icons.stop,
-                                        title: 'Stop Sync',
-                                        subTitle: '',
-                                        onTap: () {
-                                          setState(() {
-                                            isSync = false;
-                                          });
-                                          Navigator.of(context).pop();
-                                        }),
-                                  ),
-                                  PopupMenuItem(
-                                    child: buildListTile(
-                                        leadingIcon: Icons.playlist_add_check,
-                                        title: 'Show Progress',
-                                        subTitle:
-                                            'Present all current cloud tasks',
-                                        onTap: () {}),
-                                  ),
+                                  buildListTile(
+                                      leadingIcon: Icons.stop,
+                                      title: 'Stop Sync',
+                                      subTitle: '',
+                                      onTap: () {
+                                        setState(() {
+                                          isSync = false;
+                                        });
+                                        Navigator.of(context).pop();
+                                      }),
+                                  buildListTile(
+                                      leadingIcon: Icons.playlist_add_check,
+                                      title: 'Show Progress',
+                                      subTitle:
+                                          'Present all current cloud tasks',
+                                      onTap: () {}),
                                 ], context: context)
                               : showPopupMenu(popups: [
-                                  PopupMenuItem(
-                                    child: buildListTile(
-                                        leadingIcon: Icons.sync_outlined,
-                                        title: 'Sync',
-                                        subTitle:
-                                            'Sync your assets without launching Minecraft',
-                                        onTap: () {
-                                          setState(() {
-                                            isSync = true;
-                                          });
-                                          Navigator.of(context).pop();
-                                        }),
-                                  ),
-                                  PopupMenuItem(
-                                    child: buildListTile(
-                                        leadingIcon:
-                                            Icons.rocket_launch_outlined,
-                                        title: 'Sync & Launch',
-                                        subTitle:
-                                            'Launch Minecraft automatically after the sync',
-                                        onTap: () {}),
-                                  ),
+                                  buildListTile(
+                                      leadingIcon: Icons.sync_outlined,
+                                      title: 'Sync',
+                                      subTitle:
+                                          'Sync your assets without launching Minecraft',
+                                      onTap: () {
+                                        setState(() {
+                                          isSync = true;
+                                        });
+                                        Navigator.of(context).pop();
+                                      }),
+                                  buildListTile(
+                                      leadingIcon:
+                                          Icons.rocket_launch_outlined,
+                                      title: 'Sync & Launch',
+                                      subTitle:
+                                          'Launch Minecraft automatically after the sync',
+                                      onTap: () {}),
                                 ], context: context);
                         },
                         icon: const Icon(
@@ -339,37 +324,31 @@ class _WebAppbarState extends State<WebAppbar> {
                       onTap: () {
                         setState(() {
                           showPopupMenu(context: context, popups: [
-                            PopupMenuItem(
-                              child: buildListTile(
-                                leadingIcon: Icons.person_outline,
-                                title: 'Plan Details',
-                                subTitle: 'View Your Plan and Account Details',
-                                onTap: () {},
-                              ),
+                            buildListTile(
+                              leadingIcon: Icons.person_outline,
+                              title: 'Plan Details',
+                              subTitle: 'View Your Plan and Account Details',
+                              onTap: () {},
                             ),
-                            PopupMenuItem(
-                              child: buildListTile(
-                                leadingIcon: Icons.desktop_windows,
-                                title: 'Manage Devices',
-                                subTitle: 'Manage your connected devices',
-                                trailing: Icons.launch,
-                                onTap: () {},
-                              ),
+                            buildListTile(
+                              leadingIcon: Icons.desktop_windows,
+                              title: 'Manage Devices',
+                              subTitle: 'Manage your connected devices',
+                              trailing: Icons.launch,
+                              onTap: () {},
                             ),
-                            PopupMenuItem(
-                              child: buildListTile(
-                                  leadingIcon: Icons.logout_outlined,
-                                  title: 'Logout',
-                                  subTitle: 'Logout from Minecloud',
-                                  onTap: () {
-                                    commonShowDialog(
-                                        context: context,
-                                        title: 'Logout',
-                                        desc: 'Remember my info?',
-                                        isCheckBox: true,
-                                        buttonTitle: 'Logout');
-                                  }),
-                            ),
+                            buildListTile(
+                                leadingIcon: Icons.logout_outlined,
+                                title: 'Logout',
+                                subTitle: 'Logout from Minecloud',
+                                onTap: () {
+                                  commonShowDialog(
+                                      context: context,
+                                      title: 'Logout',
+                                      desc: 'Remember my info?',
+                                      isCheckBox: true,
+                                      buttonTitle: 'Logout');
+                                }),
                           ]);
                         });
                       },

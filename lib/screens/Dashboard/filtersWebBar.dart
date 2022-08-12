@@ -53,19 +53,11 @@ class FiltersWebBar extends StatelessWidget {
                       ),
                       menuList: [
                         if (planDesc[index].containsKey('option1'))
-                          PopupMenuItem(
-                            padding: EdgeInsets.zero,
-                              child: buildCenter(planDesc[index]['option1']!)
-                          ),
+                          buildCenter(planDesc[index]['option1']!),
                         if (planDesc[index].containsKey('option2'))
-                          PopupMenuItem(
-                              padding: EdgeInsets.zero,
-                              child: buildCenter(planDesc[index]['option2']!)
-                          ),
+                          buildCenter(planDesc[index]['option2']!),
                         if (planDesc[index].containsKey('option3'))
-                          PopupMenuItem(
-                              padding: EdgeInsets.zero,
-                              child: buildCenter(planDesc[index]['option3']!)),
+                          buildCenter(planDesc[index]['option3']!),
                       ],
                     ),
                   ),
@@ -78,11 +70,14 @@ class FiltersWebBar extends StatelessWidget {
     );
   }
 
-  Center buildCenter(String text) {
-    return Center(
-      child: Text(
-        text,
-        style: poppinsStandard().copyWith(color: Colors.white, fontSize: 12),
+  buildCenter(String text) {
+    return PopupMenuItem(
+      padding: EdgeInsets.zero,
+      child: Center(
+        child: Text(
+          text,
+          style: poppinsStandard().copyWith(color: Colors.white, fontSize: 12),
+        ),
       ),
     );
   }

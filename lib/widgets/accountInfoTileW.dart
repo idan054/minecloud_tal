@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../common/theme/colors.dart';
-import '../common/theme/text.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
+import 'package:minecloud_tal/common/theme/text.dart';
 
 class AccountInfoTileW extends StatelessWidget {
   final String type;

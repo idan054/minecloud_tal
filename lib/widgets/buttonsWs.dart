@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../common/theme/colors.dart';
-import '../common/theme/text.dart';
+import 'package:minecloud_tal/common/theme/colors.dart';
+import 'package:minecloud_tal/common/theme/text.dart';
 
 Widget positiveButton(String text, {VoidCallback? onPressed}) => Container(
       margin: const EdgeInsets.symmetric(horizontal: 8),

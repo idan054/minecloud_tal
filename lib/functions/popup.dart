@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void showPopupMenu(
-    {required List<PopupMenuEntry<String>> popups,
+    {required List<PopupMenuEntry<dynamic>> popups,
     required BuildContext context}) async {
   await showMenu(
     color: const Color(0xff3E5F7E).withOpacity(0.8),
