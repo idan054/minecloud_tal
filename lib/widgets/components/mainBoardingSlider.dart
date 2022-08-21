@@ -1,57 +1,69 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/string_constants.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class MainBoardingSlider extends StatefulWidget {
-  final int selectedIndex;
-  final PageController pageController;
-
-  const MainBoardingSlider(
-    this.selectedIndex,
-    this.pageController, {Key? key}) : super(key: key);
+  const MainBoardingSlider({Key? key}) : super(key: key);
 
   @override
-  State<MainBoardingSlider> createState() => _MainBoardingSliderState();
+  State<MainBoardingSlider> createState() => MainBoardingSliderState();
 }
 
-class _MainBoardingSliderState extends State<MainBoardingSlider> {
+class MainBoardingSliderState extends State<MainBoardingSlider> {
+  int selectedIndex = 0;
+  final PageController pageController = PageController(initialPage: 0);
+  Timer? timer;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    timer = Timer.periodic(const Duration(milliseconds: 2500), (Timer t) {
+      setState(() {
+        selectedIndex += 1;
+        if (selectedIndex == 3) selectedIndex = 0;
+      });
+      pageController.animateToPage(selectedIndex, curve: Curves.easeInOut, duration: const Duration(milliseconds: 250));
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    timer!.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var selectedIndex = widget.selectedIndex;
-    var pageController = widget.pageController;
-  var height =  maxHeight(context) / 100;
+    double height = maxHeight(context) / 100;
     return Column(
       children: [
         SizedBox(
-          height: height*60,
+          height: height * 60,
           child: PageView(
             controller: pageController,
-            onPageChanged: (pageIndex) {
-              setState(() => selectedIndex = pageIndex);
-            },
+            // onPageChanged: (pageIndex) => setState(() => selectedIndex = pageIndex),
             children: [
               buildMainBlock(
                 image: 'assets/images/sync_mcrft.png',
-                title: 'Sync your Minecraft',
-                desc: 'Upload your Minecraft projects to the'
-                    ' cloud and sync your assets automatically '
-                    'across devices',
+                title: StringConstant.syncData,
+                desc: StringConstant.syncDataDesc,
               ),
               buildMainBlock(
                 image: 'assets/images/windows_boarding.png',
-                title: 'Windows & Android 9/10',
-                desc: 'Compatible with Minecraft'
-                    'Bedrock Edition for Windows'
-                    'and mentioned Android devices',
+                title: StringConstant.windows,
+                desc: StringConstant.windowsDesc,
               ),
               buildMainBlock(
                 image: 'assets/images/not_just_worlds.png',
-                title: 'Not just worlds...',
-                desc: 'Minecloud allows you to'
-                    'sync any asset from the game:'
-                    'worlds, addons and skin packs!',
+                title: StringConstant.notWords,
+                desc: StringConstant.notWordsDesc,
               ),
             ],
           ),
@@ -83,32 +95,26 @@ class _MainBoardingSliderState extends State<MainBoardingSlider> {
   }
 
   Column buildMainBlock({title, desc, image}) {
-    var height =  maxHeight(context) / 100;
+    double height = maxHeight(context) / 100;
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        // const SizedBox(height: 50),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Image.asset('$image',height: height*40,fit: BoxFit.cover,),
+          child: Image.asset('$image', height: height * 40, fit: BoxFit.cover),
         ),
         Text(
           '$title',
           style: poppinsMedium().copyWith(fontWeight: FontWeight.bold),
         ),
         Padding(
-          padding: const EdgeInsets.only(
-            top: 10,
-            left: 20,
-            right: 20,
-            bottom: 0,
-          ),
+          padding: const EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 0),
           child: Text(
             '$desc',
             textAlign: TextAlign.center,
             style: poppinsRegular().copyWith(color: kImportantWhite80),
           ),
-        )
+        ),
       ],
     );
   }
