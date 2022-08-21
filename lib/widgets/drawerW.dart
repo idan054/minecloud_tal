@@ -32,7 +32,7 @@ class DrawerW extends StatelessWidget {
             quickTile(
               name: 'Home',
               onTap: () => isSyncPage
-                  ? kPushNavigator(context,  const DashBoard(), replace: true)
+                  ? kPushNavigator(context,  DashBoard(), replace: true)
                   : kNavigator(context).pop(),
               leadingIcon: Icons.home,
             ),

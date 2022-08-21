@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 
-Future<void> showLoaderDialog(context, String text) async {
+Future<void> showLoaderDialog(context, {String text = 'Loading your data...'}) async {
   return showDialog<void>(
     context: context,
     barrierDismissible: true,

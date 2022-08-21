@@ -12,22 +12,25 @@ import 'package:minecloud_tal/widgets/sidebar.dart';
 import 'filtersWebBar.dart';
 
 class WebDashBoard extends StatefulWidget {
-  const WebDashBoard({Key? key}) : super(key: key);
+  final List<String> chips;
+
+  const WebDashBoard({Key? key, required this.chips}) : super(key: key);
 
   @override
   State<WebDashBoard> createState() => _WebDashBoardState();
 }
 
 class _WebDashBoardState extends State<WebDashBoard> {
-  final List<String> _chips = [
-    'Worlds',
-    'Resources Packs',
-    'Behavior Packs',
-    'Skin Packs'
-  ];
   int _chipIndex = 0;
   int _selectedIndex = 0;
   final PageController _pageController = PageController();
+
+  List<Map<String, dynamic>> appBarMap = [
+    {'title': 'Local data', 'subTitle' : 'Your playable Minecraft assets, stored on this device.'},
+    {'title': 'Cloud data', 'subTitle' : 'Your playable Minecraft assets, stored on this device.'},
+    {'title': 'Sync Process', 'subTitle' : 'Progress of cloud tasks, such as upload & download.'},
+    {'title': 'Standard Plan', 'subTitle' : 'Your Plan and account details'},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -53,54 +56,17 @@ class _WebDashBoardState extends State<WebDashBoard> {
             Expanded(
               flex: 8,
               child: Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 30, horizontal: 70),
+                padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 70),
                 color: Colors.transparent,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      children: [
-                        if (_selectedIndex == 0)
-                          WebAppbar(
-                            title: 'Local Data',
-                            subTitle:
-                                'Your playable Minecraft assets, stored on this device.',
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          ),
-                        if (_selectedIndex == 1)
-                          WebAppbar(
-                            title: 'Cloud Data',
-                            subTitle:
-                                'Your playable Minecraft assets, stored on this device.',
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          ),
-                        if (_selectedIndex == 2)
-                          WebAppbar(
-                            title: 'Sync Process',
-                            subTitle:
-                                'Progress of cloud tasks, such as upload & download.',
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          ),
-                        if (_selectedIndex == 3)
-                          WebAppbar(
-                            title: 'Standard Plan',
-                            subTitle: 'Your Plan and account details',
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                          ),
-                      ],
+                    WebAppbar(
+                      title: appBarMap[_selectedIndex]['title'],
+                      subTitle: appBarMap[_selectedIndex]['subTitle'],
+                      onChanged: (value){},
                     ),
-                    SizedBox(
-                      height: maxHeight(context) * 0.03,
-                    ),
+                    SizedBox(height: maxHeight(context) * 0.03),
                     if (_selectedIndex != 3 && _selectedIndex != 2)
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -110,13 +76,13 @@ class _WebDashBoardState extends State<WebDashBoard> {
                             child: SizedBox(
                               height: maxHeight(context) * 0.04,
                               child: ListView.builder(
-                                itemCount: _chips.length,
+                                itemCount: widget.chips.length,
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
                                   return Padding(
                                     padding: const EdgeInsets.only(left: 10),
                                     child: CommonChoiceChip(
-                                      text: _chips[index],
+                                      text: widget.chips[index],
                                       onSelected: (bool selected) {
                                         setState(() {
                                           _chipIndex = selected ? index : 0;
@@ -133,28 +99,20 @@ class _WebDashBoardState extends State<WebDashBoard> {
                           FiltersWebBar()
                         ],
                       ),
-                    SizedBox(
-                      height: maxHeight(context) * 0.02,
-                    ),
+                    SizedBox(height: maxHeight(context) * 0.02),
                     Expanded(
                       child: PageView(
                         controller: _pageController,
                         children: <Widget>[
-                          MainPage(
-                              isLocalPage: true, isPackView: _chipIndex == 0),
-                          MainPage(
-                              isLocalPage: false, isPackView: _chipIndex == 0),
-                          MainPage(
-                              isLocalPage: true, isPackView: _chipIndex == 0),
+                          MainPage(isPackView: _chipIndex == 0),
+                          MainPage(isLocalPage: false, isPackView: _chipIndex == 0),
+                          MainPage(isPackView: _chipIndex == 0),
                           const MyPlanScreen(),
                         ],
-                        physics:
-                            const NeverScrollableScrollPhysics(), // disable swipe
+                        physics: const NeverScrollableScrollPhysics(), // disable swipe
                         onPageChanged: (pageIndex) {
-                          // On Swipe left or right
-
                           if (_selectedIndex == 1) {
-                            showLoaderDialog(context, 'Loading your data...');
+                            showLoaderDialog(context);
                             Future.delayed(
                               const Duration(milliseconds: 1250),
                               () => kNavigator(context).pop(),
@@ -164,8 +122,6 @@ class _WebDashBoardState extends State<WebDashBoard> {
                         },
                       ),
                     ),
-
-                    //Main Area End
                   ],
                 ),
               ),
@@ -176,8 +132,6 @@ class _WebDashBoardState extends State<WebDashBoard> {
     );
   }
 }
-
-//web appbar down
 
 class WebAppbar extends StatefulWidget {
   const WebAppbar({
@@ -216,22 +170,16 @@ class _WebAppbarState extends State<WebAppbar> {
           ),
           title: Text(
             title,
-            style: poppinsMedium()
-                .copyWith(fontWeight: FontWeight.w300, fontSize: 13),
+            style: poppinsMedium().copyWith(fontWeight: FontWeight.w300, fontSize: 13),
           ),
           subtitle: Text(
             subTitle,
             style: poppinsRegular().copyWith(
-                color: Colors.white.withOpacity(
-                  0.5,
-                ),
-                fontSize: 10),
+              color: Colors.white.withOpacity(0.5),
+              fontSize: 10,
+            ),
           ),
-          trailing: Icon(
-            trailing,
-            size: 20,
-            color: Colors.white,
-          ),
+          trailing: Icon(trailing, size: 20, color: Colors.white),
         ),
       ),
     );
@@ -304,17 +252,13 @@ class _WebAppbarState extends State<WebAppbar> {
                                       onTap: () {}),
                                 ], context: context);
                         },
-                        icon: const Icon(
-                          Icons.sync_outlined,
-                          color: Colors.white,
-                        ),
+                        icon: const Icon(Icons.sync_outlined,
+                            color: Colors.white),
                         style: ElevatedButton.styleFrom(
                           minimumSize: const Size(47, 47),
                           maximumSize: const Size(100, 47),
                         ),
-                        label: Text(
-                          isSync ? 'Syncing...' : 'Sync',
-                        ),
+                        label: Text(isSync ? 'Syncing...' : 'Sync'),
                       ),
                     ),
                     SizedBox(
@@ -322,75 +266,74 @@ class _WebAppbarState extends State<WebAppbar> {
                     ),
                     InkWell(
                       onTap: () {
-                        setState(() {
-                          showPopupMenu(context: context, popups: [
-                            buildListTile(
-                              leadingIcon: Icons.person_outline,
-                              title: 'Plan Details',
-                              subTitle: 'View Your Plan and Account Details',
-                              onTap: () {},
-                            ),
-                            buildListTile(
-                              leadingIcon: Icons.desktop_windows,
-                              title: 'Manage Devices',
-                              subTitle: 'Manage your connected devices',
-                              trailing: Icons.launch,
-                              onTap: () {},
-                            ),
-                            buildListTile(
-                                leadingIcon: Icons.logout_outlined,
-                                title: 'Logout',
-                                subTitle: 'Logout from Minecloud',
-                                onTap: () {
-                                  commonShowDialog(
+                        setState(
+                          () {
+                            showPopupMenu(
+                              context: context,
+                              popups: [
+                                buildListTile(
+                                  leadingIcon: Icons.person_outline,
+                                  title: 'Plan Details',
+                                  subTitle: 'View Your Plan and Account Details',
+                                  onTap: () {},
+                                ),
+                                buildListTile(
+                                  leadingIcon: Icons.desktop_windows,
+                                  title: 'Manage Devices',
+                                  subTitle: 'Manage your connected devices',
+                                  trailing: Icons.launch,
+                                  onTap: () {},
+                                ),
+                                buildListTile(
+                                  leadingIcon: Icons.logout_outlined,
+                                  title: 'Logout',
+                                  subTitle: 'Logout from Minecloud',
+                                  onTap: () {
+                                    commonShowDialog(
                                       context: context,
                                       title: 'Logout',
                                       desc: 'Remember my info?',
                                       isCheckBox: true,
-                                      buttonTitle: 'Logout');
-                                }),
-                          ]);
-                        });
+                                      buttonTitle: 'Logout',
+                                    );
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
                       },
                       child: Container(
-                          height: 43,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 5,
-                          ),
-                          decoration: BoxDecoration(
-                              gradient: darkPopupGradient,
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const CircleAvatar(
-                                    backgroundColor: kDialogBg,
-                                    radius: 16,
-                                    child: Text('T'),
-                                  ),
-                                  SizedBox(
-                                    width: maxWidth(context) * 0.005,
-                                  ),
-                                  Text(
-                                    "tallme20@gmail.com",
-                                    style: poppinsRegular(),
-                                  ),
-                                  SizedBox(
-                                    width: maxWidth(context) * 0.005,
-                                  ),
-                                  const Icon(
-                                    Icons.expand_more,
-                                    color: Colors.white,
-                                    size: 25,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )),
+                        height: 43,
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        decoration: BoxDecoration(
+                          gradient: darkPopupGradient,
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const CircleAvatar(
+                                  backgroundColor: kDialogBg,
+                                  radius: 16,
+                                  child: Text('T'),
+                                ),
+                                SizedBox(width: maxWidth(context) * 0.005),
+                                Text("tallme20@gmail.com", style: poppinsRegular()),
+                                SizedBox(width: maxWidth(context) * 0.005),
+                                const Icon(
+                                  Icons.expand_more,
+                                  color: Colors.white,
+                                  size: 25,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -398,13 +341,10 @@ class _WebAppbarState extends State<WebAppbar> {
             ),
           ],
         ),
-        SizedBox(
-          height: maxHeight(context) * 0.01,
-        ),
+        SizedBox(height: maxHeight(context) * 0.01),
         Text(
           widget.subTitle,
-          style:
-              poppinsRegular().copyWith(color: Colors.white.withOpacity(0.5)),
+          style: poppinsRegular().copyWith(color: Colors.white.withOpacity(0.5)),
         ),
       ],
     );

@@ -11,7 +11,9 @@ import 'package:minecloud_tal/widgets/drawerW.dart';
 import 'package:minecloud_tal/widgets/simpleWs.dart';
 
 class MobileDashboard extends StatefulWidget {
-  const MobileDashboard({Key? key}) : super(key: key);
+  final List<String> chips;
+
+  const MobileDashboard({Key? key, required this.chips}) : super(key: key);
 
   @override
   State<MobileDashboard> createState() => _MobileDashboardState();
@@ -19,14 +21,8 @@ class MobileDashboard extends StatefulWidget {
 
 class _MobileDashboardState extends State<MobileDashboard> {
   int _selectedIndex = 0;
-  final PageController _pageController = PageController();
-
-  // chips variables
-  final List<String> _chips =
-  ['Worlds', 'Resources Packs', 'Behavior Packs', 'Skin Packs'];
   int _chipIndex = 0;
-
-  int w = 0;
+  final PageController _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,23 +35,26 @@ class _MobileDashboardState extends State<MobileDashboard> {
         body: PageView(
           controller: _pageController,
           children: <Widget>[
-            MainPage(isLocalPage: true, isPackView: _chipIndex == 0),
+            MainPage(isPackView: _chipIndex == 0),
             MainPage(isLocalPage: false, isPackView: _chipIndex == 0),
           ],
           physics: const NeverScrollableScrollPhysics(), // disable swipe
           onPageChanged: (pageIndex) {
             if (_selectedIndex == 1) {
-              showLoaderDialog(context, 'Loading your data...');
-              Future.delayed(const Duration(milliseconds: 1250),
-                  () => kNavigator(context).pop());
-            }
+              showLoaderDialog(context);
+              Future.delayed(
+                  const Duration(milliseconds: 1250),
+                  () => kNavigator(context).pop(),
+                );
+              }
             setState(() => _selectedIndex = pageIndex);
           },
         ),
         floatingActionButton: buildFab(),
         floatingActionButtonLocation:
         FloatingActionButtonLocation.centerDocked,
-          bottomNavigationBar: buildBottomNavigationBar()),
+        bottomNavigationBar: buildBottomNavigationBar(),
+      ),
     );
   }
 
@@ -66,16 +65,19 @@ class _MobileDashboardState extends State<MobileDashboard> {
       child: FloatingActionButton(
         elevation: 0,
         mini: true,
-        onPressed: () {
-          showMyBottomSheet(context,
-              title: 'Synchronize', bottomSheetType: BottomSheetType.syncHome);
-        },
+        onPressed: () => showMyBottomSheet(
+          context,
+          title: 'Synchronize',
+          bottomSheetType: BottomSheetType.syncHome,
+        ),
         child: Container(
           width: 60,
           height: 60,
           child: const Icon(Icons.sync_outlined),
           decoration: BoxDecoration(
-              shape: BoxShape.circle, gradient: positiveBlueButtonGradient),
+            shape: BoxShape.circle,
+            gradient: positiveBlueButtonGradient,
+          ),
         ),
       ),
     );
@@ -126,51 +128,51 @@ class _MobileDashboardState extends State<MobileDashboard> {
     );
   }
 
-  ClipRRect buildContainer({required Color color, required IconData icon}) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
-      child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 4),
-          color: color,
-          child: Icon(
-            icon,
-            color: kDetailedWhite60,
-            size: 20,
-          )),
+  Container buildContainer({required Color color, required IconData icon}) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 4),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Icon(icon, color: kDetailedWhite60, size: 20),
     );
   }
 
   AppBar buildChipAppBar() {
     return cleanAppBar(
-        context, _selectedIndex == 0 ? 'Local Data' : 'Cloud Storage',
-        chipsW: PreferredSize(
-          preferredSize: const Size(9999, 50),
-          child: Column(
-            children: [
-              lightDivider(),
-              SizedBox(
-                height: 70,
-                child: ListView.builder(
-                    itemCount: _chips.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5),
-                        child: CommonChoiceChip(
-                          text: _chips[index],
-                          onSelected: (bool selected) {
-                            setState(() {
-                              _chipIndex = selected ? index : 0;
-                            });
-                          },
-                          index: index,
-                          chipIndex: _chipIndex,
-                        ),
-                      );
-                    }),
-              )
-            ],
-          ),
-        ));
+      context,
+      _selectedIndex == 0 ? 'Local Data' : 'Cloud Storage',
+      chipsW: PreferredSize(
+        preferredSize: const Size(9999, 50),
+        child: Column(
+          children: [
+            lightDivider(),
+            SizedBox(
+              height: 70,
+              child: ListView.builder(
+                itemCount: widget.chips.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: CommonChoiceChip(
+                      text: widget.chips[index],
+                      onSelected: (bool selected) {
+                        setState(() {
+                          _chipIndex = selected ? index : 0;
+                        });
+                      },
+                      index: index,
+                      chipIndex: _chipIndex,
+                    ),
+                  );
+                },
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

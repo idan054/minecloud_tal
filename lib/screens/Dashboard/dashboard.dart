@@ -6,17 +6,19 @@ import 'package:minecloud_tal/screens/Dashboard/mobile_dasboard.dart';
 import 'package:minecloud_tal/screens/Dashboard/web_dashboard.dart';
 
 class DashBoard extends StatelessWidget {
-  const DashBoard({Key? key}) : super(key: key);
+  final List<String> chips = ['Worlds', 'Resources Packs', 'Behavior Packs', 'Skin Packs'];
+
+  DashBoard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(gradient: darkBackgroundGradient),
-      child: const Scaffold(
+      child: Scaffold(
         backgroundColor: kEmptyColor,
         body: ResponsiveLayout(
-          mobileLayout: MobileDashboard(),
-          webLayout: WebDashBoard(),
+          mobileLayout: MobileDashboard(chips: chips),
+          webLayout: WebDashBoard(chips: chips),
         ),
       ),
     );

@@ -77,13 +77,13 @@ class CommonLoginCardView extends StatelessWidget {
                   ],
                 ),
                 positiveButton('Log In', onPressed: () async {
-                  showLoaderDialog(context, 'Logging you in...');
+                  showLoaderDialog(context, text: 'Logging you in...');
                   await Future.delayed(
                       const Duration(seconds: 3),
                       () =>
                           // todo Backend Email Auth Here.
                           kNavigator(context).pop());
-                  kPushNavigator(context, const DashBoard(), replace: true);
+                  kPushNavigator(context, DashBoard(), replace: true);
                 }),
                 Row(
                   children: [

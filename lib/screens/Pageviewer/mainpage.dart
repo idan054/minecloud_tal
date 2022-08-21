@@ -7,7 +7,7 @@ class MainPage extends StatelessWidget {
   final bool isLocalPage;
   final bool isPackView;
 
-  const MainPage({required this.isLocalPage, required this.isPackView, Key? key})
+  const MainPage({this.isLocalPage = true, required this.isPackView, Key? key})
       : super(key: key);
 
   @override
