@@ -3,8 +3,8 @@ import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 
 Widget darkTxtField({
-  required String label,
-  required String hintText,
+  String label = 'Email',
+  String hintText = 'Enter your Email...',
   bool isPass = false,
   bool? isPassHidden,
   GestureTapCallback? onEyeTapped,

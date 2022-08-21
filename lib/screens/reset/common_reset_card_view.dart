@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/string_constants.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
@@ -15,16 +16,12 @@ class CommonResetCardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget containerDivider() => Expanded(
-          child: lightDivider(),
-        );
+    Widget containerDivider() => Expanded(child: lightDivider());
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         if (!isWeb)
-          const SizedBox(
-            height: 15,
-          ),
+          const SizedBox(height: 15),
         Center(child: Image.asset('assets/images/minecloudLogo.png')),
         Container(
           width: isWeb ? 400 : kMediaQuerySize(context).width,
@@ -40,10 +37,8 @@ class CommonResetCardView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text('Reset Password', style: poppinsMedium()),
-                darkTxtField(label: 'Email', hintText: 'Enter your Email...'),
-                const SizedBox(
-                  height: 30,
-                ),
+                darkTxtField(),
+                const SizedBox(height: 30),
                 // todo Backend Email Reset Here.
                 positiveButton('Send Email'),
                 Row(
@@ -52,15 +47,15 @@ class CommonResetCardView extends StatelessWidget {
                   ],
                 ),
                 secondaryIconButton(
-                    text: 'Log In',
-                    onPressed: () =>
-                        kPushNavigator(context, const LoginScreen())),
+                  text: StringConstant.logIn,
+                  onPressed: () => kPushNavigator(context, const LoginScreen()),
+                ),
               ],
             ),
           ),
         ),
         // todo Add signup Page Here (& Backend).
-        bottomDividerTxtBtn("Sign Up."),
+        bottomDividerTxtBtn(' ${StringConstant.signUp}.'),
       ],
     );
   }

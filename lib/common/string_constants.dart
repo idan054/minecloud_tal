@@ -10,5 +10,7 @@ class StringConstant {
   static const String windowsDesc = 'Compatible with Minecraft Bedrock Edition for Windows and mentioned Android devices';
   static const String notWords = 'Not just worlds...';
   static const String notWordsDesc = 'Minecloud allows you to sync any asset from the game: worlds, addons and skin packs!';
+  static const String logIn = 'Log In';
+  static const String signUp = 'Sign Up';
 
 }
