@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:minecloud_tal/common/string_constants.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
@@ -24,19 +25,14 @@ class CommonLoginCardView extends StatelessWidget {
       this.isWeb = false})
       : super(key: key);
 
-  Widget containerDivider() => Expanded(
-        child: lightDivider(),
-      );
+  Widget containerDivider() => Expanded(child: lightDivider());
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        if (!isWeb)
-          const SizedBox(
-            height: 15,
-          ),
+        if (!isWeb) const SizedBox(height: 15),
         Center(child: Image.asset('assets/images/minecloudLogo.png')),
         Container(
           width: isWeb ? 400 : kMediaQuerySize(context).width,
@@ -52,32 +48,35 @@ class CommonLoginCardView extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text('Sign In', style: poppinsMedium()),
-                darkTxtField(label: 'Email', hintText: 'Enter your Email...'),
+                Text(StringConstant.signIn, style: poppinsMedium()),
+                darkTxtField(),
                 Column(
                   children: [
                     darkTxtField(
-                        isPass: true,
-                        label: 'Password',
-                        hintText: 'Enter your Password...',
-                        isPassHidden: isPassHidden,
-                        onEyeTapped: onEyeTapped),
+                      isPass: true,
+                      label: StringConstant.password,
+                      hintText: StringConstant.enterPassword,
+                      isPassHidden: isPassHidden,
+                      onEyeTapped: onEyeTapped,
+                    ),
                     InkWell(
                       splashColor: kDetailedWhite60,
                       onTap: () => kPushNavigator(context, const ResetPage()),
                       child: Container(
                         alignment: Alignment.topLeft,
                         margin: const EdgeInsets.only(top: 7.5),
-                        child: Text('Forgot password?',
-                            style: poppinsRegular().copyWith(
-                              color: kDetailedWhite60,
-                            )),
+                        child: Text(
+                          StringConstant.forgotPassword,
+                          style: poppinsRegular().copyWith(
+                            color: kDetailedWhite60,
+                          ),
+                        ),
                       ),
                     ),
                   ],
                 ),
-                positiveButton('Log In', onPressed: () async {
-                  showLoaderDialog(context, text: 'Logging you in...');
+                positiveButton(StringConstant.logIn, onPressed: () async {
+                  showLoaderDialog(context, text: StringConstant.loggingIn);
                   await Future.delayed(
                       const Duration(seconds: 3),
                       () =>
@@ -90,14 +89,14 @@ class CommonLoginCardView extends StatelessWidget {
                     containerDivider(),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Text('OR', style: poppinsRegular()),
+                      child: Text(StringConstant.or.toUpperCase(), style: poppinsRegular()),
                     ),
                     containerDivider(),
                   ],
                 ),
                 secondaryIconButton(
                   // todo Backend Google Auth Here.
-                  text: 'Continue with Google',
+                  text: StringConstant.googleSignIn,
                   iconW: SvgPicture.asset(
                     'assets/svg/G-logo-icon.svg',
                   ),
@@ -107,7 +106,7 @@ class CommonLoginCardView extends StatelessWidget {
           ),
         ),
         // todo Add signup Page Here (& Backend).
-        bottomDividerTxtBtn("Sign Up.",
+        bottomDividerTxtBtn(" ${StringConstant.signUp}.",
             onTap: () => kPushNavigator(context, const SignupPage())),
       ],
     );

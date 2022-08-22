@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:minecloud_tal/common/string_constants.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
@@ -52,16 +53,17 @@ class CommonSignUpCardView extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text('Sign Up', style: poppinsMedium()),
-                darkTxtField(label: 'Email', hintText: 'Enter your Email...'),
+                Text(StringConstant.signUp, style: poppinsMedium()),
+                darkTxtField(),
                 Column(
                   children: [
                     darkTxtField(
-                        isPass: true,
-                        label: 'Password',
-                        hintText: 'Enter your Password...',
-                        isPassHidden: isPassHidden,
-                        onEyeTapped: onEyeTapped),
+                      isPass: true,
+                      label: StringConstant.password,
+                      hintText: StringConstant.enterPassword,
+                      isPassHidden: isPassHidden,
+                      onEyeTapped: onEyeTapped,
+                    ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -73,11 +75,11 @@ class CommonSignUpCardView extends StatelessWidget {
                                 MaterialStateProperty.all(kVerySpecificWhite40),
                             value: isAgreeChecked,
                             onChanged: onChanged),
-                        bottomDividerTxtBtn("terms & Condition.",
+                        bottomDividerTxtBtn("${StringConstant.termsCondition.toLowerCase()}.",
                             showDivider: false, onTap: () {
                           commonShowDialog(
                               context: context,
-                              title: 'Terms & Conditions',
+                              title: StringConstant.termsCondition,
                               desc:
                                   'fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes fdsfefeafce vefefe fewfewfew fegreh g4gresd dsfxfwefes',
                               buttonTitle: 'Delete',
@@ -88,8 +90,8 @@ class CommonSignUpCardView extends StatelessWidget {
                     )
                   ],
                 ),
-                positiveButton('Sign Up', onPressed: () async {
-                  showLoaderDialog(context, text: 'Creating your account...');
+                positiveButton(StringConstant.signUp, onPressed: () async {
+                  showLoaderDialog(context, text: StringConstant.creatingAccount);
                   await Future.delayed(
                       const Duration(seconds: 3),
                       () =>
@@ -102,14 +104,14 @@ class CommonSignUpCardView extends StatelessWidget {
                     containerDivider(),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Text('OR', style: poppinsRegular()),
+                      child: Text(StringConstant.or.toUpperCase(), style: poppinsRegular()),
                     ),
                     containerDivider(),
                   ],
                 ),
                 secondaryIconButton(
                   // todo Backend Google Auth Here.
-                  text: 'Continue with Google',
+                  text: StringConstant.googleSignIn,
                   iconW: SvgPicture.asset(
                     'assets/svg/G-logo-icon.svg',
                   ),
@@ -120,8 +122,8 @@ class CommonSignUpCardView extends StatelessWidget {
         ),
 
         // todo Add signup Page Here (& Backend).
-        bottomDividerTxtBtn("Sign In.",
-            startText: "Already have an account?",
+        bottomDividerTxtBtn("${StringConstant.signIn}.",
+            startText: StringConstant.existAccount,
             onTap: () =>
                 kPushNavigator(context, const LoginScreen(), replace: true)),
       ],
