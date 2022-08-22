@@ -47,7 +47,7 @@ class _WebSignupPageState extends State<WebSignup> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MainBoardingSlider(_selectedIndex, _pageController),
+                MainBoardingSlider(/*_selectedIndex, _pageController*/),
                 SizedBox(
                   height: height * 2,
                 ),
