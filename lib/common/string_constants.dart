@@ -22,4 +22,6 @@ class StringConstant {
   static const String googleSignIn = 'Continue with Google';
   static const String existAccount = 'Already have an account?';
   static const String forgotPassword = 'Forgot password?';
+  static const String resetPassword = 'Reset Password';
+  static const String sendEmail = 'Send email';
 }

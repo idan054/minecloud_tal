@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/string_constants.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
@@ -15,8 +16,7 @@ class OnBoardingPage extends StatefulWidget {
 
 class _OnBoardingPageState extends State<OnBoardingPage> {
   int _selectedIndex = 0;
-  final PageController _pageController
-      = PageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +39,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const SizedBox(
-                  height: 15,
-                ),
+                const SizedBox(height: 15),
                 Center(child: Image.asset('assets/images/minecloudLogo.png')),
                 SizedBox(
                   height: 450,
@@ -56,24 +54,18 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                     children: [
                       buildMainBlock(
                         image: 'assets/images/sync_mcrft.png',
-                        title: 'Sync your Minecraft',
-                        desc: 'Upload your Minecraft projects to the'
-                            ' cloud and sync your assets automatically '
-                            'across devices',
+                        title: StringConstant.syncData,
+                        desc: StringConstant.syncDataDesc,
                       ),
                       buildMainBlock(
                         image: 'assets/images/windows_boarding.png',
-                        title: 'Windows & Android 9/10',
-                        desc: 'Compatible with Minecraft'
-                            'Bedrock Edition for Windows'
-                            'and mentioned Android devices',
+                        title: StringConstant.windows,
+                        desc: StringConstant.windowsDesc,
                       ),
                       buildMainBlock(
                         image: 'assets/images/not_just_worlds.png',
-                        title: 'Not just worlds...',
-                        desc: 'Minecloud allows you to'
-                            'sync any asset from the game:'
-                            'worlds, addons and skin packs!',
+                        title: StringConstant.notWords,
+                        desc: StringConstant.notWordsDesc,
                       ),
                     ],
                   ),
@@ -132,12 +124,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           style: poppinsMedium().copyWith(fontWeight: FontWeight.bold),
         ),
         Padding(
-          padding: const EdgeInsets.only(
-            top: 10,
-            left: 20,
-            right: 20,
-            bottom: 0,
-          ),
+          padding: const EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 0),
           child: Text(
             '$desc',
             textAlign: TextAlign.center,

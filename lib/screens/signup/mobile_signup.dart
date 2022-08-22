@@ -18,19 +18,20 @@ class _MobileSignupPageState extends State<MobileSignup> {
     return Container(
       decoration: const BoxDecoration(gradient: darkBackgroundGradient),
       child: Scaffold(
-          backgroundColor: kEmptyColor,
-          body: CommonSignUpCardView(
-            isPassHidden: isPassHidden,
-            isAgreeChecked: isAgreeChecked,
-            onEyeTapped: () {
-              setState(() => isPassHidden = !isPassHidden);
-            },
-            onChanged: (val) {
-              setState(() {
-                isAgreeChecked = val!;
-              });
-            },
-          )),
+        backgroundColor: kEmptyColor,
+        body: CommonSignUpCardView(
+          isPassHidden: isPassHidden,
+          isAgreeChecked: isAgreeChecked,
+          onEyeTapped: () {
+            setState(() => isPassHidden = !isPassHidden);
+          },
+          onChanged: (val) {
+            setState(() {
+              isAgreeChecked = val!;
+            });
+          },
+        ),
+      ),
     );
   }
 }

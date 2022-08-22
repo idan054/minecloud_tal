@@ -10,7 +10,7 @@ class SignupPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     var height =  maxHeight(context) / 100;
+    double height = maxHeight(context) / 100;
     return Container(
       decoration: const BoxDecoration(gradient: darkBackgroundGradient),
       child: Scaffold(
@@ -25,7 +25,7 @@ class SignupPage extends StatelessWidget {
                   Expanded(
                     flex: 5,
                     child: Padding(
-                      padding: EdgeInsets.only(top:height * 5),
+                      padding: EdgeInsets.only(top: height * 5),
                       child: Image.asset(
                         'assets/images/bgoverlay1.png',
                         fit: BoxFit.fill,
@@ -41,7 +41,6 @@ class SignupPage extends StatelessWidget {
                         alignment: Alignment.topRight,
                         child: Image.asset(
                           'assets/images/overlay2.png',
-                      
                         )),
                   ),
                 ],

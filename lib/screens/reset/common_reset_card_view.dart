@@ -36,11 +36,11 @@ class CommonResetCardView extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text('Reset Password', style: poppinsMedium()),
+                Text(StringConstant.resetPassword, style: poppinsMedium()),
                 darkTxtField(),
                 const SizedBox(height: 30),
                 // todo Backend Email Reset Here.
-                positiveButton('Send Email'),
+                positiveButton(StringConstant.sendEmail),
                 Row(
                   children: [
                     containerDivider(),
