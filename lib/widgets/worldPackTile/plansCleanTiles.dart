@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:minecloud_tal/common/models/plans_model.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 

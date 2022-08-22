@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/string_constants.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
@@ -52,8 +53,7 @@ Future<void> showMyBottomSheet(
                 actionTile(Icons.delete_outline, 'Delete locally',
                     onTap: () => commonShowDialog(
                         context: context,
-                        desc:
-                            'It will be deleted locally, but not from the cloud or from other registered devices.',
+                        desc: StringConstant.deleteCloud,
                         buttonTitle: isPack!
                             ? 'Delete this pack?'
                             : 'Delete this world?',
@@ -68,8 +68,7 @@ Future<void> showMyBottomSheet(
                   'Delete from cloud',
                   onTap: () => commonShowDialog(
                       context: context,
-                      desc:
-                          "It will be deleted from the cloud, but not locally. So you'll still be able to access and play it.",
+                      desc: StringConstant.cloudWarning,
                       buttonTitle:
                           isPack! ? 'Delete this pack?' : 'Delete this world?',
                       image: image),

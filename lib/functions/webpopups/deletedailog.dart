@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/string_constants.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 
 import '../../common/theme/colors.dart';
@@ -17,11 +18,9 @@ Future<void> showDeleteDialog({
   String? desc;
   if (!isPack) {
     // when synced
-    desc =
-        'It will be deleted locally, but not from the cloud or from other registered devices.';
+    desc = StringConstant.deleteCloud;
   } else {
-    desc =
-        """It will be deleted from the cloud, but not locally. So you'll still be able to access and play it.""";
+    desc = StringConstant.cloudWarning;
   }
 
   return showDialog<void>(

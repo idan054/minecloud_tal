@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/string_constants.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
@@ -39,8 +40,7 @@ Widget worldPackTile(
                     context: context,
                     title: title,
                     buttonTitle: 'Delete',
-                    desc:
-                        "It will be deleted locally, but not from the cloud or from other registered devices.");
+                    desc: StringConstant.deleteCloud);
               },
               desc:
                   'You\'ve selected one of your local worlds.What would you like to do?');

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/common/string_constants.dart';
 
 import '../common/theme/colors.dart';
 import '../common/theme/text.dart';
@@ -14,14 +15,12 @@ Future<void> showDeleteDialog(
   String? desc;
   if (bottomSheetType == BottomSheetType.local) {
     // when synced
-    desc =
-        'It will be deleted locally, but not from the cloud or from other registered devices.';
+    desc = StringConstant.deleteCloud;
   }
   // when un synced
   // desc = """It will be deleted permanently, and you won't be able to restore this world. """;}
   if (bottomSheetType == BottomSheetType.cloud) {
-    desc =
-        """It will be deleted from the cloud, but not locally. So you'll still be able to access and play it.""";
+    desc = StringConstant.cloudWarning;
   }
 
   return showDialog<void>(

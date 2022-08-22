@@ -24,4 +24,6 @@ class StringConstant {
   static const String forgotPassword = 'Forgot password?';
   static const String resetPassword = 'Reset Password';
   static const String sendEmail = 'Send email';
+  static const String deleteCloud = 'It will be deleted locally, but not from the cloud or from other registered devices.';
+  static const String cloudWarning = """It will be deleted from the cloud, but not locally. So you'll still be able to access and play it.""";
 }
