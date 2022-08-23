@@ -1,7 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:minecloud_tal/firebase_options.dart';
 
 import 'package:minecloud_tal/screens/login/login.dart';
 import 'package:minecloud_tal/screens/onBoarding_page.dart';
+import 'package:minecloud_tal/screens/reset/reset.dart';
 import 'package:provider/provider.dart';
 import 'dart:io' show Platform;
 
@@ -9,7 +12,9 @@ import 'common/models/universal_models.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     MultiProvider(
         providers: [
@@ -46,9 +51,9 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home:  Platform.isIOS || Platform.isAndroid ?
-          const OnBoardingPage() : const LoginScreen(),
-      // home:  DashBoard(),
+      // home:  Platform.isIOS || Platform.isAndroid ?
+      //     const OnBoardingPage() : const LoginScreen(),
+      home:  const ResetPage(),
       // home: const Dashboard(),
     );
   }

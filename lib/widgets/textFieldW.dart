@@ -3,6 +3,7 @@ import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 
 Widget darkTxtField({
+  TextEditingController? controller,
   String label = 'Email',
   String hintText = 'Enter your Email...',
   bool isPass = false,
@@ -19,6 +20,7 @@ Widget darkTxtField({
       ClipRRect(
         borderRadius: BorderRadius.circular(8),
         child: TextField(
+          controller: controller,
           obscureText: isPass ? isPassHidden! : false,
           style: poppinsRegular().copyWith(color: kPositiveWhite),
           decoration: InputDecoration(

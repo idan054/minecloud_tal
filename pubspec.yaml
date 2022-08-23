@@ -19,6 +19,13 @@ dependencies:
   introduction_screen: ^3.0.2
   smooth_page_indicator: ^1.0.0+2
 
+  #  Firebase :
+  firebase_core: ^1.21.0
+
+  # User Authentication :
+  firebase_auth: ^3.6.4
+  google_sign_in: ^5.4.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

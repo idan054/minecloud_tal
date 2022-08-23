@@ -14,7 +14,7 @@ class _MobileResetPassState extends State<MobileResetPass> {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(gradient: darkBackgroundGradient),
-      child: const Scaffold(
+      child: Scaffold(
         backgroundColor: kEmptyColor,
         body: CommonResetCardView(),
       ),

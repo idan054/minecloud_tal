@@ -36,7 +36,7 @@ class _WebResetPassState extends State<WebResetPass> {
           ),
           if (maxHeight(context) > 1300)
             Expanded(flex: 2, child: Container()),
-          const Expanded(
+          Expanded(
             flex: 3,
             child: CommonResetCardView(isWeb: true),
           ),

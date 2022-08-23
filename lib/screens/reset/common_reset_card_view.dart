@@ -4,6 +4,7 @@ import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:minecloud_tal/screens/login/login.dart';
+import 'package:minecloud_tal/services/auth_service.dart';
 import 'package:minecloud_tal/widgets/buttonsWs.dart';
 import 'package:minecloud_tal/widgets/components/login_bottom_sign_up.dart';
 import 'package:minecloud_tal/widgets/simpleWs.dart';
@@ -11,8 +12,9 @@ import 'package:minecloud_tal/widgets/textFieldW.dart';
 
 class CommonResetCardView extends StatelessWidget {
   final bool isWeb;
+  final TextEditingController emailController = TextEditingController();
 
-  const CommonResetCardView({Key? key, this.isWeb = false}) : super(key: key);
+  CommonResetCardView({Key? key, this.isWeb = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +39,9 @@ class CommonResetCardView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(StringConstant.resetPassword, style: poppinsMedium()),
-                darkTxtField(),
+                darkTxtField(controller: emailController),
                 const SizedBox(height: 30),
-                // todo Backend Email Reset Here.
-                positiveButton(StringConstant.sendEmail),
+                positiveButton(StringConstant.sendEmail, onPressed: () => resetPassword(context),),
                 Row(
                   children: [
                     containerDivider(),
@@ -58,5 +59,9 @@ class CommonResetCardView extends StatelessWidget {
         bottomDividerTxtBtn(' ${StringConstant.signUp}.'),
       ],
     );
+  }
+
+  Future<void> resetPassword(BuildContext context) async {
+    await AuthService.forgotPassword(context, emailController.text);
   }
 }

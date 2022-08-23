@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:minecloud_tal/common/string_constants.dart';
@@ -8,6 +9,7 @@ import 'package:minecloud_tal/functions/loadingDialogW.dart';
 import 'package:minecloud_tal/screens/Dashboard/dashboard.dart';
 import 'package:minecloud_tal/screens/reset/reset.dart';
 import 'package:minecloud_tal/screens/signup/signup.dart';
+import 'package:minecloud_tal/services/auth_service.dart';
 import 'package:minecloud_tal/widgets/buttonsWs.dart';
 import 'package:minecloud_tal/widgets/components/login_bottom_sign_up.dart';
 import 'package:minecloud_tal/widgets/simpleWs.dart';
@@ -18,7 +20,7 @@ class CommonLoginCardView extends StatelessWidget {
   final bool isWeb;
   final GestureTapCallback? onEyeTapped;
 
-  const CommonLoginCardView(
+  CommonLoginCardView(
       {Key? key,
       this.isPassHidden = true,
       this.onEyeTapped,
@@ -26,6 +28,8 @@ class CommonLoginCardView extends StatelessWidget {
       : super(key: key);
 
   Widget containerDivider() => Expanded(child: lightDivider());
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +53,11 @@ class CommonLoginCardView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(StringConstant.signIn, style: poppinsMedium()),
-                darkTxtField(),
+                darkTxtField(controller: emailController),
                 Column(
                   children: [
                     darkTxtField(
+                      controller: passwordController,
                       isPass: true,
                       label: StringConstant.password,
                       hintText: StringConstant.enterPassword,
@@ -75,15 +80,13 @@ class CommonLoginCardView extends StatelessWidget {
                     ),
                   ],
                 ),
-                positiveButton(StringConstant.logIn, onPressed: () async {
-                  showLoaderDialog(context, text: StringConstant.loggingIn);
-                  await Future.delayed(
-                      const Duration(seconds: 3),
-                      () =>
-                          // todo Backend Email Auth Here.
-                          kNavigator(context).pop());
-                  kPushNavigator(context, DashBoard(), replace: true);
-                }),
+                positiveButton(
+                  StringConstant.logIn,
+                  onPressed: () async {
+                    showLoaderDialog(context, text: StringConstant.loggingIn);
+                    await verifyUser(context);
+                  },
+                ),
                 Row(
                   children: [
                     containerDivider(),
@@ -95,11 +98,9 @@ class CommonLoginCardView extends StatelessWidget {
                   ],
                 ),
                 secondaryIconButton(
-                  // todo Backend Google Auth Here.
                   text: StringConstant.googleSignIn,
-                  iconW: SvgPicture.asset(
-                    'assets/svg/G-logo-icon.svg',
-                  ),
+                  iconW: SvgPicture.asset('assets/svg/G-logo-icon.svg'),
+                  onPressed: () => googleSignAuth(context),
                 ),
               ],
             ),
@@ -110,5 +111,20 @@ class CommonLoginCardView extends StatelessWidget {
             onTap: () => kPushNavigator(context, const SignupPage())),
       ],
     );
+  }
+
+  Future<void> googleSignAuth(BuildContext context) async {
+    UserCredential? userCredential =  await AuthService.signInWithGoogle(context);
+  }
+
+  Future<void> verifyUser(BuildContext context) async {
+    UserCredential? userCredential = await AuthService.verifyUser(context, emailController.text.trim(), passwordController.text.trim());
+    await Future.delayed(
+      const Duration(seconds: 3),
+      () => kNavigator(context).pop(),
+    );
+    if (userCredential != null) {
+      kPushNavigator(context, DashBoard(), replace: true);
+    }
   }
 }
