@@ -1,10 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/firebase_options.dart';
-
 import 'package:minecloud_tal/screens/login/login.dart';
 import 'package:minecloud_tal/screens/onBoarding_page.dart';
-import 'package:minecloud_tal/screens/reset/reset.dart';
 import 'package:provider/provider.dart';
 import 'dart:io' show Platform;
 
@@ -51,9 +49,9 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      // home:  Platform.isIOS || Platform.isAndroid ?
-      //     const OnBoardingPage() : const LoginScreen(),
-      home:  const ResetPage(),
+      home:  Platform.isIOS || Platform.isAndroid ?
+          const OnBoardingPage() : const LoginScreen(),
+      // home:  const SignupPage(),
       // home: const Dashboard(),
     );
   }

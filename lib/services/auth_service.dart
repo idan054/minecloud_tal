@@ -5,7 +5,7 @@ import 'package:minecloud_tal/common/widgets/common_methods.dart';
 
 class AuthService {
   static FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  static GoogleSignIn googleSignIn = GoogleSignIn();
+  static GoogleSignIn googleSignIn = GoogleSignIn(clientId: '212576114202-cjhrerbh4qitnqjrde42mch1v18euj48.apps.googleusercontent.com');
 
   //     ======================= Google Sign In =======================     //
   static Future<UserCredential?> signInWithGoogle(BuildContext context) async {
