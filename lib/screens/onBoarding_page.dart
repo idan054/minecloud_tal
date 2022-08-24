@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/common/string_constants.dart';
 import 'package:minecloud_tal/common/theme/colors.dart';
@@ -15,8 +17,29 @@ class OnBoardingPage extends StatefulWidget {
 }
 
 class _OnBoardingPageState extends State<OnBoardingPage> {
-  int _selectedIndex = 0;
-  final PageController _pageController = PageController(initialPage: 0);
+  int selectedIndex = 0;
+  final PageController pageController = PageController(initialPage: 0);
+  Timer? timer;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    timer = Timer.periodic(const Duration(milliseconds: 2500), (Timer t) {
+      setState(() {
+        selectedIndex += 1;
+        if (selectedIndex == 3) selectedIndex = 0;
+      });
+      pageController.animateToPage(selectedIndex, curve: Curves.easeInOut, duration: const Duration(milliseconds: 250));
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    timer!.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,13 +67,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 SizedBox(
                   height: 450,
                   child: PageView(
-                    controller: _pageController,
-                    onPageChanged: (pageIndex) {
-                      setState(() => _selectedIndex = pageIndex);
-                      _pageController.animateToPage(pageIndex,
-                          curve: Curves.easeInOut,
-                          duration: const Duration(milliseconds: 150));
-                    },
+                    controller: pageController,
+                    onPageChanged: (pageIndex) => setState(() => selectedIndex = pageIndex),
                     children: [
                       buildMainBlock(
                         image: 'assets/images/sync_mcrft.png',
@@ -75,7 +93,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   child: Builder(builder: (context) {
                     double size = 7;
                     return SmoothPageIndicator(
-                      controller: _pageController,
+                      controller: pageController,
                       count: 3,
                       effect: SlideEffect(
                         spacing: size + 2,
@@ -92,15 +110,24 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 32),
-                  child: _selectedIndex == 2
-                      ? positiveButton('Get Started',
-                          onPressed: () => kPushNavigator(context,  const LoginScreen(),
-                              replace: true))
-                      : positiveButton('Next', onPressed: () async {
-                          _pageController.nextPage(
+                  child: selectedIndex == 2
+                      ? positiveButton(
+                          'Get Started',
+                          onPressed: () => kPushNavigator(
+                            context,
+                            const LoginScreen(),
+                            replace: true,
+                          ),
+                        )
+                      : positiveButton(
+                          'Next',
+                          onPressed: () async {
+                            pageController.nextPage(
                               curve: Curves.easeInOut,
-                              duration: const Duration(milliseconds: 150));
-                        }),
+                              duration: const Duration(milliseconds: 150),
+                            );
+                          },
+                        ),
                 ),
                 SizedBox(height: kMediaQuerySize(context).height * 0.075),
               ],
@@ -133,11 +160,5 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         )
       ],
     );
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
   }
 }
