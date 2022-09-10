@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:minecloud_tal/screens/Dashboard/dashboard.dart';
+import 'package:minecloud_tal/screens/login/mobile_login.dart';
 import 'package:minecloud_tal/screens/login/web_login.dart';
 import 'package:minecloud_tal/screens/plans/mobile_plans.dart';
 

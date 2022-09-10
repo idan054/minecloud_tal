@@ -100,7 +100,10 @@ class CommonLoginCardView extends StatelessWidget {
                 secondaryIconButton(
                   text: StringConstant.googleSignIn,
                   iconW: SvgPicture.asset('assets/svg/G-logo-icon.svg'),
-                  onPressed: () => googleSignAuth(context),
+                  onPressed: () {
+                    showLoaderDialog(context, text: StringConstant.loggingIn);
+                    googleSignAuth(context);
+                  },
                 ),
               ],
             ),
@@ -115,6 +118,13 @@ class CommonLoginCardView extends StatelessWidget {
 
   Future<void> googleSignAuth(BuildContext context) async {
     UserCredential? userCredential =  await AuthService.signInWithGoogle(context);
+    await Future.delayed(
+      const Duration(seconds: 3),
+      () => kNavigator(context).pop(),
+    );
+    if (userCredential != null) {
+      kPushNavigator(context, DashBoard(), replace: true);
+    }
   }
 
   Future<void> verifyUser(BuildContext context) async {
