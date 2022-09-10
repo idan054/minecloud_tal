@@ -30,10 +30,11 @@ class DefaultFirebaseOptions {
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return web;
+        // throw UnsupportedError(
+        //   'DefaultFirebaseOptions have not been configured for windows - '
+        //   'you can reconfigure this by running the FlutterFire CLI again.',
+        // );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -47,31 +48,30 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAWME9QLwPoMvs4XiPlm8rn-d_6aszLQNA',
-    appId: '1:212576114202:web:26afd6a015853bf30aa3a3',
-    messagingSenderId: '212576114202',
-    projectId: 'minecloud-90b2c',
-    authDomain: 'minecloud-90b2c.firebaseapp.com',
-    storageBucket: 'minecloud-90b2c.appspot.com',
-    measurementId: 'G-41RZZ64QFF',
+    apiKey: 'AIzaSyAGDTYVd_97jGYt4T8se6qp_oUa0xt60Wk',
+    appId: '1:144569583555:web:efdc1d5144c17840889f76',
+    messagingSenderId: '144569583555',
+    projectId: 'my-minecloud',
+    authDomain: 'my-minecloud.firebaseapp.com',
+    storageBucket: 'my-minecloud.appspot.com',
+    measurementId: 'G-PX6CGMQJHJ',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAIfDMR8CfiXmmqpFdInK4uvky_-e8t4SA',
-    appId: '1:212576114202:android:3bbfca949a03d8490aa3a3',
-    messagingSenderId: '212576114202',
-    projectId: 'minecloud-90b2c',
-    storageBucket: 'minecloud-90b2c.appspot.com',
+    apiKey: 'AIzaSyA6GFN0R9XZzk73QSvEsA6olAaSt-2J-UM',
+    appId: '1:144569583555:android:1579806d9ba0ea25889f76',
+    messagingSenderId: '144569583555',
+    projectId: 'my-minecloud',
+    storageBucket: 'my-minecloud.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCaSKUk9Ub2LU2MKdf2cYHUVUGxmaOMChg',
-    appId: '1:212576114202:ios:87abf780ec69f68e0aa3a3',
-    messagingSenderId: '212576114202',
-    projectId: 'minecloud-90b2c',
-    storageBucket: 'minecloud-90b2c.appspot.com',
-    androidClientId: '212576114202-g9vjoks6aoa9ngpmj1ursmr825pvb3o1.apps.googleusercontent.com',
-    iosClientId: '212576114202-v8ptcml1p7poi4mkmos8s473j8gnl864.apps.googleusercontent.com',
+    apiKey: 'AIzaSyAvzO4M5foR1jyRHxnpMhTZYyVNmu41HSQ',
+    appId: '1:144569583555:ios:96c840efa015a2e1889f76',
+    messagingSenderId: '144569583555',
+    projectId: 'my-minecloud',
+    storageBucket: 'my-minecloud.appspot.com',
+    iosClientId: '144569583555-h2koa1u4jg0bm3gci832daaoirucuekq.apps.googleusercontent.com',
     iosBundleId: 'com.biton.minecloud.minecloudTal',
   );
 }

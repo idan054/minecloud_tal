@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "212576114202",
-    "project_id": "minecloud-90b2c",
-    "storage_bucket": "minecloud-90b2c.appspot.com"
+    "project_number": "144569583555",
+    "project_id": "my-minecloud",
+    "storage_bucket": "my-minecloud.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:212576114202:android:3bbfca949a03d8490aa3a3",
+        "mobilesdk_app_id": "1:144569583555:android:1579806d9ba0ea25889f76",
         "android_client_info": {
           "package_name": "com.biton.minecloud.minecloud_tal"
         }
       },
       "oauth_client": [
         {
-          "client_id": "212576114202-g9vjoks6aoa9ngpmj1ursmr825pvb3o1.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.biton.minecloud.minecloud_tal",
-            "certificate_hash": "8857307c070ded7d98940dc36a44b5150b497abe"
-          }
-        },
-        {
-          "client_id": "212576114202-cjhrerbh4qitnqjrde42mch1v18euj48.apps.googleusercontent.com",
+          "client_id": "144569583555-42nc7i1vpn7bggnvlmbjlvqrnqj30v0r.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAIfDMR8CfiXmmqpFdInK4uvky_-e8t4SA"
+          "current_key": "AIzaSyA6GFN0R9XZzk73QSvEsA6olAaSt-2J-UM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "212576114202-cjhrerbh4qitnqjrde42mch1v18euj48.apps.googleusercontent.com",
+              "client_id": "144569583555-42nc7i1vpn7bggnvlmbjlvqrnqj30v0r.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

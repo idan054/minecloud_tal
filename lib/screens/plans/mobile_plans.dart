@@ -4,6 +4,7 @@ import 'package:minecloud_tal/common/theme/colors.dart';
 import 'package:minecloud_tal/common/theme/constants.dart';
 import 'package:minecloud_tal/common/theme/text.dart';
 import 'package:minecloud_tal/common/widgets/common_plan.dart';
+import 'package:minecloud_tal/screens/login/login.dart';
 import 'package:minecloud_tal/widgets/buttonsWs.dart';
 import 'package:minecloud_tal/widgets/components/login_bottom_sign_up.dart';
 import 'package:minecloud_tal/widgets/worldPackTile/plansCleanTiles.dart';
@@ -34,7 +35,8 @@ class _MobilePlansState extends State<MobilePlans> {
                 ),
                 Text(
                   StringConstant.basicPlanDesc,
-                  style: poppinsRegular().copyWith(fontSize: 12, color: kDetailedWhite60),
+                  style: poppinsRegular()
+                      .copyWith(fontSize: 12, color: kDetailedWhite60),
                 ),
                 const SizedBox(height: 50), // maxHeight(context) * 0.125
                 CommonPlan(),
@@ -44,11 +46,13 @@ class _MobilePlansState extends State<MobilePlans> {
                 // todo connect to payment
                 SizedBox(
                   width: maxWidth(context) * 0.75,
-                  child: positiveButton(StringConstant.continues, onPressed: () {}),
+                  child: positiveButton(StringConstant.continues,
+                      onPressed: () => kPushNavigator(context, LoginScreen())),
                 ),
                 const Spacer(),
                 // todo connect open plans $ features
-                bottomDividerTxtBtn(StringConstant.plansFeatures, startText: StringConstant.learnMore),
+                bottomDividerTxtBtn(StringConstant.plansFeatures,
+                    startText: StringConstant.learnMore),
               ],
             ),
           ),
